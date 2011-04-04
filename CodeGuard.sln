@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard", "CodeGuard\Seterlund.CodeGuard.csproj", "{534D625B-C310-4A98-8E05-1806E7AE389F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard.UnitTests", "UnitTests\Seterlund.CodeGuard.UnitTests.csproj", "{B7F516F7-E137-4922-B119-C87FFCDA8BBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96AC009B-2319-4A8C-B041-5294C8C1FA0F}"
+	ProjectSection(SolutionItems) = preProject
+		CodeGuard.vsmdi = CodeGuard.vsmdi
+		Local.testsettings = Local.testsettings
+		README.txt = README.txt
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CodeGuard.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{534D625B-C310-4A98-8E05-1806E7AE389F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{534D625B-C310-4A98-8E05-1806E7AE389F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{534D625B-C310-4A98-8E05-1806E7AE389F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{534D625B-C310-4A98-8E05-1806E7AE389F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
