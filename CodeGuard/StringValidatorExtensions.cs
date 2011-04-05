@@ -2,21 +2,21 @@ namespace Seterlund.CodeGuard
 {
     public static class StringValidatorExtensions
     {
-        public static ArgumentValidator<string> IsNotEmpty(this ArgumentValidator<string> argumentValidator)
+        public static ArgumentValidatorBase<string> IsNotEmpty(this ArgumentValidatorBase<string> argumentValidator)
         {
             if (argumentValidator.Value == string.Empty)
             {
-                argumentValidator.ThrowArgumentException("String is empty");
+                ExceptionHelper.ThrowArgumentException(argumentValidator, "String is empty");
             }
 
             return argumentValidator;
         }
 
-        public static ArgumentValidator<string> IsNotNullOrEmpty(this ArgumentValidator<string> argumentValidator)
+        public static ArgumentValidatorBase<string> IsNotNullOrEmpty(this ArgumentValidatorBase<string> argumentValidator)
         {
             if (string.IsNullOrEmpty(argumentValidator.Value))
             {
-                argumentValidator.ThrowArgumentException("String is null or empty");
+                ExceptionHelper.ThrowArgumentException(argumentValidator, "String is null or empty");
             }
 
             return argumentValidator;

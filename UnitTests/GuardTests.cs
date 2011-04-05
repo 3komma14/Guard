@@ -427,11 +427,11 @@ namespace Seterlund.CodeGuard.UnitTests
             int arg1 = default(int);
 
             // Act
-            ArgumentOutOfRangeException exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.Check(() => arg1).IsNotDefault());
+            ArgumentException exception =
+                GetException<ArgumentException>(() => Guard.Check(() => arg1).IsNotDefault());
 
             // Assert
-            AssertArgumentOfRangeException(exception, "Value cannot be the default value.", "arg1", arg1);
+            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
         }
 
         [Test]

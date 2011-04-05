@@ -44,6 +44,8 @@
     <Compile Include="ArgumentValidatorBase.cs" />
     <Compile Include="BooleanValidatorExtensions.cs" />
     <Compile Include="ClassValidatorExtensions.cs" />
+    <Compile Include="ExceptionHelper.cs" />
+    <Compile Include="ExpressionValidator.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="IComparableValidatorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

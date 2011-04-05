@@ -10,58 +10,59 @@ namespace Seterlund.CodeGuard
     /// </typeparam>
     public class ArgumentValidator<T> : ArgumentValidatorBase<T>
     {
+        private T value;
+
+        private Func<T> argument;
+
+        protected override string GetArgumentName()
+        {
+            return this.GetFieldName();
+        }
+
+        protected override T GetArgumentValue()
+        {
+            return value;
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentValidator{T}"/> class.
         /// </summary>
         /// <param name="argument">
         /// The argument.
         /// </param>
-        public ArgumentValidator(Func<T> argument) : base(argument)
+        public ArgumentValidator(Func<T> argument)
         {
+            this.argument = argument;
+            this.value = argument();
         }
 
         /// <summary>
-        /// Is argument instance of type
+        /// Gets the name of the argument 
         /// </summary>
-        /// <typeparam name="TType">The type to check</typeparam>
-        /// <returns></returns>
-        public ArgumentValidator<T> Is<TType>()
+        /// <returns>
+        /// The name of the field og class
+        /// </returns>
+        private string GetFieldName()
         {
-            var isType = this.Value is TType;
-            if (!isType)
+            string fieldName = "Unknown";
+            try
             {
-                this.ThrowArgumentException(string.Format("Value is not <{0}>", typeof(TType).Name));
+                // get IL code behind the delegate
+                var il = this.argument.Method.GetMethodBody().GetILAsByteArray();
+
+                // bytes 2-6 represent the field handle
+                var fieldHandle = BitConverter.ToInt32(il, 2);
+
+                // resolve the handle
+                var field = this.argument.Target.GetType().Module.ResolveField(fieldHandle);
+                fieldName = field.Name;
+            }
+            catch
+            {
+                // Swallow exception
             }
 
-            return this;
-        }
-
-        /// <summary>
-        /// Is argument not the default value
-        /// </summary>
-        /// <returns></returns>
-        public ArgumentValidator<T> IsNotDefault()
-        {
-            if (default(T).Equals(this.Value))
-            {
-                this.ThrowArgumentOutOfRangeException("Value cannot be the default value.");
-            }
-
-            return this;
-        }
-
-        /// <summary>
-        /// Is the fucntion true for the argument.
-        /// </summary>
-        /// <returns></returns>
-        public ArgumentValidator<T> IsTrue(Func<T, bool> booleanFunction, string exceptionMessage)
-        {
-            if (booleanFunction(this.Value))
-            {
-                this.ThrowArgumentException(exceptionMessage);
-            }
-
-            return this;
+            return fieldName;
         }
     }
 }

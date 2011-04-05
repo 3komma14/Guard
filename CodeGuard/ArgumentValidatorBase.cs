@@ -4,109 +4,69 @@ namespace Seterlund.CodeGuard
 {
     public abstract class ArgumentValidatorBase<T>
     {
-        /// <summary>
-        /// The argument to check
-        /// </summary>
-        private Func<T> argument;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ArgumentValidator{T}"/> class.
-        /// </summary>
-        /// <param name="argument">
-        /// The argument.
-        /// </param>
-        public ArgumentValidatorBase(Func<T> argument)
+        public T Value
         {
-            this.argument = argument;
-            this.Value = argument();
+            get { return GetArgumentValue(); }
+        }
+
+        public string Name
+        {
+            get { return GetArgumentName(); }
+        }
+
+        protected virtual T GetArgumentValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual string GetArgumentName()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Gets Value.
+        /// Is argument instance of type
         /// </summary>
-        internal T Value { get; private set; }
-
-
-        #region --- Throw exceptions ---
-
-        /// <summary>
-        /// Throws an ArgumentNullException
-        /// </summary>
-        /// <exception cref="ArgumentNullException">
-        /// Exception thrown
-        /// </exception>
-        internal void ThrowArgumentNullException()
+        /// <typeparam name="TType">The type to check</typeparam>
+        /// <returns></returns>
+        public ArgumentValidatorBase<T> Is<TType>()
         {
-            throw new ArgumentNullException(this.GetFieldName());
-        }
-
-        /// <summary>
-        /// Throws an ArgumentOutOfRangeException
-        /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Exception thrown
-        /// </exception>
-        internal void ThrowArgumentOutOfRangeException()
-        {
-            throw new ArgumentOutOfRangeException(this.GetFieldName());
-        }
-
-        /// <summary>
-        /// Throws an ArgumentOutOfRangeException
-        /// </summary>
-        /// <param name="message">
-        /// The message.
-        /// </param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Exception thrown
-        /// </exception>
-        internal void ThrowArgumentOutOfRangeException(string message)
-        {
-            throw new ArgumentOutOfRangeException(this.GetFieldName(), this.Value, message);
-        }
-
-        /// <summary>
-        /// Throws an ArgumentException
-        /// </summary>
-        /// <param name="message">
-        /// The message.
-        /// </param>
-        /// <exception cref="ArgumentException">
-        /// </exception>
-        internal void ThrowArgumentException(string message)
-        {
-            throw new ArgumentException(message, this.GetFieldName());
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Gets the name of the argument 
-        /// </summary>
-        /// <returns>
-        /// The name of the field og class
-        /// </returns>
-        private string GetFieldName()
-        {
-            string fieldName = "Unknown";
-            try
+            var isType = this.Value is TType;
+            if (!isType)
             {
-                // get IL code behind the delegate
-                var il = this.argument.Method.GetMethodBody().GetILAsByteArray();
-
-                // bytes 2-6 represent the field handle
-                var fieldHandle = BitConverter.ToInt32(il, 2);
-
-                // resolve the handle
-                var field = this.argument.Target.GetType().Module.ResolveField(fieldHandle);
-                fieldName = field.Name;
-            }
-            catch
-            {
-                // Swallow exception
+                ExceptionHelper.ThrowArgumentException(this, string.Format("Value is not <{0}>", typeof(TType).Name));
             }
 
-            return fieldName;
+            return this;
         }
+
+        /// <summary>
+        /// Is argument not the default value
+        /// </summary>
+        /// <returns></returns>
+        public ArgumentValidatorBase<T> IsNotDefault()
+        {
+            if (default(T).Equals(this.Value))
+            {
+                ExceptionHelper.ThrowArgumentException(this, "Value cannot be the default value.");
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Is the fucntion true for the argument.
+        /// </summary>
+        /// <returns></returns>
+        public ArgumentValidatorBase<T> IsTrue(Func<T, bool> booleanFunction, string exceptionMessage)
+        {
+            if (booleanFunction(this.Value))
+            {
+                ExceptionHelper.ThrowArgumentException(this, exceptionMessage);
+            }
+
+            return this;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 
 namespace Seterlund.CodeGuard
 {
@@ -16,9 +17,14 @@ namespace Seterlund.CodeGuard
         /// <returns>
         /// An ArgumentValidator
         /// </returns>
-        public static ArgumentValidator<T> Check<T>(Func<T> argument)
+        public static ArgumentValidatorBase<T> Check<T>(Func<T> argument)
         {
             return new ArgumentValidator<T>(argument);
+        }
+
+        public static ArgumentValidatorBase<T> Contract<T>(Expression<Func<T>> argument)
+        {
+            return new ExpressionValidator<T>(argument);
         }
     }
 }
