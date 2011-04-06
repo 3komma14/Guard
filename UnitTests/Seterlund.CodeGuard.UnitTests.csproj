@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BooleanValidatorTests.cs" />
+    <Compile Include="IntegerValidatorTests.cs" />
     <Compile Include="IComparableValidatorTests.cs" />
     <Compile Include="StringValidatorTests.cs" />
     <Compile Include="GuardTests.cs" />
