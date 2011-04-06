@@ -1,7 +1,7 @@
 CodeGuard
 ---------------
 
-A simple Guard library made in c#
+A simple Guard library made in c#.
 
 Example of usage:
 
@@ -16,7 +16,9 @@ void SomeMethod(int arg1, int arg2)
 	// Do stuff
 }
 
+
 The following checks are available. But the best documentation is currently the tests.
+New checks can easily be made by creating an extension method.
 
 General:
 Is<Type>
