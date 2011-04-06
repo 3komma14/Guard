@@ -4,59 +4,59 @@ namespace Seterlund.CodeGuard
 {
     public static class IComparableValidatorExtensions
     {
-        public static ArgumentValidatorBase<T> IsEqual<T>(this ArgumentValidatorBase<T> argumentValidator, T argument) where T : IComparable
+        public static ValidatorBase<T> IsEqual<T>(this ValidatorBase<T> validator, T argument) where T : IComparable
         {
-            return IsEqual(argumentValidator, () => argument);
+            return IsEqual(validator, () => argument);
         }
 
-        public static ArgumentValidatorBase<T> IsEqual<T>(this ArgumentValidatorBase<T> argumentValidator, Func<T> argument) where T : IComparable
+        public static ValidatorBase<T> IsEqual<T>(this ValidatorBase<T> validator, Func<T> argument) where T : IComparable
         {
-            if (argumentValidator.Value.CompareTo(argument()) != 0)
+            if (validator.Value.CompareTo(argument()) != 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(argumentValidator);
+                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
             }
 
-            return argumentValidator;
+            return validator;
         }
 
-        public static ArgumentValidatorBase<T> IsGreaterThan<T>(this ArgumentValidatorBase<T> argumentValidator, T argument) where T : IComparable
+        public static ValidatorBase<T> IsGreaterThan<T>(this ValidatorBase<T> validator, T argument) where T : IComparable
         {
-            return IsGreaterThan(argumentValidator, () => argument);
+            return IsGreaterThan(validator, () => argument);
         }
 
-        public static ArgumentValidatorBase<T> IsGreaterThan<T>(this ArgumentValidatorBase<T> argumentValidator, Func<T> argument) where T : IComparable
+        public static ValidatorBase<T> IsGreaterThan<T>(this ValidatorBase<T> validator, Func<T> argument) where T : IComparable
         {
-            if (argumentValidator.Value.CompareTo(argument()) <= 0)
+            if (validator.Value.CompareTo(argument()) <= 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(argumentValidator);
+                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
             }
 
-            return argumentValidator;
+            return validator;
         }
 
-        public static ArgumentValidatorBase<T> IsLessThan<T>(this ArgumentValidatorBase<T> argumentValidator, T argument) where T : IComparable
+        public static ValidatorBase<T> IsLessThan<T>(this ValidatorBase<T> validator, T argument) where T : IComparable
         {
-            return IsLessThan(argumentValidator, () => argument);
+            return IsLessThan(validator, () => argument);
         }
 
-        public static ArgumentValidatorBase<T> IsLessThan<T>(this ArgumentValidatorBase<T> argumentValidator, Func<T> argument) where T : IComparable
+        public static ValidatorBase<T> IsLessThan<T>(this ValidatorBase<T> validator, Func<T> argument) where T : IComparable
         {
-            if (argumentValidator.Value.CompareTo(argument()) >= 0)
+            if (validator.Value.CompareTo(argument()) >= 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(argumentValidator);
+                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
             }
 
-            return argumentValidator;
+            return validator;
         }
 
-        public static ArgumentValidatorBase<T> IsInRange<T>(this ArgumentValidatorBase<T> argumentValidator, T start, T end) where T : IComparable
+        public static ValidatorBase<T> IsInRange<T>(this ValidatorBase<T> validator, T start, T end) where T : IComparable
         {
-            if (argumentValidator.Value.CompareTo(start) < 0 || argumentValidator.Value.CompareTo(end) > 0)
+            if (validator.Value.CompareTo(start) < 0 || validator.Value.CompareTo(end) > 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(argumentValidator);
+                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
             }
 
-            return argumentValidator;
+            return validator;
         }
     }
 }

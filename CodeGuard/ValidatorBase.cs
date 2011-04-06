@@ -2,34 +2,18 @@ using System;
 
 namespace Seterlund.CodeGuard
 {
-    public abstract class ArgumentValidatorBase<T>
+    public abstract class ValidatorBase<T>
     {
-        public T Value
-        {
-            get { return GetArgumentValue(); }
-        }
+        public abstract T Value { get; }
 
-        public string Name
-        {
-            get { return GetArgumentName(); }
-        }
-
-        protected virtual T GetArgumentValue()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected virtual string GetArgumentName()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract string Name { get; }
 
         /// <summary>
         /// Is argument instance of type
         /// </summary>
         /// <typeparam name="TType">The type to check</typeparam>
         /// <returns></returns>
-        public ArgumentValidatorBase<T> Is<TType>()
+        public ValidatorBase<T> Is<TType>()
         {
             var isType = this.Value is TType;
             if (!isType)
@@ -44,7 +28,7 @@ namespace Seterlund.CodeGuard
         /// Is argument not the default value
         /// </summary>
         /// <returns></returns>
-        public ArgumentValidatorBase<T> IsNotDefault()
+        public ValidatorBase<T> IsNotDefault()
         {
             if (default(T).Equals(this.Value))
             {
@@ -58,7 +42,7 @@ namespace Seterlund.CodeGuard
         /// Is the fucntion true for the argument.
         /// </summary>
         /// <returns></returns>
-        public ArgumentValidatorBase<T> IsTrue(Func<T, bool> booleanFunction, string exceptionMessage)
+        public ValidatorBase<T> IsTrue(Func<T, bool> booleanFunction, string exceptionMessage)
         {
             if (booleanFunction(this.Value))
             {
@@ -67,6 +51,5 @@ namespace Seterlund.CodeGuard
 
             return this;
         }
-
     }
 }

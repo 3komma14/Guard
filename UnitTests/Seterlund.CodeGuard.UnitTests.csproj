@@ -46,6 +46,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BooleanValidatorTests.cs" />
+    <Compile Include="IComparableValidatorTests.cs" />
+    <Compile Include="StringValidatorTests.cs" />
     <Compile Include="GuardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

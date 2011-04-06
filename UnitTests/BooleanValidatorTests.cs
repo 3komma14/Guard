@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class GuardTests
+    public class BooleanValidatorTests
     {
         #region ----- Fixture setup -----
 
@@ -51,107 +51,58 @@ namespace Seterlund.CodeGuard.UnitTests
         #endregion
 
         [Test]
-        public void Is_WhenArgumentIsSameType_DoesNotThrow()
+        public void IsTrue_WhenArgumentIsFalse_Throws()
         {
             // Arrange
-            int arg1 = 0;
-
-            // Act/Assert
-            Assert.DoesNotThrow(() =>
-            {
-                Guard.Check(() => arg1).Is<int>();
-            });
-        }
-
-        [Test]
-        public void Is_WhenArgumentIsWrongType_Throws()
-        {
-            // Arrange
-            int arg1 = 0;
+            bool arg = false;
 
             // Act
-            ArgumentException exception = 
-                GetException<ArgumentException>(() => Guard.Check(() => arg1).Is<string>());
+            ArgumentOutOfRangeException exception =
+                GetException<ArgumentOutOfRangeException>(() => Guard.Check(() => arg).IsTrue());
 
             // Assert
-            AssertArgumentException(exception, "arg1", "Value is not <String>\r\nParameter name: arg1");
+            AssertArgumentOfRangeException(exception, "arg");
         }
 
         [Test]
-        public void IsNotDefault_WhenArgumentIsDefault_Throws()
+        public void IsTrue_WhenArgumentIsTrue_DoesNotThrow()
         {
             // Arrange
-            int arg1 = default(int);
+            bool arg = true;
+
+            // Act/Assert
+            Assert.DoesNotThrow(() =>
+            {
+                Guard.Check(() => arg).IsTrue();
+            });
+        }
+
+        [Test]
+        public void IsFalse_WhenArgumentIsTrue_Throws()
+        {
+            // Arrange
+            bool arg = true;
 
             // Act
-            ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.Check(() => arg1).IsNotDefault());
+            ArgumentOutOfRangeException exception =
+                GetException<ArgumentOutOfRangeException>(() => Guard.Check(() => arg).IsFalse());
 
             // Assert
-            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
+            AssertArgumentOfRangeException(exception, "arg");
         }
 
         [Test]
-        public void IsNotDefault_WhenArgumentIsNotDefault_DoesNotThrow()
+        public void IsFalse_WhenArgumentIsFalse_DoesNotThrow()
         {
             // Arrange
-            int arg1 = default(int) + 1;
+            bool arg = false;
 
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => arg1).IsNotDefault();
+                Guard.Check(() => arg).IsFalse();
             });
         }
-
-        [Test]
-        public void Is_WhenArgumentImplementsType_DoesNotThrow()
-        {
-            // Arrange
-            var arg1 = new ImplementationOfITest();
-
-            // Act/Assert
-            Assert.DoesNotThrow(() =>
-            {
-                Guard.Check(() => arg1).Is<ITest>();
-            });
-        }
-
-        [Test]
-        public void Is_WhenArgumentDoesNotImplementType_Throws()
-        {
-            // Arrange
-            var arg1 = new NotImplementationOfITest();
-
-            // Act/Assert
-            ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.Check(() => arg1).Is<ITest>());
-        
-            // Assert
-            AssertArgumentException(exception, "arg1", "Value is not <ITest>\r\nParameter name: arg1");
-        }
-
-        public interface ITest
-        {
-            void Ping();
-        }
-
-        public class ImplementationOfITest : ITest
-        {
-            public void Ping()
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public class NotImplementationOfITest
-        {
-            public void Echo()
-            {
-                throw new NotImplementedException();
-            }
-        }
-
 
         #region ----- Helper functions -----
 

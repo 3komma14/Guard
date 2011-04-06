@@ -8,32 +8,29 @@ namespace Seterlund.CodeGuard
     /// <typeparam name="T">
     /// The argument type
     /// </typeparam>
-    public class ArgumentValidator<T> : ArgumentValidatorBase<T>
+    public class ReflectionValidator<T> : ValidatorBase<T>
     {
-        private T value;
-
         private Func<T> argument;
 
-        protected override string GetArgumentName()
+        public override T Value
         {
-            return this.GetFieldName();
+            get { return argument(); }
         }
 
-        protected override T GetArgumentValue()
+        public override string Name
         {
-            return value;
+            get { return this.GetFieldName(); }
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArgumentValidator{T}"/> class.
+        /// Initializes a new instance of the <see cref="ReflectionReflectionValidator{T}"/> class.
         /// </summary>
         /// <param name="argument">
         /// The argument.
         /// </param>
-        public ArgumentValidator(Func<T> argument)
+        public ReflectionValidator(Func<T> argument)
         {
             this.argument = argument;
-            this.value = argument();
         }
 
         /// <summary>
@@ -64,5 +61,6 @@ namespace Seterlund.CodeGuard
 
             return fieldName;
         }
+
     }
 }

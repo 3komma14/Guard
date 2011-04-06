@@ -6,7 +6,7 @@ namespace Seterlund.CodeGuard
     public static class Guard
     {
         /// <summary>
-        /// Create an ArgumentValidator 
+        /// Check the argument 
         /// </summary>
         /// <param name="argument">
         /// The argument.
@@ -17,14 +17,24 @@ namespace Seterlund.CodeGuard
         /// <returns>
         /// An ArgumentValidator
         /// </returns>
-        public static ArgumentValidatorBase<T> Check<T>(Func<T> argument)
+        public static ValidatorBase<T> Check<T>(Expression<Func<T>> argument)
         {
-            return new ArgumentValidator<T>(argument);
+            return new Validator<T>(argument);
         }
 
-        public static ArgumentValidatorBase<T> Contract<T>(Expression<Func<T>> argument)
+        /// <summary>
+        /// Check the argument
+        /// </summary>
+        /// <typeparam name="T">
+        /// Type of the argument
+        /// </typeparam>
+        /// <param name="argument"></param>
+        /// <returns>
+        /// An ArgumentValidator
+        /// </returns>
+        public static ValidatorBase<T> Check<T>(T argument)
         {
-            return new ExpressionValidator<T>(argument);
+            return new Validator<T>(argument);
         }
     }
 }
