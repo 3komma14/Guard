@@ -21,16 +21,14 @@ Example of usage:
 The following checks are available. But the best documentation is currently the tests.
 New checks can easily be made by creating an extension method.
 
-General:
+Incomplete list of checks:
+
 * Is<Type>
 * IsNotNull
 * IsNotDefault
 * IsTrue
-
-String:
 * IsNotEmpty
 * IsNotNullOrEmpty
-
 * IComparable:
 * IsEqual
 * IsGreatherThan
