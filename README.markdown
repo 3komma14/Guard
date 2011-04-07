@@ -12,16 +12,17 @@ Example of usage:
 		Guard.Check(() => arg1).IsGreaterThan(arg2);
 
 		// This will check that arg1 is not null and that is in some range 1..100
-		Guard.Check(() => arg2).IsNotNull().IsInRange(1,100);
+		Guard.Check(arg2).IsNotNull().IsInRange(1,100);
 
 		// Do stuff
 	}
 
 
+Incomplete list of checks:
+--------------------------
+
 The following checks are available. But the best documentation is currently the tests.
 New checks can easily be made by creating an extension method.
-
-Incomplete list of checks:
 
 * Is<Type>
 * IsNotNull
