@@ -89,5 +89,23 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => Guard.Check(() => arg).IsEven());
         }
+
+        [TestCase(3)]
+        [TestCase(5)]
+        [TestCase(7)]
+        public void IsPrime_ArgumentIsPrime_DoesNotThrow(int arg)
+        {
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.Check(() => arg).IsPrime());
+        }
+
+        [TestCase(-1)]
+        [TestCase(0)]
+        [TestCase(4)]
+        public void IsPrime_ArgumentIsNotPrime_Throws(int arg)
+        {
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.Check(() => arg).IsPrime());
+        }
     }
 }
