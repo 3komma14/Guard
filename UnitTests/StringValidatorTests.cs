@@ -238,6 +238,28 @@ namespace Seterlund.CodeGuard.UnitTests
             Assert.Throws<ArgumentException>(() => Guard.Check(() => text).EndsWith("Start"));
         }
 
+        [TestCase("NOMATCH", @"\d")]
+        [TestCase("perij@online", @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*([,;]\s*\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)*")]
+        public void IsMatch_ArgumentDoesNotMatch_Throws(string value, string pattern)
+        {
+            // Arrange
+            var text = value;
+
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).IsMatch(pattern));
+        }
+
+        [TestCase("1234", @"\d")]
+        [TestCase("perij@online.no", @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*([,;]\s*\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)*")]
+        public void IsMatch_ArgumentNotMatches_Throws(string value, string pattern)
+        {
+            // Arrange
+            var text = value;
+
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.Check(() => text).IsMatch(pattern));
+        }
+
 
 
         #region ----- Helper functions -----
