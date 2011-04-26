@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace Seterlund.CodeGuard
 {
     public static class StringValidatorExtensions
@@ -61,6 +63,18 @@ namespace Seterlund.CodeGuard
 
             return validator;
         }
+
+        public static ValidatorBase<string> IsMatch(this ValidatorBase<string> validator, string pattern)
+        {
+            var r = new Regex(pattern);
+            if (!r.IsMatch(validator.Value))
+            {
+                ExceptionHelper.ThrowArgumentException(validator, string.Format("String must match <{0}>", pattern));
+            }
+
+            return validator;
+        }
+
 
     }
 }
