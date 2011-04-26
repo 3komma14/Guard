@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Seterlund.CodeGuard
+namespace Seterlund.CodeGuard.Internals
 {
-    public class Validator<T> : ValidatorBase<T>
+    public class ThrowValidator<T> : ValidatorBase<T>
     {
         private T argumentValue;
         private string argumentName;
@@ -11,13 +11,28 @@ namespace Seterlund.CodeGuard
         public override T Value { get { return argumentValue; } }
         public override string Name { get { return argumentName; } }
 
-        public Validator(Expression<Func<T>> argument)
+        public override void ArgumentMessage(string message)
+        {
+            ExceptionHelper.ThrowArgumentException(this, message);
+        }
+
+        public override void ArgumentNullMessage()
+        {
+            ExceptionHelper.ThrowArgumentNullException(this);
+        }
+
+        public override void ArgumentOutRangeMessage()
+        {
+            ExceptionHelper.ThrowArgumentOutOfRangeException(this);
+        }
+
+        public ThrowValidator(Expression<Func<T>> argument)
         {
             this.argumentValue = GetArgumentValue(argument);
             this.argumentName = GetArgumentName(argument);
         }
 
-        public Validator(T argument)
+        public ThrowValidator(T argument)
         {
             this.argumentValue = argument;
         }

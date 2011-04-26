@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class IComparableValidatorTests
+    public class ComparableValidatorTests
     {
         #region ----- Fixture setup -----
 

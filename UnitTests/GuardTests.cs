@@ -131,7 +131,35 @@ namespace Seterlund.CodeGuard.UnitTests
             AssertArgumentException(exception, "arg1", "Value is not <ITest>\r\nParameter name: arg1");
         }
 
-        public interface ITest
+        [Test]
+        public void GetResult_WhenCalledWithOneFailingCheck_ReturnListWithOneMessage()
+        {
+            // Arrange
+            var arg1 = new NotImplementationOfITest();
+
+            // Act
+            var result = Guard.Validate(() => arg1).Is<ITest>().GetResult();
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Count);
+        }
+
+        [Test]
+        public void GetResult_WhenCalledWithtwoFailingChecks_ReturnListWithTwoMessages()
+        {
+            // Arrange
+            int arg1 = 100;
+
+            // Act
+            var result = Guard.Validate(() => arg1).IsGreaterThan(200).IsEqual(1).GetResult();
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(2, result.Count);
+        }
+
+        public interface ITest 
         {
             void Ping();
         }

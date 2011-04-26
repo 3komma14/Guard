@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using Seterlund.CodeGuard.Internals;
 
 namespace Seterlund.CodeGuard
 {
@@ -19,7 +20,7 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static ValidatorBase<T> Check<T>(Expression<Func<T>> argument)
         {
-            return new Validator<T>(argument);
+            return new ThrowValidator<T>(argument);
         }
 
         /// <summary>
@@ -34,7 +35,13 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static ValidatorBase<T> Check<T>(T argument)
         {
+            return new ThrowValidator<T>(argument);
+        }
+
+        public static ValidatorBase<T> Validate<T>(Expression<Func<T>> argument)
+        {
             return new Validator<T>(argument);
         }
+
     }
 }

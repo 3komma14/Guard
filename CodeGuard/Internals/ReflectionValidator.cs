@@ -1,6 +1,6 @@
 using System;
 
-namespace Seterlund.CodeGuard
+namespace Seterlund.CodeGuard.Internals
 {
     /// <summary>
     /// Holds the argument to check
@@ -20,6 +20,21 @@ namespace Seterlund.CodeGuard
         public override string Name
         {
             get { return this.GetFieldName(); }
+        }
+
+        public override void ArgumentMessage(string message)
+        {
+            ExceptionHelper.ThrowArgumentException(this, message);
+        }
+
+        public override void ArgumentNullMessage()
+        {
+            ExceptionHelper.ThrowArgumentNullException(this);
+        }
+
+        public override void ArgumentOutRangeMessage()
+        {
+            ExceptionHelper.ThrowArgumentOutOfRangeException(this);
         }
 
         /// <summary>

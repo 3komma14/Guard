@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Seterlund.CodeGuard
 {
@@ -7,6 +8,19 @@ namespace Seterlund.CodeGuard
         public abstract T Value { get; }
 
         public abstract string Name { get; }
+
+        public abstract void ArgumentMessage(string message);
+
+        public abstract void ArgumentNullMessage();
+
+        public abstract void ArgumentOutRangeMessage();
+
+        protected List<string> Result;
+
+        public List<string> GetResult()
+        {
+            return Result;
+        }
 
         /// <summary>
         /// Is argument instance of type
@@ -18,7 +32,7 @@ namespace Seterlund.CodeGuard
             var isType = this.Value is TType;
             if (!isType)
             {
-                ExceptionHelper.ThrowArgumentException(this, string.Format("Value is not <{0}>", typeof(TType).Name));
+                this.ArgumentMessage(string.Format("Value is not <{0}>", typeof(TType).Name));
             }
 
             return this;
@@ -32,7 +46,7 @@ namespace Seterlund.CodeGuard
         {
             if (default(T).Equals(this.Value))
             {
-                ExceptionHelper.ThrowArgumentException(this, "Value cannot be the default value.");
+                this.ArgumentMessage("Value cannot be the default value.");
             }
 
             return this;
@@ -46,7 +60,7 @@ namespace Seterlund.CodeGuard
         {
             if (booleanFunction(this.Value))
             {
-                ExceptionHelper.ThrowArgumentException(this, exceptionMessage);
+                this.ArgumentMessage(exceptionMessage);
             }
 
             return this;

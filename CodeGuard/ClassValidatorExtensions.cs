@@ -1,5 +1,3 @@
-using System;
-
 namespace Seterlund.CodeGuard
 {
     public static class ClassValidatorExtensions
@@ -8,7 +6,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value == null)
             {
-                ExceptionHelper.ThrowArgumentNullException(validator);
+                validator.ArgumentNullMessage();
             }
 
             return validator;

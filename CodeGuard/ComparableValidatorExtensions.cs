@@ -2,7 +2,7 @@ using System;
 
 namespace Seterlund.CodeGuard
 {
-    public static class IComparableValidatorExtensions
+    public static class ComparableValidatorExtensions
     {
         public static ValidatorBase<T> IsEqual<T>(this ValidatorBase<T> validator, T argument) where T : IComparable
         {
@@ -13,7 +13,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value.CompareTo(argument()) != 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
+                validator.ArgumentOutRangeMessage();
             }
 
             return validator;
@@ -28,7 +28,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value.CompareTo(argument()) <= 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
+                validator.ArgumentOutRangeMessage();
             }
 
             return validator;
@@ -43,7 +43,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value.CompareTo(argument()) >= 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
+                validator.ArgumentOutRangeMessage();
             }
 
             return validator;
@@ -53,7 +53,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value.CompareTo(start) < 0 || validator.Value.CompareTo(end) > 0)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
+                validator.ArgumentOutRangeMessage();
             }
 
             return validator;

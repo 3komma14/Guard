@@ -16,7 +16,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value != expected)
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
+                validator.ArgumentOutRangeMessage();
             }
 
             return validator;

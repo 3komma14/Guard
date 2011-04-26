@@ -6,7 +6,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value == string.Empty)
             {
-                ExceptionHelper.ThrowArgumentException(validator, "String is empty");
+                validator.ArgumentMessage("String is empty");
             }
 
             return validator;
@@ -16,7 +16,7 @@ namespace Seterlund.CodeGuard
         {
             if (string.IsNullOrEmpty(validator.Value))
             {
-                ExceptionHelper.ThrowArgumentException(validator, "String is null or empty");
+                validator.ArgumentMessage("String is null or empty");
             }
 
             return validator;
@@ -26,7 +26,7 @@ namespace Seterlund.CodeGuard
         {
             if (!validator.Value.StartsWith(value))
             {
-                ExceptionHelper.ThrowArgumentException(validator, string.Format("String must start with <{0}>", value));
+                validator.ArgumentMessage(string.Format("String must start with <{0}>", value));
             }
 
             return validator;
@@ -36,7 +36,7 @@ namespace Seterlund.CodeGuard
         {
             if (!validator.Value.EndsWith(value))
             {
-                ExceptionHelper.ThrowArgumentException(validator, string.Format("String must end with <{0}>", value));
+                validator.ArgumentMessage(string.Format("String must end with <{0}>", value));
             }
 
             return validator;
@@ -46,7 +46,7 @@ namespace Seterlund.CodeGuard
         {
             if (validator.Value.Length != length)
             {
-                ExceptionHelper.ThrowArgumentException(validator, "String have wrong length");
+                validator.ArgumentMessage("String have wrong length");
             }
 
             return validator;
@@ -56,7 +56,7 @@ namespace Seterlund.CodeGuard
         {
             if (!validator.Value.Contains(value))
             {
-                ExceptionHelper.ThrowArgumentException(validator, string.Format("String must contain <{0}>", value));
+                validator.ArgumentMessage(string.Format("String must contain <{0}>", value));
             }
 
             return validator;
