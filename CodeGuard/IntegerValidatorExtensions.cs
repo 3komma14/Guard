@@ -1,4 +1,5 @@
 ﻿using System;
+using Seterlund.CodeGuard.Internals;
 
 namespace Seterlund.CodeGuard
 {
@@ -6,9 +7,19 @@ namespace Seterlund.CodeGuard
     {
         public static ValidatorBase<int> IsOdd(this ValidatorBase<int> validator)
         {
-            if (!IsOdd(validator.Value))
+            if (!MathUtil.IsOdd(validator.Value))
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
+                validator.ArgumentOutRangeMessage();
+            }
+
+            return validator;
+        }
+
+        public static ValidatorBase<long> IsOdd(this ValidatorBase<long> validator)
+        {
+            if (!MathUtil.IsOdd(validator.Value))
+            {
+                validator.ArgumentOutRangeMessage();
             }
 
             return validator;
@@ -16,9 +27,19 @@ namespace Seterlund.CodeGuard
 
         public static ValidatorBase<int> IsEven(this ValidatorBase<int> validator)
         {
-            if (!IsEven(validator.Value))
+            if (!MathUtil.IsEven(validator.Value))
             {
-                ExceptionHelper.ThrowArgumentOutOfRangeException(validator);
+                validator.ArgumentOutRangeMessage();
+            }
+
+            return validator;
+        }
+
+        public static ValidatorBase<long> IsEven(this ValidatorBase<long> validator)
+        {
+            if (!MathUtil.IsEven(validator.Value))
+            {
+                validator.ArgumentOutRangeMessage();
             }
 
             return validator;
@@ -26,47 +47,22 @@ namespace Seterlund.CodeGuard
 
         public static ValidatorBase<int> IsPrime(this ValidatorBase<int> validator)
         {
-            if(!IsPrime(validator.Value))
+            if(!MathUtil.IsPrime(validator.Value))
             {
-                ExceptionHelper.ThrowArgumentException(validator, "Not a prime number");
+                validator.ArgumentMessage("Not a prime number");
             }
 
             return validator;
         }
 
-        private static bool IsOdd(int value)
+        public static ValidatorBase<long> IsPrime(this ValidatorBase<long> validator)
         {
-            return ((value & 1) == 1);
-        }
-
-        private static bool IsEven(int value)
-        {
-            return ((value & 1) == 0);
-        }
-
-        private static bool IsPrime(int value)
-        {
-            // Throw out impossibles
-            if (value < 2)
+            if(!MathUtil.IsPrime(validator.Value))
             {
-                return false;
+                validator.ArgumentMessage("Not a prime number");
             }
 
-            // Don't need to test above the square root of a number
-            var squareRootOfValue = (int)Math.Sqrt(value);
-            for (var i = 2; i <= squareRootOfValue; i++)
-            {
-                // If remainder is 0, number is not prime
-                if (value % i == 0)
-                {
-                    // return false
-                    return false;
-                }
-            }
-
-            // If all conditions are met, return true
-            return true;
+            return validator;
         }
-
     }
 }

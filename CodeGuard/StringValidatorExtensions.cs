@@ -69,7 +69,7 @@ namespace Seterlund.CodeGuard
             var r = new Regex(pattern);
             if (!r.IsMatch(validator.Value))
             {
-                ExceptionHelper.ThrowArgumentException(validator, string.Format("String must match <{0}>", pattern));
+                validator.ArgumentMessage(string.Format("String must match <{0}>", pattern));
             }
 
             return validator;
