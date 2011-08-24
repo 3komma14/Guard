@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class GuardTests
+    public class GuardTests : BaseTests
     {
         #region ----- Fixture setup -----
 
@@ -59,7 +59,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => arg1).Is<int>();
+                Guard.That(() => arg1).Is<int>();
             });
         }
 
@@ -71,7 +71,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act
             ArgumentException exception = 
-                GetException<ArgumentException>(() => Guard.Check(() => arg1).Is<string>());
+                GetException<ArgumentException>(() => Guard.That(() => arg1).Is<string>());
 
             // Assert
             AssertArgumentException(exception, "arg1", "Value is not <String>\r\nParameter name: arg1");
@@ -85,7 +85,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act
             ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.Check(() => arg1).IsNotDefault());
+                GetException<ArgumentException>(() => Guard.That(() => arg1).IsNotDefault());
 
             // Assert
             AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
@@ -100,7 +100,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => arg1).IsNotDefault();
+                Guard.That(() => arg1).IsNotDefault();
             });
         }
 
@@ -113,7 +113,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => arg1).Is<ITest>();
+                Guard.That(() => arg1).Is<ITest>();
             });
         }
 
@@ -125,7 +125,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act/Assert
             ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.Check(() => arg1).Is<ITest>());
+                GetException<ArgumentException>(() => Guard.That(() => arg1).Is<ITest>());
         
             // Assert
             AssertArgumentException(exception, "arg1", "Value is not <ITest>\r\nParameter name: arg1");
@@ -179,55 +179,6 @@ namespace Seterlund.CodeGuard.UnitTests
                 throw new NotImplementedException();
             }
         }
-
-
-        #region ----- Helper functions -----
-
-        private T GetException<T>(Action action) where T : Exception
-        {
-            T actualException = null;
-            try
-            {
-                action();
-            }
-            catch (T ex)
-            {
-                actualException = ex;
-            }
-
-            return actualException;
-        }
-
-        private static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string message, string paramName, object actualValue)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(actualValue, exception.ActualValue);
-            Assert.AreEqual(string.Format("{0}\r\nParameter name: {1}\r\nActual value was {2}.", message, paramName, actualValue), exception.Message);
-        }
-
-        private static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string paramName)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(string.Format("Specified argument was out of the range of valid values.\r\nParameter name: {0}", paramName), exception.Message);
-        }
-
-        private static void AssertArgumentException(ArgumentException exception, string paramName, string message)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(message, exception.Message);
-        }
-
-        private static void AssertArgumentNullException(ArgumentNullException exception, string paramName, string message)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(message, exception.Message);
-        }
-
-        #endregion
 
 
     }

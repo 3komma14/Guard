@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class BooleanValidatorTests
+    public class BooleanValidatorTests : BaseTests
     {
         #region ----- Fixture setup -----
 
@@ -58,7 +58,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act
             ArgumentOutOfRangeException exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.Check(() => arg).IsTrue());
+                GetException<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsTrue());
 
             // Assert
             AssertArgumentOfRangeException(exception, "arg");
@@ -73,7 +73,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => arg).IsTrue();
+                Guard.That(() => arg).IsTrue();
             });
         }
 
@@ -85,7 +85,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act
             ArgumentOutOfRangeException exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.Check(() => arg).IsFalse());
+                GetException<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsFalse());
 
             // Assert
             AssertArgumentOfRangeException(exception, "arg");
@@ -100,58 +100,8 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => arg).IsFalse();
+                Guard.That(() => arg).IsFalse();
             });
         }
-
-        #region ----- Helper functions -----
-
-        private T GetException<T>(Action action) where T : Exception
-        {
-            T actualException = null;
-            try
-            {
-                action();
-            }
-            catch (T ex)
-            {
-                actualException = ex;
-            }
-
-            return actualException;
-        }
-
-        private static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string message, string paramName, object actualValue)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(actualValue, exception.ActualValue);
-            Assert.AreEqual(string.Format("{0}\r\nParameter name: {1}\r\nActual value was {2}.", message, paramName, actualValue), exception.Message);
-        }
-
-        private static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string paramName)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(string.Format("Specified argument was out of the range of valid values.\r\nParameter name: {0}", paramName), exception.Message);
-        }
-
-        private static void AssertArgumentException(ArgumentException exception, string paramName, string message)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(message, exception.Message);
-        }
-
-        private static void AssertArgumentNullException(ArgumentNullException exception, string paramName, string message)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(message, exception.Message);
-        }
-
-        #endregion
-
-
     }
 }

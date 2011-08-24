@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IntegerValidatorExtensions.cs" />
+    <Compile Include="Internals\MathUtil.cs" />
     <Compile Include="Internals\ThrowValidator.cs" />
     <Compile Include="Internals\ReflectionValidator.cs" />
     <Compile Include="ValidatorBase.cs" />

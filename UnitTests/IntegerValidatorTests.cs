@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class IntegerValidatorTests
+    public class IntegerValidatorTests : BaseTests
     {
         #region ----- Fixture setup -----
 
@@ -57,7 +57,7 @@ namespace Seterlund.CodeGuard.UnitTests
             int arg = 3;
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => arg).IsOdd());
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsOdd());
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace Seterlund.CodeGuard.UnitTests
             int arg = 2;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.Check(() => arg).IsOdd());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsOdd());
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace Seterlund.CodeGuard.UnitTests
             int arg = 4;
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => arg).IsEven());
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsEven());
         }
 
         [Test]
@@ -87,7 +87,7 @@ namespace Seterlund.CodeGuard.UnitTests
             int arg = 5;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.Check(() => arg).IsEven());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsEven());
         }
 
         [TestCase(3)]
@@ -96,7 +96,7 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsPrime_ArgumentIsPrime_DoesNotThrow(int arg)
         {
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => arg).IsPrime());
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsPrime());
         }
 
         [TestCase(-1)]
@@ -105,7 +105,7 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsPrime_ArgumentIsNotPrime_Throws(int arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => arg).IsPrime());
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsPrime());
         }
     }
 }

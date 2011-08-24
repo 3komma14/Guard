@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class StringValidatorTests
+    public class StringValidatorTests : BaseTests
     {
         #region ----- Fixture setup -----
 
@@ -59,7 +59,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act
             ArgumentNullException exception =
-                GetException<ArgumentNullException>(() => Guard.Check(() => arg).IsNotNull());
+                GetException<ArgumentNullException>(() => Guard.That(() => arg).IsNotNull());
                 
             // Assert
             AssertArgumentNullException(exception, "arg", "Value cannot be null.\r\nParameter name: arg");
@@ -72,7 +72,7 @@ namespace Seterlund.CodeGuard.UnitTests
             string text = string.Empty;
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => text).IsNotNull());
+            Assert.DoesNotThrow(() => Guard.That(() => text).IsNotNull());
         }
 
         [Test]
@@ -83,7 +83,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act
             ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.Check(() => arg).IsNotEmpty());
+                GetException<ArgumentException>(() => Guard.That(() => arg).IsNotEmpty());
 
             // Assert
             AssertArgumentException(exception, "arg", "String is empty\r\nParameter name: arg");
@@ -98,7 +98,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => text).IsNotEmpty();
+                Guard.That(() => text).IsNotEmpty();
             });
         }
 
@@ -111,7 +111,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => text).IsNotEmpty();
+                Guard.That(() => text).IsNotEmpty();
             });
         }
 
@@ -124,7 +124,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.Check(() => text).IsNotNullOrEmpty();
+                Guard.That(() => text).IsNotNullOrEmpty();
             });
         }
 
@@ -135,7 +135,7 @@ namespace Seterlund.CodeGuard.UnitTests
             string text = null;
 
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).IsNotNullOrEmpty());
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).IsNotNullOrEmpty());
         }
 
         [Test]
@@ -145,7 +145,7 @@ namespace Seterlund.CodeGuard.UnitTests
             string text = string.Empty;
 
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).IsNotNullOrEmpty());
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).IsNotNullOrEmpty());
         }
 
         [Test]
@@ -155,7 +155,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "big brown car";
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => text).Contains("brown"));
+            Assert.DoesNotThrow(() => Guard.That(() => text).Contains("brown"));
         }
 
         [Test]
@@ -165,7 +165,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "BIG BROWN CAR";
 
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).Contains("brown"));
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).Contains("brown"));
         }
 
         [Test]
@@ -175,7 +175,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "Yellow Submarine";
 
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).Contains("brown"));
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).Contains("brown"));
         }
 
         [Test]
@@ -185,7 +185,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "0123456789";
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => text).Length(10));
+            Assert.DoesNotThrow(() => Guard.That(() => text).Length(10));
         }
 
         [Test]
@@ -195,7 +195,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "0123";
             
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).Length(10));
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).Length(10));
         }
 
         [Test]
@@ -205,7 +205,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "Start of string";
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => text).StartsWith("Start"));
+            Assert.DoesNotThrow(() => Guard.That(() => text).StartsWith("Start"));
         }
 
         [Test]
@@ -215,7 +215,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "Some string";
             
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).StartsWith("Start"));
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).StartsWith("Start"));
         }
 
         [Test]
@@ -225,7 +225,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "The end is near";
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => text).EndsWith("near"));
+            Assert.DoesNotThrow(() => Guard.That(() => text).EndsWith("near"));
         }
 
         [Test]
@@ -235,7 +235,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = "The end is near";
             
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).EndsWith("Start"));
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).EndsWith("Start"));
         }
 
         [TestCase("NOMATCH", @"\d")]
@@ -246,7 +246,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = value;
 
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.Check(() => text).IsMatch(pattern));
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).IsMatch(pattern));
         }
 
         [TestCase("1234", @"\d")]
@@ -257,59 +257,8 @@ namespace Seterlund.CodeGuard.UnitTests
             var text = value;
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.Check(() => text).IsMatch(pattern));
+            Assert.DoesNotThrow(() => Guard.That(() => text).IsMatch(pattern));
         }
-
-
-
-        #region ----- Helper functions -----
-
-        private T GetException<T>(Action action) where T : Exception
-        {
-            T actualException = null;
-            try
-            {
-                action();
-            }
-            catch (T ex)
-            {
-                actualException = ex;
-            }
-
-            return actualException;
-        }
-
-        private static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string message, string paramName, object actualValue)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(actualValue, exception.ActualValue);
-            Assert.AreEqual(string.Format("{0}\r\nParameter name: {1}\r\nActual value was {2}.", message, paramName, actualValue), exception.Message);
-        }
-
-        private static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string paramName)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(string.Format("Specified argument was out of the range of valid values.\r\nParameter name: {0}", paramName), exception.Message);
-        }
-
-        private static void AssertArgumentException(ArgumentException exception, string paramName, string message)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(message, exception.Message);
-        }
-
-        private static void AssertArgumentNullException(ArgumentNullException exception, string paramName, string message)
-        {
-            Assert.IsNotNull(exception);
-            Assert.AreEqual(paramName, exception.ParamName);
-            Assert.AreEqual(message, exception.Message);
-        }
-
-        #endregion
-
 
     }
 }
