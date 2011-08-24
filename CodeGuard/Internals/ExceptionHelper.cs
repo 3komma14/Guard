@@ -4,34 +4,34 @@ namespace Seterlund.CodeGuard.Internals
 {
     public class ExceptionHelper
     {
-        public static void ThrowArgumentNullException<T>(ValidatorBase<T> validator)
+        public static void ThrowArgumentNullException<T>(ArgumentBase<T> argument)
         {
-            if(string.IsNullOrEmpty(validator.Name))
+            if(string.IsNullOrEmpty(argument.Name))
             {
                 throw new ArgumentNullException();
             }
 
-            throw  new ArgumentNullException(validator.Name);
+            throw  new ArgumentNullException(argument.Name);
         }
 
-        public static void ThrowArgumentOutOfRangeException<T>(ValidatorBase<T> validator)
+        public static void ThrowArgumentOutOfRangeException<T>(ArgumentBase<T> argument)
         {
-            if(string.IsNullOrEmpty(validator.Name))
+            if(string.IsNullOrEmpty(argument.Name))
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            throw new ArgumentOutOfRangeException(validator.Name);
+            throw new ArgumentOutOfRangeException(argument.Name);
         }
 
-        public static void ThrowArgumentException<T>(ValidatorBase<T> validator, string message)
+        public static void ThrowArgumentException<T>(ArgumentBase<T> argument, string message)
         {
-            if(string.IsNullOrEmpty(validator.Name))
+            if(string.IsNullOrEmpty(argument.Name))
             {
                 throw new ArgumentException(message);
             }
 
-            throw new ArgumentException(message, validator.Name);
+            throw new ArgumentException(message, argument.Name);
         }
     }
 }

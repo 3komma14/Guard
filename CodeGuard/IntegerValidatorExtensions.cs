@@ -5,64 +5,64 @@ namespace Seterlund.CodeGuard
 {
     public static class IntegerValidatorExtensions
     {
-        public static ValidatorBase<int> IsOdd(this ValidatorBase<int> validator)
+        public static ArgumentBase<int> IsOdd(this ArgumentBase<int> argument)
         {
-            if (!MathUtil.IsOdd(validator.Value))
+            if (!MathUtil.IsOdd(argument.Value))
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<long> IsOdd(this ValidatorBase<long> validator)
+        public static ArgumentBase<long> IsOdd(this ArgumentBase<long> argument)
         {
-            if (!MathUtil.IsOdd(validator.Value))
+            if (!MathUtil.IsOdd(argument.Value))
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<int> IsEven(this ValidatorBase<int> validator)
+        public static ArgumentBase<int> IsEven(this ArgumentBase<int> argument)
         {
-            if (!MathUtil.IsEven(validator.Value))
+            if (!MathUtil.IsEven(argument.Value))
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<long> IsEven(this ValidatorBase<long> validator)
+        public static ArgumentBase<long> IsEven(this ArgumentBase<long> argument)
         {
-            if (!MathUtil.IsEven(validator.Value))
+            if (!MathUtil.IsEven(argument.Value))
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<int> IsPrime(this ValidatorBase<int> validator)
+        public static ArgumentBase<int> IsPrime(this ArgumentBase<int> argument)
         {
-            if(!MathUtil.IsPrime(validator.Value))
+            if(!MathUtil.IsPrime(argument.Value))
             {
-                validator.ArgumentMessage("Not a prime number");
+                argument.ArgumentMessage("Not a prime number");
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<long> IsPrime(this ValidatorBase<long> validator)
+        public static ArgumentBase<long> IsPrime(this ArgumentBase<long> argument)
         {
-            if(!MathUtil.IsPrime(validator.Value))
+            if(!MathUtil.IsPrime(argument.Value))
             {
-                validator.ArgumentMessage("Not a prime number");
+                argument.ArgumentMessage("Not a prime number");
             }
 
-            return validator;
+            return argument;
         }
     }
 }

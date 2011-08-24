@@ -40,15 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjectValidatorExtensions.cs" />
     <Compile Include="IntegerValidatorExtensions.cs" />
     <Compile Include="Internals\MathUtil.cs" />
     <Compile Include="Internals\ThrowValidator.cs" />
     <Compile Include="Internals\ReflectionValidator.cs" />
-    <Compile Include="ValidatorBase.cs" />
+    <Compile Include="ArgumentBase.cs" />
     <Compile Include="BooleanValidatorExtensions.cs" />
     <Compile Include="ClassValidatorExtensions.cs" />
     <Compile Include="Internals\ExceptionHelper.cs" />
-    <Compile Include="Internals\Validator.cs" />
+    <Compile Include="Internals\Argument.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="ComparableValidatorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

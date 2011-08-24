@@ -4,75 +4,75 @@ namespace Seterlund.CodeGuard
 {
     public static class StringValidatorExtensions
     {
-        public static ValidatorBase<string> IsNotEmpty(this ValidatorBase<string> validator)
+        public static ArgumentBase<string> IsNotEmpty(this ArgumentBase<string> argument)
         {
-            if (validator.Value == string.Empty)
+            if (argument.Value == string.Empty)
             {
-                validator.ArgumentMessage("String is empty");
+                argument.ArgumentMessage("String is empty");
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<string> IsNotNullOrEmpty(this ValidatorBase<string> validator)
+        public static ArgumentBase<string> IsNotNullOrEmpty(this ArgumentBase<string> argument)
         {
-            if (string.IsNullOrEmpty(validator.Value))
+            if (string.IsNullOrEmpty(argument.Value))
             {
-                validator.ArgumentMessage("String is null or empty");
+                argument.ArgumentMessage("String is null or empty");
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<string> StartsWith(this ValidatorBase<string> validator, string value)
+        public static ArgumentBase<string> StartsWith(this ArgumentBase<string> argument, string value)
         {
-            if (!validator.Value.StartsWith(value))
+            if (!argument.Value.StartsWith(value))
             {
-                validator.ArgumentMessage(string.Format("String must start with <{0}>", value));
+                argument.ArgumentMessage(string.Format("String must start with <{0}>", value));
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<string> EndsWith(this ValidatorBase<string> validator, string value)
+        public static ArgumentBase<string> EndsWith(this ArgumentBase<string> argument, string value)
         {
-            if (!validator.Value.EndsWith(value))
+            if (!argument.Value.EndsWith(value))
             {
-                validator.ArgumentMessage(string.Format("String must end with <{0}>", value));
+                argument.ArgumentMessage(string.Format("String must end with <{0}>", value));
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<string> Length(this ValidatorBase<string> validator, int length)
+        public static ArgumentBase<string> Length(this ArgumentBase<string> argument, int length)
         {
-            if (validator.Value.Length != length)
+            if (argument.Value.Length != length)
             {
-                validator.ArgumentMessage("String have wrong length");
+                argument.ArgumentMessage("String have wrong length");
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<string> Contains(this ValidatorBase<string> validator, string value)
+        public static ArgumentBase<string> Contains(this ArgumentBase<string> argument, string value)
         {
-            if (!validator.Value.Contains(value))
+            if (!argument.Value.Contains(value))
             {
-                validator.ArgumentMessage(string.Format("String must contain <{0}>", value));
+                argument.ArgumentMessage(string.Format("String must contain <{0}>", value));
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<string> IsMatch(this ValidatorBase<string> validator, string pattern)
+        public static ArgumentBase<string> IsMatch(this ArgumentBase<string> argument, string pattern)
         {
             var r = new Regex(pattern);
-            if (!r.IsMatch(validator.Value))
+            if (!r.IsMatch(argument.Value))
             {
-                validator.ArgumentMessage(string.Format("String must match <{0}>", pattern));
+                argument.ArgumentMessage(string.Format("String must match <{0}>", pattern));
             }
 
-            return validator;
+            return argument;
         }
 
 

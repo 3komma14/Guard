@@ -8,7 +8,7 @@ namespace Seterlund.CodeGuard.Internals
     /// <typeparam name="T">
     /// The argument type
     /// </typeparam>
-    public class ReflectionValidator<T> : ValidatorBase<T>
+    public class ReflectionValidator<T> : ArgumentBase<T>
     {
         private Func<T> argument;
 

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Seterlund.CodeGuard.Internals
 {
-    public class Validator<T> : ValidatorBase<T>
+    public class Argument<T> : ArgumentBase<T>
     {
         private T argumentValue;
         private string argumentName;
@@ -45,14 +45,14 @@ namespace Seterlund.CodeGuard.Internals
         }
 
 
-        public Validator(Expression<Func<T>> argument)
+        public Argument(Expression<Func<T>> argument)
         {
             this.argumentValue = GetArgumentValue(argument);
             this.argumentName = GetArgumentName(argument);
             this.Result = new List<string>();
         }
 
-        public Validator(T argument)
+        public Argument(T argument)
         {
             this.argumentValue = argument;
             this.Result = new List<string>();

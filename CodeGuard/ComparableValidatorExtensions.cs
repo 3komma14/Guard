@@ -4,59 +4,59 @@ namespace Seterlund.CodeGuard
 {
     public static class ComparableValidatorExtensions
     {
-        public static ValidatorBase<T> IsEqual<T>(this ValidatorBase<T> validator, T argument) where T : IComparable
+        public static ArgumentBase<T> IsEqual<T>(this ArgumentBase<T> argument, T param) where T : IComparable
         {
-            return IsEqual(validator, () => argument);
+            return IsEqual(argument, () => param);
         }
 
-        public static ValidatorBase<T> IsEqual<T>(this ValidatorBase<T> validator, Func<T> argument) where T : IComparable
+        public static ArgumentBase<T> IsEqual<T>(this ArgumentBase<T> argument, Func<T> param) where T : IComparable
         {
-            if (validator.Value.CompareTo(argument()) != 0)
+            if (argument.Value.CompareTo(param()) != 0)
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<T> IsGreaterThan<T>(this ValidatorBase<T> validator, T argument) where T : IComparable
+        public static ArgumentBase<T> IsGreaterThan<T>(this ArgumentBase<T> argument, T param) where T : IComparable
         {
-            return IsGreaterThan(validator, () => argument);
+            return IsGreaterThan(argument, () => param);
         }
 
-        public static ValidatorBase<T> IsGreaterThan<T>(this ValidatorBase<T> validator, Func<T> argument) where T : IComparable
+        public static ArgumentBase<T> IsGreaterThan<T>(this ArgumentBase<T> argument, Func<T> param) where T : IComparable
         {
-            if (validator.Value.CompareTo(argument()) <= 0)
+            if (argument.Value.CompareTo(param()) <= 0)
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<T> IsLessThan<T>(this ValidatorBase<T> validator, T argument) where T : IComparable
+        public static ArgumentBase<T> IsLessThan<T>(this ArgumentBase<T> argument, T param) where T : IComparable
         {
-            return IsLessThan(validator, () => argument);
+            return IsLessThan(argument, () => param);
         }
 
-        public static ValidatorBase<T> IsLessThan<T>(this ValidatorBase<T> validator, Func<T> argument) where T : IComparable
+        public static ArgumentBase<T> IsLessThan<T>(this ArgumentBase<T> argument, Func<T> param) where T : IComparable
         {
-            if (validator.Value.CompareTo(argument()) >= 0)
+            if (argument.Value.CompareTo(param()) >= 0)
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
 
-        public static ValidatorBase<T> IsInRange<T>(this ValidatorBase<T> validator, T start, T end) where T : IComparable
+        public static ArgumentBase<T> IsInRange<T>(this ArgumentBase<T> argument, T start, T end) where T : IComparable
         {
-            if (validator.Value.CompareTo(start) < 0 || validator.Value.CompareTo(end) > 0)
+            if (argument.Value.CompareTo(start) < 0 || argument.Value.CompareTo(end) > 0)
             {
-                validator.ArgumentOutRangeMessage();
+                argument.ArgumentOutRangeMessage();
             }
 
-            return validator;
+            return argument;
         }
     }
 }

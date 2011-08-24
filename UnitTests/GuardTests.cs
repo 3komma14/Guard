@@ -77,32 +77,6 @@ namespace Seterlund.CodeGuard.UnitTests
             AssertArgumentException(exception, "arg1", "Value is not <String>\r\nParameter name: arg1");
         }
 
-        [Test]
-        public void IsNotDefault_WhenArgumentIsDefault_Throws()
-        {
-            // Arrange
-            int arg1 = default(int);
-
-            // Act
-            ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.That(() => arg1).IsNotDefault());
-
-            // Assert
-            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
-        }
-
-        [Test]
-        public void IsNotDefault_WhenArgumentIsNotDefault_DoesNotThrow()
-        {
-            // Arrange
-            int arg1 = default(int) + 1;
-
-            // Act/Assert
-            Assert.DoesNotThrow(() =>
-            {
-                Guard.That(() => arg1).IsNotDefault();
-            });
-        }
 
         [Test]
         public void Is_WhenArgumentImplementsType_DoesNotThrow()

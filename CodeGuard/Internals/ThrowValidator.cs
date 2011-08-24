@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace Seterlund.CodeGuard.Internals
 {
-    public class ThrowValidator<T> : ValidatorBase<T>
+    public class ThrowValidator<T> : ArgumentBase<T>
     {
         private T argumentValue;
         private string argumentName;
