@@ -39,7 +39,7 @@ namespace Seterlund.CodeGuard
         /// <returns></returns>
         public static ArgumentBase<T> IsTrue<T>(this ArgumentBase<T> argument, Func<T, bool> booleanFunction, string exceptionMessage)
         {
-            if (booleanFunction(argument.Value))
+            if (!booleanFunction(argument.Value))
             {
                 argument.ArgumentMessage(exceptionMessage);
             }

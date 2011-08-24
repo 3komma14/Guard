@@ -107,6 +107,19 @@ namespace Seterlund.CodeGuard.UnitTests
             });
         }
 
+        [Test]
+        public void IsTrue_WhenArgumentIsFalse_Throws()
+        {
+            // Arrange
+            int arg1 = 1;
+
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() =>
+            {
+                Guard.That(() => arg1).IsTrue(x => x > 50, "Must be over 50");
+            });
+        }
+
 
         private class MyBase {}
 

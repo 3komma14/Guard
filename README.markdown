@@ -14,6 +14,9 @@ Example of usage:
 		// This will check that arg1 is not null and that is in some range 1..100
 		Guard.That(arg2).IsNotNull().IsInRange(1,100);
 
+		// Several checks can be added.
+		Guard.That(arg1).IsInRange(100,1000).IsEven().IsTrue(x => x > 50, "Must be over 500");
+
 		// Do stuff
 	}
 
