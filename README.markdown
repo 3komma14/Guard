@@ -24,16 +24,23 @@ Incomplete list of checks:
 The following checks are available. But the best documentation is currently the tests.
 New checks can easily be made by creating a extension method.
 
-* Is<Type>
-* IsNotNull
-* IsNotDefault
-* IsTrue
-* IsNotEmpty
-* IsNotNullOrEmpty
-* IComparable:
-* IsEqual
-* IsGreatherThan
-* IslessThan
-* IsInRange
-
+* Is<Type> (object)
+* IsTrue (bool)
+* IsFalse (bool)
+* IsNotNull (class)
+* IsEqual (IComparable)
+* IsGreatherThan (IComparable)
+* IslessThan (IComparable)
+* IsInRange (IComparable)
+* IsOdd (int,long)
+* IsEven (int,long)
+* IsPrime (int,long)
+* IsNotDefault (object)
+* IsNotEmpty (string)
+* IsNotNullOrEmpty (string)
+* StartsWith (string>
+* EndsWith (string)
+* Length (string)
+* Contains (string)
+* IsMatch (string)
 
