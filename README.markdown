@@ -1,11 +1,12 @@
 CodeGuard
 =========
 
-A simple Guard library made in c#.
+A simple Guard and validator library made in c#.
 
 Example of usage:
 -----------------
-
+	
+	// --- using Guard.That(...) ---
 	public void SomeMethod(int arg1, int arg2)
 	{
 		// This line will throw an exception when the arg1 is less or equal to arg2
@@ -20,6 +21,13 @@ Example of usage:
 		// Do stuff
 	}
 
+	// --- using Validate.That(...) ---
+	public void OtherMethod(int arg1)
+	{
+		// Get a list of errors
+		List<string> errors = Validate.That(() => arg1).IsNotNull().GetResult();
+	}
+
 
 Incomplete list of checks:
 --------------------------
@@ -27,18 +35,24 @@ Incomplete list of checks:
 The following checks are available. But the best documentation is currently the tests.
 New checks can easily be made by creating a extension method.
 
+For object:
 * Is<Type> (object)
+* IsNotDefault (object)
+For bool:
 * IsTrue (bool)
 * IsFalse (bool)
+For class:
 * IsNotNull (class)
+For IComparable
 * IsEqual (IComparable)
 * IsGreatherThan (IComparable)
 * IslessThan (IComparable)
 * IsInRange (IComparable)
+For int and long:
 * IsOdd (int,long)
 * IsEven (int,long)
 * IsPrime (int,long)
-* IsNotDefault (object)
+For string:
 * IsNotEmpty (string)
 * IsNotNullOrEmpty (string)
 * StartsWith (string>

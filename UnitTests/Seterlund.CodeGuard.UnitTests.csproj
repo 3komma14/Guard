@@ -51,6 +51,7 @@
     <Compile Include="BaseTests.cs" />
     <Compile Include="BooleanValidatorTests.cs" />
     <Compile Include="ComparableValidatorTests.cs" />
+    <Compile Include="ValidateTests.cs" />
     <Compile Include="ObjectValidatorTests.cs" />
     <Compile Include="IntegerValidatorTests.cs" />
     <Compile Include="StringValidatorTests.cs" />

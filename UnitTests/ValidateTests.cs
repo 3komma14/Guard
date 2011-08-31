@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class GuardTests : BaseTests
+    public class validateTests : BaseTests
     {
         #region ----- Fixture setup -----
 
@@ -51,58 +51,31 @@ namespace Seterlund.CodeGuard.UnitTests
         #endregion
 
         [Test]
-        public void Is_WhenArgumentIsSameType_DoesNotThrow()
-        {
-            // Arrange
-            int arg1 = 0;
-
-            // Act/Assert
-            Assert.DoesNotThrow(() =>
-            {
-                Guard.That(() => arg1).Is<int>();
-            });
-        }
-
-        [Test]
-        public void Is_WhenArgumentIsWrongType_Throws()
-        {
-            // Arrange
-            int arg1 = 0;
-
-            // Act
-            ArgumentException exception = 
-                GetException<ArgumentException>(() => Guard.That(() => arg1).Is<string>());
-
-            // Assert
-            AssertArgumentException(exception, "arg1", "Value is not <String>\r\nParameter name: arg1");
-        }
-
-
-        [Test]
-        public void Is_WhenArgumentImplementsType_DoesNotThrow()
-        {
-            // Arrange
-            var arg1 = new ImplementationOfITest();
-
-            // Act/Assert
-            Assert.DoesNotThrow(() =>
-            {
-                Guard.That(() => arg1).Is<ITest>();
-            });
-        }
-
-        [Test]
-        public void Is_WhenArgumentDoesNotImplementType_Throws()
+        public void GetResult_WhenCalledWithOneFailingCheck_ReturnListWithOneMessage()
         {
             // Arrange
             var arg1 = new NotImplementationOfITest();
 
-            // Act/Assert
-            ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.That(() => arg1).Is<ITest>());
-        
+            // Act
+            var result = Validate.That(() => arg1).Is<ITest>().GetResult();
+
             // Assert
-            AssertArgumentException(exception, "arg1", "Value is not <ITest>\r\nParameter name: arg1");
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Count);
+        }
+
+        [Test]
+        public void GetResult_WhenCalledWithtwoFailingChecks_ReturnListWithTwoMessages()
+        {
+            // Arrange
+            int arg1 = 100;
+
+            // Act
+            var result = Validate.That(() => arg1).IsGreaterThan(200).IsEqual(1).GetResult();
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(2, result.Count);
         }
 
         public interface ITest 
