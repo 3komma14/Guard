@@ -38,20 +38,25 @@ New checks can easily be made by creating a extension method.
 For object:
 * Is<Type> (object)
 * IsNotDefault (object)
+
 For bool:
 * IsTrue (bool)
 * IsFalse (bool)
+
 For class:
 * IsNotNull (class)
+
 For IComparable
 * IsEqual (IComparable)
 * IsGreatherThan (IComparable)
 * IslessThan (IComparable)
 * IsInRange (IComparable)
+
 For int and long:
 * IsOdd (int,long)
 * IsEven (int,long)
 * IsPrime (int,long)
+
 For string:
 * IsNotEmpty (string)
 * IsNotNullOrEmpty (string)
