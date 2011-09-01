@@ -2,14 +2,14 @@ namespace Seterlund.CodeGuard
 {
     public static class ClassValidatorExtensions
     {
-        public static ArgumentBase<T> IsNotNull<T>(this ArgumentBase<T> argument) where T : class
+        public static Arg<T> IsNotNull<T>(this Arg<T> arg) where T : class
         {
-            if (argument.Value == null)
+            if (arg.Value == null)
             {
-                argument.ArgumentNullMessage();
+                arg.ArgumentNullMessage();
             }
 
-            return argument;
+            return arg;
         }
    }
 }

@@ -4,59 +4,59 @@ namespace Seterlund.CodeGuard
 {
     public static class ComparableValidatorExtensions
     {
-        public static ArgumentBase<T> IsEqual<T>(this ArgumentBase<T> argument, T param) where T : IComparable
+        public static Arg<T> IsEqual<T>(this Arg<T> arg, T param) where T : IComparable
         {
-            return IsEqual(argument, () => param);
+            return IsEqual(arg, () => param);
         }
 
-        public static ArgumentBase<T> IsEqual<T>(this ArgumentBase<T> argument, Func<T> param) where T : IComparable
+        public static Arg<T> IsEqual<T>(this Arg<T> arg, Func<T> param) where T : IComparable
         {
-            if (argument.Value.CompareTo(param()) != 0)
+            if (arg.Value.CompareTo(param()) != 0)
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<T> IsGreaterThan<T>(this ArgumentBase<T> argument, T param) where T : IComparable
+        public static Arg<T> IsGreaterThan<T>(this Arg<T> arg, T param) where T : IComparable
         {
-            return IsGreaterThan(argument, () => param);
+            return IsGreaterThan(arg, () => param);
         }
 
-        public static ArgumentBase<T> IsGreaterThan<T>(this ArgumentBase<T> argument, Func<T> param) where T : IComparable
+        public static Arg<T> IsGreaterThan<T>(this Arg<T> arg, Func<T> param) where T : IComparable
         {
-            if (argument.Value.CompareTo(param()) <= 0)
+            if (arg.Value.CompareTo(param()) <= 0)
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<T> IsLessThan<T>(this ArgumentBase<T> argument, T param) where T : IComparable
+        public static Arg<T> IsLessThan<T>(this Arg<T> arg, T param) where T : IComparable
         {
-            return IsLessThan(argument, () => param);
+            return IsLessThan(arg, () => param);
         }
 
-        public static ArgumentBase<T> IsLessThan<T>(this ArgumentBase<T> argument, Func<T> param) where T : IComparable
+        public static Arg<T> IsLessThan<T>(this Arg<T> arg, Func<T> param) where T : IComparable
         {
-            if (argument.Value.CompareTo(param()) >= 0)
+            if (arg.Value.CompareTo(param()) >= 0)
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<T> IsInRange<T>(this ArgumentBase<T> argument, T start, T end) where T : IComparable
+        public static Arg<T> IsInRange<T>(this Arg<T> arg, T start, T end) where T : IComparable
         {
-            if (argument.Value.CompareTo(start) < 0 || argument.Value.CompareTo(end) > 0)
+            if (arg.Value.CompareTo(start) < 0 || arg.Value.CompareTo(end) > 0)
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
     }
 }

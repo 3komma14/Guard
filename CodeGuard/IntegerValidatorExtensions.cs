@@ -5,64 +5,64 @@ namespace Seterlund.CodeGuard
 {
     public static class IntegerValidatorExtensions
     {
-        public static ArgumentBase<int> IsOdd(this ArgumentBase<int> argument)
+        public static Arg<int> IsOdd(this Arg<int> arg)
         {
-            if (!MathUtil.IsOdd(argument.Value))
+            if (!MathUtil.IsOdd(arg.Value))
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<long> IsOdd(this ArgumentBase<long> argument)
+        public static Arg<long> IsOdd(this Arg<long> arg)
         {
-            if (!MathUtil.IsOdd(argument.Value))
+            if (!MathUtil.IsOdd(arg.Value))
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<int> IsEven(this ArgumentBase<int> argument)
+        public static Arg<int> IsEven(this Arg<int> arg)
         {
-            if (!MathUtil.IsEven(argument.Value))
+            if (!MathUtil.IsEven(arg.Value))
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<long> IsEven(this ArgumentBase<long> argument)
+        public static Arg<long> IsEven(this Arg<long> arg)
         {
-            if (!MathUtil.IsEven(argument.Value))
+            if (!MathUtil.IsEven(arg.Value))
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<int> IsPrime(this ArgumentBase<int> argument)
+        public static Arg<int> IsPrime(this Arg<int> arg)
         {
-            if(!MathUtil.IsPrime(argument.Value))
+            if(!MathUtil.IsPrime(arg.Value))
             {
-                argument.ArgumentMessage("Not a prime number");
+                arg.ArgumentMessage("Not a prime number");
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<long> IsPrime(this ArgumentBase<long> argument)
+        public static Arg<long> IsPrime(this Arg<long> arg)
         {
-            if(!MathUtil.IsPrime(argument.Value))
+            if(!MathUtil.IsPrime(arg.Value))
             {
-                argument.ArgumentMessage("Not a prime number");
+                arg.ArgumentMessage("Not a prime number");
             }
 
-            return argument;
+            return arg;
         }
     }
 }

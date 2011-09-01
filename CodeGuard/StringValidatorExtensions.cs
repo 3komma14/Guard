@@ -4,75 +4,75 @@ namespace Seterlund.CodeGuard
 {
     public static class StringValidatorExtensions
     {
-        public static ArgumentBase<string> IsNotEmpty(this ArgumentBase<string> argument)
+        public static Arg<string> IsNotEmpty(this Arg<string> arg)
         {
-            if (argument.Value == string.Empty)
+            if (arg.Value == string.Empty)
             {
-                argument.ArgumentMessage("String is empty");
+                arg.ArgumentMessage("String is empty");
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<string> IsNotNullOrEmpty(this ArgumentBase<string> argument)
+        public static Arg<string> IsNotNullOrEmpty(this Arg<string> arg)
         {
-            if (string.IsNullOrEmpty(argument.Value))
+            if (string.IsNullOrEmpty(arg.Value))
             {
-                argument.ArgumentMessage("String is null or empty");
+                arg.ArgumentMessage("String is null or empty");
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<string> StartsWith(this ArgumentBase<string> argument, string value)
+        public static Arg<string> StartsWith(this Arg<string> arg, string value)
         {
-            if (!argument.Value.StartsWith(value))
+            if (!arg.Value.StartsWith(value))
             {
-                argument.ArgumentMessage(string.Format("String must start with <{0}>", value));
+                arg.ArgumentMessage(string.Format("String must start with <{0}>", value));
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<string> EndsWith(this ArgumentBase<string> argument, string value)
+        public static Arg<string> EndsWith(this Arg<string> arg, string value)
         {
-            if (!argument.Value.EndsWith(value))
+            if (!arg.Value.EndsWith(value))
             {
-                argument.ArgumentMessage(string.Format("String must end with <{0}>", value));
+                arg.ArgumentMessage(string.Format("String must end with <{0}>", value));
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<string> Length(this ArgumentBase<string> argument, int length)
+        public static Arg<string> Length(this Arg<string> arg, int length)
         {
-            if (argument.Value.Length != length)
+            if (arg.Value.Length != length)
             {
-                argument.ArgumentMessage("String have wrong length");
+                arg.ArgumentMessage("String have wrong length");
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<string> Contains(this ArgumentBase<string> argument, string value)
+        public static Arg<string> Contains(this Arg<string> arg, string value)
         {
-            if (!argument.Value.Contains(value))
+            if (!arg.Value.Contains(value))
             {
-                argument.ArgumentMessage(string.Format("String must contain <{0}>", value));
+                arg.ArgumentMessage(string.Format("String must contain <{0}>", value));
             }
 
-            return argument;
+            return arg;
         }
 
-        public static ArgumentBase<string> IsMatch(this ArgumentBase<string> argument, string pattern)
+        public static Arg<string> IsMatch(this Arg<string> arg, string pattern)
         {
             var r = new Regex(pattern);
-            if (!r.IsMatch(argument.Value))
+            if (!r.IsMatch(arg.Value))
             {
-                argument.ArgumentMessage(string.Format("String must match <{0}>", pattern));
+                arg.ArgumentMessage(string.Format("String must match <{0}>", pattern));
             }
 
-            return argument;
+            return arg;
         }
 
 

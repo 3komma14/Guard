@@ -2,24 +2,24 @@ namespace Seterlund.CodeGuard
 {
     public static class BooleanValidatorExtensions
     {
-        public static ArgumentBase<bool> IsTrue(this ArgumentBase<bool> argument)
+        public static Arg<bool> IsTrue(this Arg<bool> arg)
         {
-            return IsValid(argument, true);
+            return IsValid(arg, true);
         }
 
-        public static ArgumentBase<bool> IsFalse(this ArgumentBase<bool> argument)
+        public static Arg<bool> IsFalse(this Arg<bool> arg)
         {
-            return IsValid(argument, false);
+            return IsValid(arg, false);
         }
 
-        private static ArgumentBase<bool> IsValid(ArgumentBase<bool> argument, bool expected)
+        private static Arg<bool> IsValid(Arg<bool> arg, bool expected)
         {
-            if (argument.Value != expected)
+            if (arg.Value != expected)
             {
-                argument.ArgumentOutRangeMessage();
+                arg.ArgumentOutRangeMessage();
             }
 
-            return argument;
+            return arg;
         }
     }
 }

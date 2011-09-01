@@ -18,9 +18,9 @@ namespace Seterlund.CodeGuard
         /// <returns>
         /// An ArgumentValidator
         /// </returns>
-        public static ArgumentBase<T> That<T>(Expression<Func<T>> argument)
+        public static Arg<T> That<T>(Expression<Func<T>> argument)
         {
-            return new ThrowValidator<T>(argument);
+            return new Arg<T>(argument, new ThrowMessageHandler());
         }
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace Seterlund.CodeGuard
         /// <returns>
         /// An ArgumentValidator
         /// </returns>
-        public static ArgumentBase<T> That<T>(T argument)
+        public static Arg<T> That<T>(T argument)
         {
-            return new ThrowValidator<T>(argument);
+            return new Arg<T>(argument, new ThrowMessageHandler());
         }
     }
 }

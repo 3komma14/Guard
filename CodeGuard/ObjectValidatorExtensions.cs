@@ -8,43 +8,43 @@ namespace Seterlund.CodeGuard
         /// Is argument instance of type
         /// </summary>
         /// <returns></returns>
-        public static ArgumentBase<T> Is<T>(this ArgumentBase<T> argument, Type type)
+        public static Arg<T> Is<T>(this Arg<T> arg, Type type)
         {
-            var isType = argument.Value.GetType().Equals(type);
+            var isType = arg.Value.GetType().Equals(type);
             if (!isType)
             {
-                argument.ArgumentMessage(string.Format("Value is not <{0}>", type.Name));
+                arg.ArgumentMessage(string.Format("Value is not <{0}>", type.Name));
             }
 
-            return argument;            
+            return arg;            
         }
 
         /// <summary>
         /// Is argument not the default value
         /// </summary>
         /// <returns></returns>
-        public static ArgumentBase<T> IsNotDefault<T>(this ArgumentBase<T> argument)
+        public static Arg<T> IsNotDefault<T>(this Arg<T> arg)
         {
-            if (default(T).Equals(argument.Value))
+            if (default(T).Equals(arg.Value))
             {
-                argument.ArgumentMessage("Value cannot be the default value.");
+                arg.ArgumentMessage("Value cannot be the default value.");
             }
 
-            return argument;
+            return arg;
         }
 
         /// <summary>
         /// Is the fucntion true for the argument.
         /// </summary>
         /// <returns></returns>
-        public static ArgumentBase<T> IsTrue<T>(this ArgumentBase<T> argument, Func<T, bool> booleanFunction, string exceptionMessage)
+        public static Arg<T> IsTrue<T>(this Arg<T> arg, Func<T, bool> booleanFunction, string exceptionMessage)
         {
-            if (!booleanFunction(argument.Value))
+            if (!booleanFunction(arg.Value))
             {
-                argument.ArgumentMessage(exceptionMessage);
+                arg.ArgumentMessage(exceptionMessage);
             }
 
-            return argument;
+            return arg;
         }
 
     }
