@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Seterlund.CodeGuard.UnitTests
 {
     [TestFixture]
-    public class validateTests : BaseTests
+    public class ValidateTests : BaseTests
     {
         #region ----- Fixture setup -----
 
