@@ -7,6 +7,8 @@ Example of usage:
 -----------------
 	
 	// --- using Guard.That(...) ---
+	// Guard.That that will throw an exception, when some condition is not met
+
 	public void SomeMethod(int arg1, int arg2)
 	{
 		// This line will throw an exception when the arg1 is less or equal to arg2
@@ -22,6 +24,8 @@ Example of usage:
 	}
 
 	// --- using Validate.That(...) ---
+	// Validate.That makes is possible to get a list of all error conditions
+
 	public void OtherMethod(int arg1)
 	{
 		// Get a list of errors
@@ -49,7 +53,7 @@ For class:
 
 * IsNotNull (class)
 
-For IComparable
+For IComparable (Int32, Double, String, Char, DateTime and other classes implementing the interface)
 
 * IsEqual (IComparable)
 * IsGreatherThan (IComparable)
@@ -72,3 +76,12 @@ For string:
 * Contains (string)
 * IsMatch (string)
 
+For IEnumerable:
+
+* IsNotEmpty
+* Length
+* Conatins
+
+For Guid:
+
+* IsNotEmpty

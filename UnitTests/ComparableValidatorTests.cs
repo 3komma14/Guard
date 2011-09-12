@@ -84,8 +84,8 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsGreaterThan_WhenArgumentIsGreather_DoesNotThrow()
         {
             // Arrange
-            int arg1 = 1;
-            int arg2 = 0;
+            double arg1 = 1;
+            double arg2 = 0;
 
             // Act/Assert
             Assert.DoesNotThrow(() =>

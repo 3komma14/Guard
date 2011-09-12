@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/3komma14/Guard/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/3komma14/Guard</projectUrl>
+    <iconUrl>https://github.com/3komma14/Guard/raw/master/Images/shield.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright Per Ivar Seterlund (3komma14@gmail.com) 2011</copyright>
+    <tags>Argument Guard Validation</tags>
+  </metadata>
+</package>
