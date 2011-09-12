@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CodeGuard")]
-[assembly: AssemblyDescription("Guard and Validator library")]
+[assembly: AssemblyDescription("Guard and Validator library. Example: Guard.That(() => arg1).IsNotNull(); will throw when arg1 is null")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Per Ivar Seterlund")]
 [assembly: AssemblyProduct("CodeGuard")]
