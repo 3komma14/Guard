@@ -7,7 +7,7 @@ namespace Seterlund.CodeGuard
 {
     public class Arg<T> 
     {
-        protected readonly MessageHandler messageHandler;
+        protected readonly IErrorHandler errorHandler;
 
         public T Value { get; private set; }
 
@@ -22,16 +22,16 @@ namespace Seterlund.CodeGuard
 
         #region Constructors
         
-        public Arg(Expression<Func<T>> argument, MessageHandler messageHandler)
+        public Arg(Expression<Func<T>> argument, IErrorHandler errorHandler)
         {
-            this.messageHandler = messageHandler;
+            this.errorHandler = errorHandler;
             this.Value = GetArgumentValue(argument);
             this.Name = GetArgumentName(argument);
         }
 
-        public Arg(T argument, MessageHandler messageHandler)
+        public Arg(T argument, IErrorHandler errorHandler)
         {
-            this.messageHandler = messageHandler;
+            this.errorHandler = errorHandler;
             this.Value = argument;
         }
 
@@ -41,17 +41,17 @@ namespace Seterlund.CodeGuard
         
         public void ArgumentMessage(string message)
         {
-            messageHandler.ArgumentMessage(this, message);
+            errorHandler.ArgumentMessage(this, message);
         }
 
         public void ArgumentNullMessage()
         {
-            messageHandler.ArgumentNullMessage(this);
+            errorHandler.ArgumentNullMessage(this);
         }
 
         public void ArgumentOutRangeMessage()
         {
-            messageHandler.ArgumentOutRangeMessage(this);
+            errorHandler.ArgumentOutRangeMessage(this);
         }
 
         #endregion

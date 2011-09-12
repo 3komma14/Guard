@@ -20,7 +20,7 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static Arg<T> That<T>(Expression<Func<T>> argument)
         {
-            return new Arg<T>(argument, new SaveMessageHandler());
+            return new Arg<T>(argument, new SaveErrorHandler());
 
         }
     }

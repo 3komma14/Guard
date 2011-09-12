@@ -2,9 +2,9 @@
 
 namespace Seterlund.CodeGuard.Internals
 {
-    internal class ThrowMessageHandler : MessageHandler
+    internal class ThrowErrorHandler : IErrorHandler
     {
-        public override void ArgumentMessage<T>(Arg<T> arg, string message)
+        public void ArgumentMessage<T>(Arg<T> arg, string message)
         {
             if (string.IsNullOrEmpty(arg.Name))
             {
@@ -14,7 +14,7 @@ namespace Seterlund.CodeGuard.Internals
             throw new ArgumentException(message, arg.Name);
         }
 
-        public override void ArgumentNullMessage<T>(Arg<T> arg)
+        public void ArgumentNullMessage<T>(Arg<T> arg)
         {
             if (string.IsNullOrEmpty(arg.Name))
             {
@@ -24,7 +24,7 @@ namespace Seterlund.CodeGuard.Internals
             throw new ArgumentNullException(arg.Name);
         }
 
-        public override void ArgumentOutRangeMessage<T>(Arg<T> arg)
+        public void ArgumentOutRangeMessage<T>(Arg<T> arg)
         {
             if (string.IsNullOrEmpty(arg.Name))
             {

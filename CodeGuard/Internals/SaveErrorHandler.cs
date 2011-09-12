@@ -1,18 +1,18 @@
 ﻿namespace Seterlund.CodeGuard.Internals
 {
-    internal class SaveMessageHandler : MessageHandler
+    internal class SaveErrorHandler : IErrorHandler
     {
-        public override void ArgumentMessage<T>(Arg<T> arg, string message)
+        public void ArgumentMessage<T>(Arg<T> arg, string message)
         {
             arg.AddResultItem(message);
         }
 
-        public override void ArgumentNullMessage<T>(Arg<T> arg)
+        public void ArgumentNullMessage<T>(Arg<T> arg)
         {
             arg.AddResultItem("Argument is null.");
         }
 
-        public override void ArgumentOutRangeMessage<T>(Arg<T> arg)
+        public void ArgumentOutRangeMessage<T>(Arg<T> arg)
         {
             arg.AddResultItem("Argument is out of range.");
         }

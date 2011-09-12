@@ -43,9 +43,9 @@
     <Compile Include="CollectionValidatorExtensions.cs" />
     <Compile Include="EnumerableValidatorExtensions.cs" />
     <Compile Include="GuidValidatorExtensions.cs" />
-    <Compile Include="Internals\SaveMessageHandler.cs" />
-    <Compile Include="Internals\MessageHandler.cs" />
-    <Compile Include="Internals\ThrowMessageHandler.cs" />
+    <Compile Include="Internals\SaveErrorHandler.cs" />
+    <Compile Include="Internals\IErrorHandler.cs" />
+    <Compile Include="Internals\ThrowErrorHandler.cs" />
     <Compile Include="Validate.cs" />
     <Compile Include="ObjectValidatorExtensions.cs" />
     <Compile Include="IntegerValidatorExtensions.cs" />
