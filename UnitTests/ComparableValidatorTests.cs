@@ -197,6 +197,34 @@ namespace Seterlund.CodeGuard.UnitTests
         }
 
         [Test]
+        public void IsNotEqual_WhenFuncArgumentIsEqual_Throws()
+        {
+            // Arrange
+            int arg1 = 0;
+            int arg2 = 0;
+
+            // Act/Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                Guard.That(() => arg1).IsNotEqual(() => arg2);
+            });
+        }
+
+        [Test]
+        public void IsNotEqual_WhenArgumentIsEqual_Throws()
+        {
+            // Arrange
+            int arg1 = 0;
+            int arg2 = 0;
+
+            // Act/Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                Guard.That(() => arg1).IsNotEqual(arg2);
+            });
+        }
+
+        [Test]
         public void IsInRange_WhenArgumentBetweenStartAndStop_DoesNotThrow()
         {
             // Arrange

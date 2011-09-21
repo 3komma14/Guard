@@ -19,6 +19,21 @@ namespace Seterlund.CodeGuard
             return arg;
         }
 
+        public static Arg<T> IsNotEqual<T>(this Arg<T> arg, T param) where T: IComparable
+        {
+            return IsNotEqual(arg, () => param);
+        }
+         
+        public static Arg<T> IsNotEqual<T>(this Arg<T> arg, Func<T> param) where T: IComparable
+        {
+            if (arg.Value.CompareTo(param()) == 0)
+            {
+                arg.ArgumentOutRangeMessage();
+            }
+
+            return arg;
+        }
+
         public static Arg<T> IsGreaterThan<T>(this Arg<T> arg, T param) where T : IComparable
         {
             return IsGreaterThan(arg, () => param);

@@ -95,6 +95,5 @@ namespace Seterlund.CodeGuard
             }
             Result.Add(message);            
         }
-
     }
 }
