@@ -2,6 +2,9 @@ CodeGuard
 =========
 
 A simple Guard and validator library made in c#.
+Library also available at NuGet.
+
+Need more checks?? Please contribute or contact me.
 
 Example of usage:
 -----------------
