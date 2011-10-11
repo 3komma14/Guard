@@ -41,40 +41,41 @@ New checks can easily be made by creating a extension method.
 
 For object:
 
-* Is<Type> (object)
-* IsNotDefault (object)
+* Is<Type> 
+* IsNotDefault 
 
 For bool:
 
-* IsTrue (bool)
-* IsFalse (bool)
+* IsTrue
+* IsFalse
 
 For class:
 
-* IsNotNull (class)
+* IsNotNull
 
 For IComparable (Int32, Double, String, Char, DateTime and other classes implementing the interface)
 
-* IsEqual (IComparable)
-* IsGreatherThan (IComparable)
-* IslessThan (IComparable)
-* IsInRange (IComparable)
+* IsEqual
+* IsNotEqual
+* IsGreatherThan
+* IslessThan
+* IsInRange
 
 For int and long:
 
-* IsOdd (int,long)
-* IsEven (int,long)
-* IsPrime (int,long)
+* IsOdd
+* IsEven
+* IsPrime
 
 For string:
 
-* IsNotEmpty (string)
-* IsNotNullOrEmpty (string)
-* StartsWith (string>
-* EndsWith (string)
-* Length (string)
-* Contains (string)
-* IsMatch (string)
+* IsNotEmpty
+* IsNotNullOrEmpty
+* StartsWith
+* EndsWith
+* Length
+* Contains
+* IsMatch
 
 For IEnumerable:
 
