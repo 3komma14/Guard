@@ -46,7 +46,7 @@ namespace Seterlund.CodeGuard.UnitTests
             var arg = new string[] { "item1", "item2" };
 
             // Act/Assert
-            Assert.DoesNotThrow(() => Guard.That(() => arg).CountIs(2, ));
+            Assert.DoesNotThrow(() => Guard.That(() => arg).CountIs(2));
         }
     }
 }

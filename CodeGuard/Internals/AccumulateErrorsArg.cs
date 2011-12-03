@@ -13,6 +13,7 @@ namespace Seterlund.CodeGuard.Internals
 
         public AccumulateErrorsArg(T argument) : base(argument)
         {
+            this.Message = new SaveMessageHandler<T>(this);
             this.Value = argument;
         }
 

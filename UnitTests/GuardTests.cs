@@ -51,6 +51,33 @@ namespace Seterlund.CodeGuard.UnitTests
         #endregion
 
         [Test]
+        public void That_CalledWithFunc_MessageHandlerISet()
+        {
+            // Arrange
+            int arg1 = 0;
+
+            // Act
+            var actual = Guard.That(() => arg1);
+
+            // Assert
+            Assert.IsNotNull(actual.Message);
+        }
+
+        [Test]
+        public void That_CalledWithValue_MessageHandlerISet()
+        {
+            // Arrange
+            int arg1 = 0;
+
+            // Act
+            var actual = Guard.That(arg1);
+
+            // Assert
+            Assert.IsNotNull(actual.Message);
+        }
+
+
+        [Test]
         public void Is_WhenArgumentIsSameType_DoesNotThrow()
         {
             // Arrange

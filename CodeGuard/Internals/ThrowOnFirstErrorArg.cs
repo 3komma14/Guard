@@ -15,6 +15,7 @@ namespace Seterlund.CodeGuard.Internals
 
         public ThrowOnFirstErrorArg(T argument) : base(argument)
         {
+            this.Message = new ThrowMessageHandler<T>(this);
             this.Value = argument;
         }
 

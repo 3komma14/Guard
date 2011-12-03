@@ -6,7 +6,7 @@ namespace Seterlund.CodeGuard.Internals
 {
     public abstract class ArgBase<T> : IArg<T>
     {
-        public IMessageHandler<T> Message { get; set; }
+        public IMessageHandler<T> Message { get; protected set; }
 
         public abstract IEnumerable<ErrorInfo> Errors { get; }
 
