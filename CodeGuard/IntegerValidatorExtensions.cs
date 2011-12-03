@@ -5,61 +5,61 @@ namespace Seterlund.CodeGuard
 {
     public static class IntegerValidatorExtensions
     {
-        public static Arg<int> IsOdd(this Arg<int> arg)
+        public static IArg<int> IsOdd(this IArg<int> arg)
         {
             if (!MathUtil.IsOdd(arg.Value))
             {
-                arg.ArgumentOutRangeMessage();
+                arg.Message.SetArgumentOutRange();
             }
 
             return arg;
         }
 
-        public static Arg<long> IsOdd(this Arg<long> arg)
+        public static IArg<long> IsOdd(this IArg<long> arg)
         {
             if (!MathUtil.IsOdd(arg.Value))
             {
-                arg.ArgumentOutRangeMessage();
+                arg.Message.SetArgumentOutRange();
             }
 
             return arg;
         }
 
-        public static Arg<int> IsEven(this Arg<int> arg)
+        public static IArg<int> IsEven(this IArg<int> arg)
         {
             if (!MathUtil.IsEven(arg.Value))
             {
-                arg.ArgumentOutRangeMessage();
+                arg.Message.SetArgumentOutRange();
             }
 
             return arg;
         }
 
-        public static Arg<long> IsEven(this Arg<long> arg)
+        public static IArg<long> IsEven(this IArg<long> arg)
         {
             if (!MathUtil.IsEven(arg.Value))
             {
-                arg.ArgumentOutRangeMessage();
+                arg.Message.SetArgumentOutRange();
             }
 
             return arg;
         }
 
-        public static Arg<int> IsPrime(this Arg<int> arg)
+        public static IArg<int> IsPrime(this IArg<int> arg)
         {
             if(!MathUtil.IsPrime(arg.Value))
             {
-                arg.ArgumentMessage("Not a prime number");
+                arg.Message.Set("Not a prime number");
             }
 
             return arg;
         }
 
-        public static Arg<long> IsPrime(this Arg<long> arg)
+        public static IArg<long> IsPrime(this IArg<long> arg)
         {
             if(!MathUtil.IsPrime(arg.Value))
             {
-                arg.ArgumentMessage("Not a prime number");
+                arg.Message.Set("Not a prime number");
             }
 
             return arg;

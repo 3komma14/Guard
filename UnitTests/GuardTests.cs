@@ -59,7 +59,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.That(() => arg1).Is<int>();
+                Guard.That(() => arg1).Is(typeof(int));
             });
         }
 
@@ -71,7 +71,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act
             ArgumentException exception = 
-                GetException<ArgumentException>(() => Guard.That(() => arg1).Is<string>());
+                GetException<ArgumentException>(() => Guard.That(() => arg1).Is(typeof(string)));
 
             // Assert
             AssertArgumentException(exception, "arg1", "Value is not <String>\r\nParameter name: arg1");
@@ -87,7 +87,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.DoesNotThrow(() =>
             {
-                Guard.That(() => arg1).Is<ITest>();
+                Guard.That(() => arg1).Is(typeof(ITest));
             });
         }
 
@@ -99,7 +99,7 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act/Assert
             ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.That(() => arg1).Is<ITest>());
+                GetException<ArgumentException>(() => Guard.That(() => arg1).Is(typeof(ITest)));
         
             // Assert
             AssertArgumentException(exception, "arg1", "Value is not <ITest>\r\nParameter name: arg1");

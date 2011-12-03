@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using System.Linq;
 
 namespace Seterlund.CodeGuard.UnitTests
 {
@@ -57,11 +58,11 @@ namespace Seterlund.CodeGuard.UnitTests
             var arg1 = new NotImplementationOfITest();
 
             // Act
-            var result = Validate.That(() => arg1).Is<ITest>().GetResult();
+            var result = Validate.That(() => arg1).Is(typeof(ITest)).Errors;
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Count);
+            Assert.AreEqual(1, result.Count());
         }
 
         [Test]
@@ -71,11 +72,11 @@ namespace Seterlund.CodeGuard.UnitTests
             int arg1 = 100;
 
             // Act
-            var result = Validate.That(() => arg1).IsGreaterThan(200).IsEqual(1).GetResult();
+            var result = Validate.That(() => arg1).IsGreaterThan(200).IsEqual(1).Errors;
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count);
+            Assert.AreEqual(2, result.Count());
         }
 
         public interface ITest 

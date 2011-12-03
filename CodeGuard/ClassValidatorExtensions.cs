@@ -1,12 +1,14 @@
+using Seterlund.CodeGuard.Internals;
+
 namespace Seterlund.CodeGuard
 {
     public static class ClassValidatorExtensions
     {
-        public static Arg<T> IsNotNull<T>(this Arg<T> arg) where T : class
+        public static IArg<T> IsNotNull<T>(this IArg<T> arg) where T : class
         {
             if (arg.Value == null)
             {
-                arg.ArgumentNullMessage();
+                arg.Message.SetArgumentNull();
             }
 
             return arg;

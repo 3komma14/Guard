@@ -71,13 +71,13 @@ namespace Seterlund.CodeGuard.UnitTests
         }
 
         [Test]
-        public void Is_ArgumentTestedAgainstBaseType_Throws()
+        public void Is_ArgumentTestedAgainstBaseType_DoesNotThrow()
         {
             // Arrange
             var arg = new MyClass();
 
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).Is(typeof(MyBase)));
+            Assert.DoesNotThrow(() => Guard.That(() => arg).Is(typeof(MyBase)));
         }
 
         [Test]

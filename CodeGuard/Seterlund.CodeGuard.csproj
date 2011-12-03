@@ -41,17 +41,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionValidatorExtensions.cs" />
+    <Compile Include="NullableValidatorExtensions.cs" />
+    <Compile Include="Internals\ArgBase.cs" />
+    <Compile Include="Internals\AccumulateErrorsArg.cs" />
+    <Compile Include="Internals\ThrowOnFirstErrorArg.cs" />
     <Compile Include="EnumerableValidatorExtensions.cs" />
     <Compile Include="GuidValidatorExtensions.cs" />
-    <Compile Include="Internals\SaveErrorHandler.cs" />
-    <Compile Include="Internals\IErrorHandler.cs" />
-    <Compile Include="Internals\ThrowErrorHandler.cs" />
+    <Compile Include="IArg.cs" />
+    <Compile Include="Internals\ErrorHandlerBase.cs" />
+    <Compile Include="Internals\SaveMessageHandler.cs" />
+    <Compile Include="Internals\IMessageHandler.cs" />
+    <Compile Include="Internals\ThrowMessageHandler.cs" />
     <Compile Include="Validate.cs" />
     <Compile Include="ObjectValidatorExtensions.cs" />
     <Compile Include="IntegerValidatorExtensions.cs" />
     <Compile Include="Internals\MathUtil.cs" />
     <Compile Include="Internals\ReflectionValidator.cs" />
-    <Compile Include="Arg.cs" />
     <Compile Include="BooleanValidatorExtensions.cs" />
     <Compile Include="ClassValidatorExtensions.cs" />
     <Compile Include="Guard.cs" />

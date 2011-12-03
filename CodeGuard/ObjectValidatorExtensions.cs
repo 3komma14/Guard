@@ -1,4 +1,5 @@
 ﻿using System;
+using Seterlund.CodeGuard.Internals;
 
 namespace Seterlund.CodeGuard
 {
@@ -8,12 +9,12 @@ namespace Seterlund.CodeGuard
         /// Is argument instance of type
         /// </summary>
         /// <returns></returns>
-        public static Arg<T> Is<T>(this Arg<T> arg, Type type)
+        public static IArg<T> Is<T>(this IArg<T> arg, Type type)
         {
-            var isType = arg.Value.GetType().Equals(type);
+            var isType = type.IsInstanceOfType(arg.Value);
             if (!isType)
             {
-                arg.ArgumentMessage(string.Format("Value is not <{0}>", type.Name));
+                arg.Message.Set(string.Format("Value is not <{0}>", type.Name));
             }
 
             return arg;            
@@ -23,11 +24,12 @@ namespace Seterlund.CodeGuard
         /// Is argument not the default value
         /// </summary>
         /// <returns></returns>
-        public static Arg<T> IsNotDefault<T>(this Arg<T> arg)
+        public static IArg<T> IsNotDefault<T>(this IArg<T> arg)
         {
             if (default(T).Equals(arg.Value))
             {
-                arg.ArgumentMessage("Value cannot be the default value.");
+                arg.Message.Set("Value cannot be the default value.");
+               
             }
 
             return arg;
@@ -37,11 +39,11 @@ namespace Seterlund.CodeGuard
         /// Is the fucntion true for the argument.
         /// </summary>
         /// <returns></returns>
-        public static Arg<T> IsTrue<T>(this Arg<T> arg, Func<T, bool> booleanFunction, string exceptionMessage)
+        public static IArg<T> IsTrue<T>(this IArg<T> arg, Func<T, bool> booleanFunction, string exceptionMessage)
         {
             if (!booleanFunction(arg.Value))
             {
-                arg.ArgumentMessage(exceptionMessage);
+                arg.Message.Set(exceptionMessage);
             }
 
             return arg;

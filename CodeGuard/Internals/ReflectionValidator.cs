@@ -22,7 +22,7 @@
 //            ExceptionHelper.ThrowArgumentNullException(this);
 //        }
 
-//        public override void ArgumentOutRangeMessage()
+//        public override void arg.Message.SetArgumentOutRange()
 //        {
 //            ExceptionHelper.ThrowArgumentOutOfRangeException(this);
 //        }
