@@ -8,6 +8,6 @@ namespace Seterlund.CodeGuard
         T Value { get; }
         string Name { get; }
         IMessageHandler<T> Message { get; }
-        IEnumerable<string> Errors { get; }
+        IEnumerable<ErrorInfo> Errors { get; }
     }
 }

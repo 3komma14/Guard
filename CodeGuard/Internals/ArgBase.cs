@@ -8,7 +8,7 @@ namespace Seterlund.CodeGuard.Internals
     {
         public IMessageHandler<T> Message { get; set; }
 
-        public abstract IEnumerable<string> Errors { get; }
+        public abstract IEnumerable<ErrorInfo> Errors { get; }
 
         public T Value { get; protected set; }
 

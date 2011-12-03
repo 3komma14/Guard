@@ -6,9 +6,9 @@ namespace Seterlund.CodeGuard.Internals
     internal class SaveMessageHandler<T> : IMessageHandler<T>
     {
         private readonly IArg<T> _arg;
-        protected List<string> Result = new List<string>();
+        protected List<ErrorInfo> Result = new List<ErrorInfo>();
 
-        public List<string> GetResult()
+        public List<ErrorInfo> GetResult()
         {
             return Result;
         }
@@ -36,15 +36,7 @@ namespace Seterlund.CodeGuard.Internals
 
         private void AddResultItem(string message)
         {
-            if (!string.IsNullOrEmpty(_arg.Name))
-            {
-                if (!message.EndsWith("."))
-                {
-                    message += ". ";
-                }
-                message += "Param: " + _arg.Name;
-            }
-            Result.Add(message);
+            Result.Add(new ErrorInfo() {Message = message, Name = _arg.Name});
         }
     }
 }

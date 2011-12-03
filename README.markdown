@@ -86,3 +86,4 @@ For IEnumerable:
 For Guid:
 
 * IsNotEmpty
+

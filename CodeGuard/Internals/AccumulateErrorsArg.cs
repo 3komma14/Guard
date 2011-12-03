@@ -16,7 +16,7 @@ namespace Seterlund.CodeGuard.Internals
             this.Value = argument;
         }
 
-        public override IEnumerable<string> Errors
+        public override IEnumerable<ErrorInfo> Errors
         {
             get { return ((SaveMessageHandler<T>) this.Message).GetResult(); }
         }

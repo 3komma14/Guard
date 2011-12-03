@@ -20,7 +20,7 @@ namespace Seterlund.CodeGuard.Internals
 
         #endregion
 
-        public override IEnumerable<string> Errors
+        public override IEnumerable<ErrorInfo> Errors
         {
             get { return null; }
         }
