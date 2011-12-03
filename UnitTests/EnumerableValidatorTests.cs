@@ -90,5 +90,6 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.Throws<ArgumentException>(() => Guard.That(() => arg).Contains(x => x == "SomeItem"));
         }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CodeGuard")]
-[assembly: AssemblyDescription("Guard and Validator library. Example: Guard.That(() => arg1).IsNotNull(); will throw when arg1 is null")]
+[assembly: AssemblyDescription("Guard and Validator library.\nExample: Guard.That(arg1).IsNotNull().GreaterThan(100);\nThrows an exception if conditions are not met.\nSupports the ability to get a list of the failed conditions.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Per Ivar Seterlund")]
 [assembly: AssemblyProduct("CodeGuard")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.*")]
-[assembly: AssemblyFileVersion("2.0.*")]
+[assembly: AssemblyVersion("2.1.*")]
+[assembly: AssemblyFileVersion("2.1.*")]

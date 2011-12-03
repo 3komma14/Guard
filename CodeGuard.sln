@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard.UnitTes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96AC009B-2319-4A8C-B041-5294C8C1FA0F}"
 	ProjectSection(SolutionItems) = preProject
+		BuildNuGet.cmd = BuildNuGet.cmd
 		CodeGuard.vsmdi = CodeGuard.vsmdi
 		License.txt = License.txt
 		Local.testsettings = Local.testsettings

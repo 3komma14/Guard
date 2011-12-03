@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionValidatorExtensions.cs" />
+    <Compile Include="ArrayValidatorExtensions.cs" />
     <Compile Include="ErrorInfo.cs" />
     <Compile Include="NullableValidatorExtensions.cs" />
     <Compile Include="Internals\ArgBase.cs" />
