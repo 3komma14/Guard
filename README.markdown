@@ -36,7 +36,7 @@ Example of usage:
 	}
 
 
-Incomplete list of checks:
+"Incomplete" list of checks:
 --------------------------
 
 The following checks are available. But the best documentation is currently the tests.
