@@ -28,6 +28,12 @@ namespace Seterlund.CodeGuard.Internals
             this.Value = argument;
         }
 
+        protected ArgBase(T argument, string argumentName)
+        {
+            this.Value = argument;
+            this.Name = argumentName;
+        }
+
         #endregion
                 
         /// <summary>

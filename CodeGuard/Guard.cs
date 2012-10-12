@@ -33,8 +33,12 @@ namespace Seterlund.CodeGuard
         /// <returns>
         /// An ArgumentValidator
         /// </returns>
-        public static IArg<T> That<T>(T argument)
+        public static IArg<T> That<T>(T argument, string argumentName = "")
         {
+            if (String.IsNullOrWhiteSpace(argumentName))
+            {
+                return new ThrowOnFirstErrorArg<T>(argument, argumentName);
+            }
             return new ThrowOnFirstErrorArg<T>(argument);
         }
     }
