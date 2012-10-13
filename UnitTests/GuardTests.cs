@@ -76,6 +76,19 @@ namespace Seterlund.CodeGuard.UnitTests
             Assert.IsNotNull(actual.Message);
         }
 
+        [Test]
+        public void That_CalledWithValueAndName_MessageHandlerISet()
+        {
+            // Arrange
+            int arg1 = 0;
+
+            // Act
+            var actual = Guard.That(arg1, "MyName");
+
+            // Assert
+            Assert.IsNotNull(actual.Message);
+        }
+
 
         [Test]
         public void Is_WhenArgumentIsSameType_DoesNotThrow()
@@ -102,6 +115,20 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Assert
             AssertArgumentException(exception, "arg1", "Value is not <String>\r\nParameter name: arg1");
+        }
+
+        [Test]
+        public void That_ArgumentNameSuppliedAndError_ThrowsAndUsedArgumentName()
+        {
+            // Arrange
+            int arg1 = 0;
+
+            // Act
+            ArgumentException exception = 
+                GetException<ArgumentException>(() => Guard.That(arg1, "MyName").Is(typeof(string)));
+
+            // Assert
+            AssertArgumentException(exception, "MyName", "Value is not <String>\r\nParameter name: MyName");
         }
 
 

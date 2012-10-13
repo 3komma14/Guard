@@ -35,11 +35,11 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static IArg<T> That<T>(T argument, string argumentName = "")
         {
-            if (String.IsNullOrWhiteSpace(argumentName))
+            if (string.IsNullOrEmpty(argumentName))
             {
-                return new ThrowOnFirstErrorArg<T>(argument, argumentName);
+                return new ThrowOnFirstErrorArg<T>(argument);
             }
-            return new ThrowOnFirstErrorArg<T>(argument);
+            return new ThrowOnFirstErrorArg<T>(argument, argumentName);
         }
     }
 }
