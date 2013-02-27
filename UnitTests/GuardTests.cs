@@ -107,14 +107,14 @@ namespace Seterlund.CodeGuard.UnitTests
         public void Is_WhenArgumentIsWrongType_Throws()
         {
             // Arrange
-            int arg1 = 0;
+            int myArg = 0;
 
             // Act
             ArgumentException exception = 
-                GetException<ArgumentException>(() => Guard.That(() => arg1).Is(typeof(string)));
+                GetException<ArgumentException>(() => Guard.That(() => myArg).Is(typeof(string)));
 
             // Assert
-            AssertArgumentException(exception, "arg1", "Value is not <String>\r\nParameter name: arg1");
+            AssertArgumentException(exception, "myArg", "Value is not <String>\r\nParameter name: myArg");
         }
 
         [Test]
@@ -149,14 +149,14 @@ namespace Seterlund.CodeGuard.UnitTests
         public void Is_WhenArgumentDoesNotImplementType_Throws()
         {
             // Arrange
-            var arg1 = new NotImplementationOfITest();
+            var someArg = new NotImplementationOfITest();
 
             // Act/Assert
             ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.That(() => arg1).Is(typeof(ITest)));
+                GetException<ArgumentException>(() => Guard.That(() => someArg).Is(typeof(ITest)));
         
             // Assert
-            AssertArgumentException(exception, "arg1", "Value is not <ITest>\r\nParameter name: arg1");
+            AssertArgumentException(exception, "someArg", "Value is not <ITest>\r\nParameter name: someArg");
         }
 
         public interface ITest 

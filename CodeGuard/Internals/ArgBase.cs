@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -14,13 +13,12 @@ namespace Seterlund.CodeGuard.Internals
 
         public string Name { get; protected set; }
 
-
         #region Constructors
 
-        protected ArgBase(Expression<Func<T>> argument)
+        protected ArgBase(Func<T> argument)
         {
-            this.Value = GetArgumentValue(argument);
-            this.Name = GetArgumentName(argument);
+            this.Value = argument();
+            this.Name = GetArgName(argument);
         }
 
         protected ArgBase(T argument)
@@ -52,15 +50,17 @@ namespace Seterlund.CodeGuard.Internals
             return this;
         }
 
-        protected static string GetArgumentName(Expression<Func<T>> argument)
+        private static string GetArgName(Func<T> argument)
         {
-            var member = (MemberExpression)argument.Body;
-            return member.Member.Name;
-        }
-
-        protected static T GetArgumentValue(Expression<Func<T>> argument)
-        {
-            return argument.Compile()();
+            // get IL code behind the delegate
+            var il = argument.Method.GetMethodBody().GetILAsByteArray();
+            // bytes 2-6 represent the field handle
+            var fieldHandle = BitConverter.ToInt32(il, 2);
+            // resolve the handle
+            var field = argument.Target.GetType()
+                .Module.ResolveField(fieldHandle);
+            var name = field.Name;
+            return name;
         }
     }
 }

@@ -1,0 +1,300 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:StringValidatorTests.cs" caret="1399" fromTop="21" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:BaseTests.cs" caret="422" fromTop="12" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ClassValidatorTests.cs" caret="1662" fromTop="20" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ObjectValidatorTests.cs" caret="2722" fromTop="17" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:README.markdown/l:C!?Projects?Guard?README.markdown" caret="1698" fromTop="88" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:NullableValidatorTests.cs" caret="1605" fromTop="22" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:EnumerableValidatorTests.cs" caret="2398" fromTop="13" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:BuildNuGet.cmd/l:C!?Projects?Guard?BuildNuGet.cmd" caret="826" fromTop="14" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:Seterlund.CodeGuard.nuspec/l:C!?Projects?Guard?NuGet?Seterlund.CodeGuard.nuspec" caret="920" fromTop="19" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="796" fromTop="5" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:GuardTests.cs" caret="640" fromTop="6" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ThrowOnFirstErrorArg.cs" caret="586" fromTop="20" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:BuildNuGet_src.cmd/l:C!?Projects?Guard?BuildNuGet_src.cmd" caret="6" fromTop="1" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/f:Guard.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/f:ErrorInfo.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/f:IArg.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:AccumulateErrorsArg.cs" caret="494" fromTop="16" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ArgBase.cs" caret="316" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ErrorHandlerBase.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:IMessageHandler.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:MathUtil.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ReflectionValidator.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:SaveMessageHandler.cs" caret="0" fromTop="0" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ThrowMessageHandler.cs" caret="387" fromTop="16" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:NullableValidatorTests.cs" caret="129" fromTop="6" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:NullableValidatorTests.cs" caret="1235" fromTop="16" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:README.markdown/l:C!?Projects?Guard?README.markdown" caret="1698" fromTop="34" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:NullableValidatorTests.cs" caret="1605" fromTop="22" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:BuildNuGet.cmd/l:C!?Projects?Guard?BuildNuGet.cmd" caret="43" fromTop="1" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:EnumerableValidatorTests.cs" caret="2398" fromTop="22" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:EnumerableValidatorTests.cs" caret="2407" fromTop="13" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="225" fromTop="9" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="574" fromTop="26" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="486" fromTop="18" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="1087" fromTop="39" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="846" fromTop="29" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="1169" fromTop="39" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:BuildNuGet.cmd/l:C!?Projects?Guard?BuildNuGet.cmd" caret="826" fromTop="14" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:ArrayValidatorTests.cs" caret="1364" fromTop="22" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:GuardTests.cs" caret="1166" fromTop="10" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:GuardTests.cs" caret="1679" fromTop="34" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:GuardTests.cs" caret="1445" fromTop="24" />
+      <File id="B7F516F7-E137-4922-B119-C87FFCDA8BBB/f:GuardTests.cs" caret="1588" fromTop="30" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ArgBase.cs" caret="729" fromTop="25" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:AccumulateErrorsArg.cs" caret="269" fromTop="8" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ArgBase.cs" caret="510" fromTop="16" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ArgBase.cs" caret="729" fromTop="25" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ArgBase.cs" caret="242" fromTop="5" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:AccumulateErrorsArg.cs" caret="494" fromTop="16" />
+      <File id="534D625B-C310-4A98-8E05-1806E7AE389F/d:Internals/f:ThrowOnFirstErrorArg.cs" caret="527" fromTop="17" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:BuildNuGet_src.cmd/l:C!?Projects?Guard?BuildNuGet_src.cmd" caret="22" fromTop="3" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:BuildNuGet_src.cmd/l:C!?Projects?Guard?BuildNuGet_src.cmd" caret="872" fromTop="22" />
+      <File id="96AC009B-2319-4A8C-B041-5294C8C1FA0F/f:BuildNuGet_src.cmd/l:C!?Projects?Guard?BuildNuGet_src.cmd" caret="6" fromTop="1" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="7" />
+      <Item value="internal" priority="1" />
+      <Item value="abstract" priority="5" />
+      <Item value="protected" priority="5" />
+      <Item value="void" priority="3" />
+      <Item value="string" priority="11" />
+      <Item value="ExceptionHelper`0" priority="1" />
+      <Item value="this" priority="7" />
+      <Item value="message" priority="8" />
+      <Item value="validator" priority="13" />
+      <Item value="private" priority="2" />
+      <Item value="new" priority="11" />
+      <Item value="List&lt;string&gt;" priority="2" />
+      <Item value="result" priority="3" />
+      <Item value="var" priority="1" />
+      <Item value="if" priority="1" />
+      <Item value="argumentName" priority="1" />
+      <Item value="static" priority="1" />
+      <Item value="Validator" priority="0" />
+      <Item value="ThreadStaticAttribute`0" priority="0" />
+      <Item value="TestAttribute`0" priority="1" />
+      <Item value="Test" priority="0" />
+      <Item value="List" priority="0" />
+      <Item value="return" priority="6" />
+      <Item value="Assert`0" priority="3" />
+      <Item value="using" priority="4" />
+      <Item value="Seterlund" priority="1" />
+      <Item value="CodeGuard" priority="0" />
+      <Item value="Extensions" priority="0" />
+      <Item value="BaseTests`0" priority="4" />
+      <Item value="Type`0" priority="5" />
+      <Item value="type" priority="0" />
+      <Item value="ValidatorBase" priority="0" />
+      <Item value="class" priority="2" />
+      <Item value="ValidatorBase`0" priority="0" />
+      <Item value="typeof" priority="5" />
+      <Item value="int" priority="7" />
+      <Item value="MyBase`0" priority="1" />
+      <Item value="MyBase" priority="0" />
+      <Item value="ArgumentException`0" priority="5" />
+      <Item value="T`0" priority="14" />
+      <Item value="is" priority="0" />
+      <Item value="TType`0" priority="0" />
+      <Item value="Guard`0" priority="0" />
+      <Item value="arg" priority="22" />
+      <Item value="argument" priority="17" />
+      <Item value="param" priority="0" />
+      <Item value="ctor" priority="5" />
+      <Item value="Arg" priority="7" />
+      <Item value="base" priority="0" />
+      <Item value="MessageStrategy`0" priority="0" />
+      <Item value="Result" priority="0" />
+      <Item value="messageStrategy" priority="1" />
+      <Item value="ThrowMessage`0" priority="1" />
+      <Item value="SaveMessage`0" priority="0" />
+      <Item value="ArgBase" priority="0" />
+      <Item value="Guid`0" priority="1" />
+      <Item value="IEnumerableValidatorExtensions`0" priority="0" />
+      <Item value="IEnumerable`0" priority="1" />
+      <Item value="System" priority="3" />
+      <Item value="Linq" priority="3" />
+      <Item value="ICollection`0" priority="1" />
+      <Item value="object" priority="2" />
+      <Item value="IEnumerable" priority="1" />
+      <Item value="IntegerValidatorExtensions`0" priority="0" />
+      <Item value="length" priority="0" />
+      <Item value="bool" priority="1" />
+      <Item value="default" priority="0" />
+      <Item value="List`0" priority="0" />
+      <Item value="predicate" priority="0" />
+      <Item value="interface" priority="0" />
+      <Item value="where" priority="2" />
+      <Item value="IComparable`0" priority="0" />
+      <Item value="IsNotEqual`1" priority="0" />
+      <Item value="ErrorHandlerBase" priority="0" />
+      <Item value="ThrowMessageHandler`0" priority="1" />
+      <Item value="IArg" priority="1" />
+      <Item value="AccumulateErrorsArg" priority="0" />
+      <Item value="ITest`0" priority="2" />
+      <Item value="null" priority="5" />
+      <Item value="Nullable`0" priority="9" />
+      <Item value="TestClass`0" priority="1" />
+      <Item value="false" priority="0" />
+      <Item value="isNull" priority="1" />
+      <Item value="as" priority="0" />
+      <Item value="struct" priority="0" />
+      <Item value="prop" priority="1" />
+      <Item value="ErrorInfo`0" priority="6" />
+      <Item value="ErrorInfo" priority="0" />
+      <Item value="Name" priority="0" />
+      <Item value="_arg" priority="0" />
+      <Item value="Length" priority="0" />
+      <Item value="count" priority="0" />
+      <Item value="actual" priority="0" />
+      <Item value="messageHandler" priority="1" />
+      <Item value="Message" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Seterlund.CodeGuard.ExceptionHelper">
+      <Item value="ThrowArgumentException`1" priority="1" />
+      <Item value="ThrowArgumentNullException`1" priority="0" />
+      <Item value="ThrowArgumentOutOfRangeException`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.ValidatorBase`1">
+      <Item value="ArgumentMessage`0" priority="1" />
+      <Item value="ArgumentOutRangeMessage`0" priority="0" />
+      <Item value="ArgumentNullMessage`0" priority="0" />
+      <Item value="IsGreaterThan`1" priority="0" />
+      <Item value="IsEqual`1" priority="0" />
+      <Item value="Is`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="1" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Format`0" priority="0" />
+      <Item value="IsNullOrEmpty`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Indexer" priority="0" />
+      <Item value="EndsWith`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Seterlund.CodeGuard.Guard">
+      <Item value="Validate`1" priority="0" />
+      <Item value="That`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.Validator`1">
+      <Item value="result" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
+      <Item value="IsNotNull`0" priority="1" />
+      <Item value="AreEqual`0" priority="0" />
+      <Item value="Throws`1" priority="0" />
+      <Item value="DoesNotThrow`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:T">
+      <Item value="Equals`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="GetType`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.ArgumentBase`1">
+      <Item value="IsTrue`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.ArgBase`1">
+      <Item value="AddResultItem`0" priority="1" />
+      <Item value="Message" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.Internals.MessageStrategy">
+      <Item value="ArgumentMessage`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.Arg`1">
+      <Item value="Value" priority="4" />
+      <Item value="ArgumentMessage`0" priority="4" />
+      <Item value="IsEmpty`0" priority="0" />
+      <Item value="ArgumentOutRangeMessage`0" priority="0" />
+      <Item value="IsNotEmpty`1" priority="0" />
+      <Item value="Contains`1" priority="2" />
+      <Item value="messageHandler" priority="0" />
+      <Item value="AddResultItem`0" priority="0" />
+      <Item value="Message" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Guid">
+      <Item value="Empty" priority="2" />
+      <Item value="NewGuid`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Guid">
+      <Item value="Equals`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.IEnumerable">
+      <Item value="AsParallel`0" priority="0" />
+      <Item value="AsQueryable`0" priority="0" />
+      <Item value="GetEnumerator`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.IEnumerator">
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ICollection">
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="Any`1" priority="1" />
+      <Item value="Count`1" priority="0" />
+      <Item value="Contains`1" priority="0" />
+      <Item value="SingleOrDefault`1" priority="0" />
+      <Item value="Concat`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:">
+      <Item value="Equals`0" priority="0" />
+      <Item value="GetType`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.Internals.IMessageHandler">
+      <Item value="ArgumentMessage`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.Internals.IMessageHandler`1">
+      <Item value="Arg" priority="0" />
+      <Item value="SetArgumentNull`0" priority="1" />
+      <Item value="SetArgumentOutRange`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.IArg`1">
+      <Item value="Name" priority="1" />
+      <Item value="Message" priority="1" />
+      <Item value="Errors" priority="3" />
+      <Item value="IsNotNull`1" priority="1" />
+      <Item value="Value" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.AccumulateErrorsArg`1">
+      <Item value="Message" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Seterlund.CodeGuard.Internals.SaveMessageHandler`1">
+      <Item value="GetResult`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="IsValueType" priority="0" />
+      <Item value="IsClass" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Nullable`1">
+      <Item value="HasValue" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

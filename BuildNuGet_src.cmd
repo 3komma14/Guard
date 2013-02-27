@@ -11,6 +11,6 @@ copy CodeGuard\bin\Release\Seterlund.CodeGuard.dll NuGet\lib\net35\
 echo ------------------------------ Build package and upload it ------------------------------
 
 pushd NuGet
-..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe pack Seterlund.CodeGuard.nuspec
-..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe push Seterlund.CodeGuard.2.2.2.nupkg
+..\packages\NuGet.CommandLine.1.5.21005.9019\tools\NuGet.exe pack Seterlund.CodeGuard.nuspec
+..\packages\NuGet.CommandLine.1.5.21005.9019\tools\NuGet.exe push Seterlund.CodeGuard.2.1.nupkg
 popd
