@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -57,10 +58,16 @@ namespace Seterlund.CodeGuard.Internals
             // bytes 2-6 represent the field handle
             var fieldHandle = BitConverter.ToInt32(il, 2);
             // resolve the handle
-            var field = argument.Target.GetType()
-                .Module.ResolveField(fieldHandle);
-            var name = field.Name;
-            return name;
+            var targetType = argument.Target.GetType();
+            FieldInfo field;
+            if(targetType.IsGenericType)
+            {
+                var genericArguments = argument.Method.ReflectedType.GetGenericArguments();
+                field = targetType.Module.ResolveField(fieldHandle, genericArguments, null);
+                return field.Name;
+            }
+            field = targetType.Module.ResolveField(fieldHandle);
+            return field.Name;
         }
     }
 }

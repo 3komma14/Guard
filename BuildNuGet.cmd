@@ -12,5 +12,5 @@ echo ------------------------------ Build package and upload it ----------------
 
 pushd NuGet
 ..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe pack Seterlund.CodeGuard.nuspec
-..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe push Seterlund.CodeGuard.2.2.2.nupkg
+..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe push Seterlund.CodeGuard.2.2.3.nupkg
 popd

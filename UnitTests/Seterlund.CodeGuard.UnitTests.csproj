@@ -55,6 +55,7 @@
     <Compile Include="NullableValidatorTests.cs" />
     <Compile Include="EnumerableValidatorTests.cs" />
     <Compile Include="GuidValidatorTests.cs" />
+    <Compile Include="ReflectionTests.cs" />
     <Compile Include="SpeedTests.cs" />
     <Compile Include="ValidateTests.cs" />
     <Compile Include="ObjectValidatorTests.cs" />
