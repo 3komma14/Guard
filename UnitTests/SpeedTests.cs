@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using NUnit.Framework;
 
 namespace Seterlund.CodeGuard.UnitTests
@@ -11,6 +12,9 @@ namespace Seterlund.CodeGuard.UnitTests
         {
             var arg = 0;
 
+            var watch = new Stopwatch();
+            watch.Start();
+
             var start = DateTime.Now;
             for (int i = 0; i < 10000; i++)
             {
@@ -20,13 +24,20 @@ namespace Seterlund.CodeGuard.UnitTests
             var end = DateTime.Now;
             var diff = end.Subtract(start);
 
+            watch.Stop();
+
             Console.WriteLine(diff.TotalMilliseconds);
+            Console.WriteLine(watch.Elapsed);
+            Console.WriteLine(watch.ElapsedMilliseconds);
         }
 
         [Test]
         public void TestVariableSpeed()
         {
             var arg = 0;
+
+            var watch = new Stopwatch();
+            watch.Start();
 
             var start = DateTime.Now;
             for (int i = 0; i < 10000; i++)
@@ -36,7 +47,11 @@ namespace Seterlund.CodeGuard.UnitTests
             var end = DateTime.Now;
             var diff = end.Subtract(start);
 
+            watch.Stop();
+
             Console.WriteLine(diff.TotalMilliseconds);
+            Console.WriteLine(watch.Elapsed);
+            Console.WriteLine(watch.ElapsedMilliseconds);
         }
 
     }
