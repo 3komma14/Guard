@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CodeGuard")]
 [assembly: AssemblyDescription("Guard and Validator library.\nExample: Guard.That(arg1).IsNotNull().GreaterThan(100);\nThrows an exception if conditions are not met.\nSupports the ability to get a list of the failed conditions.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Per Ivar Seterlund")]
+[assembly: AssemblyCompany("Per Ivar $rootnamespace$.)]
 [assembly: AssemblyProduct("CodeGuard")]
-[assembly: AssemblyCopyright("Copyright Per Ivar Seterlund ©  2011")]
+[assembly: AssemblyCopyright("Copyright Per Ivar $rootnamespace$.�  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

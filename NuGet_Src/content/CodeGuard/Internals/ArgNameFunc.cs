@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 
-namespace Seterlund.CodeGuard.Internals
+namespace $rootnamespace$.CodeGuard.Internals
 {
     public class ArgNameFunc<T> : ArgName
     {

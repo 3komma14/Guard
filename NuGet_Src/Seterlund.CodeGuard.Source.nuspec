@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Seterlund.CodeGuard</id>
-    <version>2.1</version>
-    <title>CodeGuard</title>
+    <id>Seterlund.CodeGuard.Source</id>
+    <version>2.2.6</version>
+    <title>CodeGuard (Source)</title>
     <authors>Per Ivar Seterlund</authors>
     <owners>Per Ivar Seterlund</owners>
     <licenseUrl>https://github.com/3komma14/Guard/blob/master/License.txt</licenseUrl>
@@ -14,7 +14,10 @@
 	Example: Guard.That(arg1).IsNotNull().GreaterThan(100); 
 	Throws an exception if conditions are not met. 
 	Supports the ability to get a list of the failed conditions.</description>
-    <copyright>Copyright Per Ivar Seterlund (3komma14@gmail.com) 2011</copyright>
+    <copyright>Copyright Per Ivar Seterlund (3komma14@gmail.com) 2011-2013</copyright>
     <tags>Argument Guard Validation</tags>
   </metadata>
+  <files>
+    <file src="..\NuGet_Src\content\**\*.cs" target="content\CodeGuard" exclude="..\CodeGuard\Properties\**\*.cs;..\CodeGuard\Resources\**\*.*" />
+  </files>
 </package>

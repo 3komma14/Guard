@@ -159,13 +159,41 @@ namespace Seterlund.CodeGuard.UnitTests
             AssertArgumentException(exception, "someArg", "Value is not <ITest>\r\nParameter name: someArg");
         }
 
+        [Test]
+        public void IsEqual_WhenArgumentIsProperty_Throws()
+        {
+            // Arrange
+            var obj = new PropertyTest();
+
+            // Act/Assert
+            ArgumentException exception =
+                GetException<ArgumentException>(() => obj.RunGuard());
+
+            // Assert
+            AssertArgumentException(exception, "Prop", "Specified argument was out of the range of valid values.\r\nParameter name: Prop");
+        }
+
+
+        public class PropertyTest
+        {
+            public int Prop { get; set; }
+
+            public void RunGuard()
+            {
+                Guard.That(() => Prop).IsEqual(1);
+            }
+        }
+
         public interface ITest 
         {
+            int Prop { get; set; }
             void Ping();
         }
 
         public class ImplementationOfITest : ITest
         {
+            public int Prop { get; set; }
+
             public void Ping()
             {
                 throw new NotImplementedException();
