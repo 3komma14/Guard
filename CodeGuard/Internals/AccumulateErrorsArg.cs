@@ -7,7 +7,7 @@ namespace Seterlund.CodeGuard.Internals
     public class AccumulateErrorsArg<T> : ArgBase<T>
     {
 
-        public AccumulateErrorsArg(Expression<Func<T>> argument) : base(argument)
+        public AccumulateErrorsArg(Func<T> argument) : base(argument)
         {
             this.Message = new SaveMessageHandler<T>(this);
         }

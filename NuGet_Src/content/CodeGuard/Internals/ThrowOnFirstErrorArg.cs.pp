@@ -8,7 +8,7 @@ namespace $rootnamespace$.CodeGuard.Internals
     {
         #region Constructors
         
-        public ThrowOnFirstErrorArg(Expression<Func<T>> argument) : base(argument)
+        public ThrowOnFirstErrorArg(Func<T> argument) : base(argument)
         {
             this.Message = new ThrowMessageHandler<T>(this);
         }

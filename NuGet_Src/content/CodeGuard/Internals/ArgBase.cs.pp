@@ -7,7 +7,7 @@ namespace $rootnamespace$.CodeGuard.Internals
 {
     public abstract class ArgBase<T> : IArg<T>
     {
-        private readonly Expression<Func<T>> _argument;
+        private readonly Func<T> _argument;
         public IMessageHandler<T> Message { get; protected set; }
 
         public abstract IEnumerable<ErrorInfo> Errors { get; }
@@ -18,28 +18,17 @@ namespace $rootnamespace$.CodeGuard.Internals
 
         #region Constructors
 
-        protected ArgBase(Expression<Func<T>> argument)
+        protected ArgBase(Func<T> argument)
         {
             _argument = argument;
 
             this.Value = GetValue(argument);
-            this.Name = new ArgNameExpression<T>(argument);
+            this.Name = new ArgNameFunc<T>(argument);
         }
 
-        private static T GetValue(Expression<Func<T>> argument)
+        private static T GetValue(Func<T> argument)
         {
-            var memberSelector = (MemberExpression) argument.Body;
-            var constantSelector = (ConstantExpression) memberSelector.Expression;
-            object value;
-            if (memberSelector.Member.MemberType == MemberTypes.Property)
-            {
-                value = ((PropertyInfo) memberSelector.Member).GetValue(constantSelector.Value, null);
-            }
-            else
-            {
-                value = ((FieldInfo) memberSelector.Member).GetValue(constantSelector.Value);
-            }
-            return (T)value;
+            return argument();
         }
 
         protected ArgBase(T argument)
