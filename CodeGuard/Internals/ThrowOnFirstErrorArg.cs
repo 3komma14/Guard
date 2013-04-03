@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -7,7 +8,7 @@ namespace Seterlund.CodeGuard.Internals
     {
         #region Constructors
         
-        public ThrowOnFirstErrorArg(Func<T> argument) : base(argument)
+        public ThrowOnFirstErrorArg(Expression<Func<T>> argument) : base(argument)
         {
             this.Message = new ThrowMessageHandler<T>(this);
         }

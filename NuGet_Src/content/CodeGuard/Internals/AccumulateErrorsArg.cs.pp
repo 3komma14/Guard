@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace $rootnamespace$.CodeGuard.Internals
 {
     public class AccumulateErrorsArg<T> : ArgBase<T>
     {
-        public AccumulateErrorsArg(Func<T> argument) : base(argument)
+
+        public AccumulateErrorsArg(Expression<Func<T>> argument) : base(argument)
         {
             this.Message = new SaveMessageHandler<T>(this);
         }

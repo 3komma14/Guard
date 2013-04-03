@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Seterlund.CodeGuard.Internals
 {
     public abstract class ArgBase<T> : IArg<T>
     {
-        private readonly Func<T> _argument;
+        private readonly Expression<Func<T>> _argument;
         public IMessageHandler<T> Message { get; protected set; }
 
         public abstract IEnumerable<ErrorInfo> Errors { get; }
@@ -16,11 +18,28 @@ namespace Seterlund.CodeGuard.Internals
 
         #region Constructors
 
-        protected ArgBase(Func<T> argument)
+        protected ArgBase(Expression<Func<T>> argument)
         {
             _argument = argument;
-            this.Value = argument();
-            this.Name = new ArgNameFunc<T>(argument);
+
+            this.Value = GetValue(argument);
+            this.Name = new ArgNameExpression<T>(argument);
+        }
+
+        private static T GetValue(Expression<Func<T>> argument)
+        {
+            var memberSelector = (MemberExpression) argument.Body;
+            var constantSelector = (ConstantExpression) memberSelector.Expression;
+            object value;
+            if (memberSelector.Member.MemberType == MemberTypes.Property)
+            {
+                value = ((PropertyInfo) memberSelector.Member).GetValue(constantSelector.Value, null);
+            }
+            else
+            {
+                value = ((FieldInfo) memberSelector.Member).GetValue(constantSelector.Value);
+            }
+            return (T)value;
         }
 
         protected ArgBase(T argument)
@@ -52,4 +71,5 @@ namespace Seterlund.CodeGuard.Internals
             return this;
         }
     }
+
 }

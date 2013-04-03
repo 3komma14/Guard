@@ -46,7 +46,9 @@
     <Compile Include="ArrayValidatorExtensions.cs" />
     <Compile Include="ErrorInfo.cs" />
     <Compile Include="Internals\ArgName.cs" />
+    <Compile Include="Internals\ArgNameExpression.cs" />
     <Compile Include="Internals\ArgNameFunc.cs" />
+    <Compile Include="Internals\MemberInfoReader.cs" />
     <Compile Include="NullableValidatorExtensions.cs" />
     <Compile Include="Internals\ArgBase.cs" />
     <Compile Include="Internals\AccumulateErrorsArg.cs" />

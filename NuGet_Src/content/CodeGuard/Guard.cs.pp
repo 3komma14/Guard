@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using $rootnamespace$.CodeGuard.Internals;
 
 namespace $rootnamespace$.CodeGuard
@@ -17,7 +18,7 @@ namespace $rootnamespace$.CodeGuard
         /// <returns>
         /// An ArgumentValidator
         /// </returns>
-        public static IArg<T> That<T>(Func<T> argument)
+        public static IArg<T> That<T>(Expression<Func<T>> argument)
         {
             return new ThrowOnFirstErrorArg<T>(argument);
         }

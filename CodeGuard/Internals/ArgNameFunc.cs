@@ -1,7 +1,4 @@
 using System;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -21,7 +18,7 @@ namespace Seterlund.CodeGuard.Internals
             {
                 if(_nameValue == null)
                 {
-                    _nameValue = GetArgName(_argument);
+                    _nameValue = GetArgumentName();
                 }
                 return _nameValue;
             }
@@ -31,54 +28,11 @@ namespace Seterlund.CodeGuard.Internals
             }
         }
 
-        private static string GetArgName(Func<T> argument)
+        private string GetArgumentName()
         {
-            // get IL code behind the delegate
-            var il = argument.Method.GetMethodBody().GetILAsByteArray();
-            // bytes 2-6 represent the handle
-            var handle = BitConverter.ToInt32(il, 2);
-            // resolve the handle
-            var targetType = argument.Target.GetType();
-
-            var isProperty = argument.Method.IsDefined(typeof (CompilerGeneratedAttribute), true);
-            //if(argument.Method.MemberType == MemberTypes.Property)
-            if(isProperty)
-            {
-                return GetMethodName(targetType, argument.Method, handle);
-            }
-            return GetFieldName(targetType, argument.Method, handle);
-        }
-
-        private static string GetFieldName(Type targetType, MethodInfo method, int handle)
-        {
-            FieldInfo field;
-            if (targetType.IsGenericType)
-            {
-                var genericArguments = method.ReflectedType.GetGenericArguments();
-                field = targetType.Module.ResolveField(handle, genericArguments, null);
-                return field.Name;
-            }
-            field = targetType.Module.ResolveField(handle);
-            return field.Name;
-        }
-
-        private static string GetMethodName(Type targetType, MethodInfo method, int handle)
-        {
-            
-            string result;
-            MethodBase methodBase;
-            if (targetType.IsGenericType)
-            {
-                var genericArguments = method.ReflectedType.GetGenericArguments();
-                methodBase = targetType.Module.ResolveMethod(handle, genericArguments, null);
-                result = methodBase.Name;
-            }
-            else
-            {
-                methodBase = targetType.Module.ResolveMethod(handle);
-                result = methodBase.Name;                
-            }
-            return result.StartsWith("get_") ? result.Substring(4) : result;
+            var memberInfoReader = new MemberInfoReader<T>(_argument);
+            var name = memberInfoReader.GetInfo().Name;
+            return name.StartsWith("get_") ? name.Substring(4) : name;
         }
     }
 }
