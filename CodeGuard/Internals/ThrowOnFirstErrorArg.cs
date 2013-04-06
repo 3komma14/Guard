@@ -4,11 +4,11 @@ using System.Linq.Expressions;
 
 namespace Seterlund.CodeGuard.Internals
 {
-    public class ThrowOnFirstErrorArg<T> : ArgBase<T>
+    public class ThrowOnFirstErrorArg<T> : ArgBaseExpression<T>
     {
         #region Constructors
         
-        public ThrowOnFirstErrorArg(Func<T> argument) : base(argument)
+        public ThrowOnFirstErrorArg(Expression<Func<T>> argument) : base(argument)
         {
             this.Message = new ThrowMessageHandler<T>(this);
         }

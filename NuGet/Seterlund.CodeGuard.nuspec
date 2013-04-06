@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Seterlund.CodeGuard</id>
-    <version>2.2.8</version>
+    <version>2.2.9</version>
     <title>CodeGuard</title>
     <authors>Per Ivar Seterlund</authors>
     <owners>Per Ivar Seterlund</owners>
@@ -16,5 +16,8 @@
 	Supports the ability to get a list of the failed conditions.</description>
     <copyright>Copyright Per Ivar Seterlund (3komma14@gmail.com) 2011-2013</copyright>
     <tags>Argument Guard Validation</tags>
+	<releaseNotes>
+	Going back to using Linq.Expressions due to error when assemblies as instrumented (eg. codecoverage)
+	</releaseNotes>
   </metadata>
 </package>

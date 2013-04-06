@@ -18,7 +18,7 @@ namespace Seterlund.CodeGuard
         /// <returns>
         /// An ArgumentValidator
         /// </returns>
-        public static IArg<T> That<T>(Func<T> argument)
+        public static IArg<T> That<T>(Expression<Func<T>> argument)
         {
             return new AccumulateErrorsArg<T>(argument);
         }

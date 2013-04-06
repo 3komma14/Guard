@@ -4,10 +4,10 @@ using System.Linq.Expressions;
 
 namespace Seterlund.CodeGuard.Internals
 {
-    public class AccumulateErrorsArg<T> : ArgBase<T>
+    public class AccumulateErrorsArg<T> : ArgBaseExpression<T>
     {
 
-        public AccumulateErrorsArg(Func<T> argument) : base(argument)
+        public AccumulateErrorsArg(Expression<Func<T>> argument) : base(argument)
         {
             this.Message = new SaveMessageHandler<T>(this);
         }
