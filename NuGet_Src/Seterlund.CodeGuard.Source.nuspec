@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Seterlund.CodeGuard.Source</id>
-    <version>2.2.9</version>
+    <version>2.3.0</version>
     <title>CodeGuard (Source)</title>
     <authors>Per Ivar Seterlund</authors>
     <owners>Per Ivar Seterlund</owners>
@@ -21,6 +21,6 @@
 	</releaseNotes>
   </metadata>
   <files>
-    <file src="..\NuGet_Src\content\**\*.cs.pp" target="content\CodeGuard" exclude="..NuGet_Src\content\CodeGuard\Properties\**\*.cs.pp;..NuGet_Src\content\CodeGuard\Resources\**\*.*" />
+    <file src="..\NuGet_Src\content\**\*.cs.pp" target="content" exclude="..\NuGet_Src\content\CodeGuard\Properties\*.cs.pp;..\NuGet_Src\content\CodeGuard\Resources\**\*.*" />
   </files>
 </package>
