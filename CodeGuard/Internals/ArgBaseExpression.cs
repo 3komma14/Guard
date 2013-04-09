@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -23,7 +24,7 @@ namespace Seterlund.CodeGuard.Internals
             this.Name = new ArgNameExpression<T>(argument);
         }
 
-        private static T GetValue(Expression<Func<T>> argument)
+        private static T GetValue2(Expression<Func<T>> argument)
         {
             var memberExpression = (MemberExpression) argument.Body;
             var constantExpression = (ConstantExpression) memberExpression.Expression;
@@ -35,6 +36,30 @@ namespace Seterlund.CodeGuard.Internals
             else
             {
                 value = ((FieldInfo) memberExpression.Member).GetValue(constantExpression.Value);
+            }
+            return (T) value;
+        }
+
+
+        private static T GetValue(Expression<Func<T>> argument)
+        {
+            var memberExpression = (MemberExpression) argument.Body;
+            object value;
+            if (memberExpression.Expression.NodeType == ExpressionType.Constant)
+            {
+                var constantExpression = (ConstantExpression)memberExpression.Expression;
+                if (memberExpression.Member.MemberType == MemberTypes.Property)
+                {
+                    value = ((PropertyInfo)memberExpression.Member).GetValue(constantExpression.Value, null);
+                }
+                else
+                {
+                    value = ((FieldInfo)memberExpression.Member).GetValue(constantExpression.Value);
+                }                
+            }
+            else
+            {
+                value = argument.Compile().DynamicInvoke();
             }
             return (T)value;
 
