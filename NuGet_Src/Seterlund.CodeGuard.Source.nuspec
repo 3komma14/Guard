@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Seterlund.CodeGuard.Source</id>
-    <version>2.3.1</version>
+    <version>2.3.2</version>
     <title>CodeGuard (Source)</title>
     <authors>Per Ivar Seterlund</authors>
     <owners>Per Ivar Seterlund</owners>
@@ -17,7 +17,7 @@
     <copyright>Copyright Per Ivar Seterlund (3komma14@gmail.com) 2011-2013</copyright>
     <tags>Argument Guard Validation</tags>
 	<releaseNotes>
-	Fixed errors when trying to check complex expressions
+	Minor fixes
 	</releaseNotes>
   </metadata>
   <files>

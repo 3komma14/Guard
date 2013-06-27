@@ -6,6 +6,7 @@ namespace $rootnamespace$.CodeGuard.Internals
 
         public static implicit operator string(ArgName argName)
         {
+            if (argName == null) return null;
             return argName.Value;
         }
     }
