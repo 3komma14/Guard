@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Seterlund.CodeGuard.Internals;
+using System.Linq;
 
 namespace Seterlund.CodeGuard
 {
@@ -17,7 +19,7 @@ namespace Seterlund.CodeGuard
                 arg.Message.Set(string.Format("Value is not <{0}>", type.Name));
             }
 
-            return arg;            
+            return arg;
         }
 
         /// <summary>
@@ -29,14 +31,14 @@ namespace Seterlund.CodeGuard
             if (default(T).Equals(arg.Value))
             {
                 arg.Message.Set("Value cannot be the default value.");
-               
+
             }
 
             return arg;
         }
 
         /// <summary>
-        /// Is the fucntion true for the argument.
+        /// Is the function true for the argument.
         /// </summary>
         /// <returns></returns>
         public static IArg<T> IsTrue<T>(this IArg<T> arg, Func<T, bool> booleanFunction, string exceptionMessage)
@@ -44,6 +46,16 @@ namespace Seterlund.CodeGuard
             if (!booleanFunction(arg.Value))
             {
                 arg.Message.Set(exceptionMessage);
+            }
+
+            return arg;
+        }
+
+        public static IArg<T> IsOneOf<T>(this IArg<T> arg, IEnumerable<T> collection)
+        {
+            if (!collection.Contains(arg.Value))
+            {
+                arg.Message.Set(string.Format("The value of the parameter is not one of {0}", string.Join(", ", collection)));
             }
 
             return arg;

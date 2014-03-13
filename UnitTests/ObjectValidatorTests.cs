@@ -120,10 +120,31 @@ namespace Seterlund.CodeGuard.UnitTests
             });
         }
 
+        [Test]
+        public void IsOneOf_WhenArgumentIsInCollection_DoesNotThrow()
+        {
+            // Arrange
+            int arg = 1;
+            var data = new int[3] { 1, 2, 3 };
 
-        private class MyBase {}
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsOneOf(data));
+        }
 
-        private class MyClass : MyBase {}
+        [Test]
+        public void IsOneOf_WhenArgumentIsNotInCollection_Throws()
+        {
+            // Arrange
+            int arg = 4;
+            var data = new int[3] { 1, 2, 3 };
+
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsOneOf(data));
+        }
+
+        private class MyBase { }
+
+        private class MyClass : MyBase { }
     }
 
 }
