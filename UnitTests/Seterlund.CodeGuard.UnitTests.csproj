@@ -53,6 +53,7 @@
     <Compile Include="ComparableValidatorTests.cs" />
     <Compile Include="ClassValidatorTests.cs" />
     <Compile Include="ComplexExpressionTests.cs" />
+    <Compile Include="EnumValidatorTests.cs" />
     <Compile Include="NullableValidatorTests.cs" />
     <Compile Include="EnumerableValidatorTests.cs" />
     <Compile Include="GuidValidatorTests.cs" />
