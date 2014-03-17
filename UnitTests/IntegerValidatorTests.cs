@@ -107,5 +107,77 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act/Assert
             Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsPrime());
         }
+
+        [TestCase(-10)]
+        [TestCase(-1)]
+        [TestCase(0)]
+        public void IsPositive_ArgumentIsNotPositive_Throws(int arg)
+        {
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsPositive());
+        }
+
+        [TestCase(-10)]
+        [TestCase(-1)]
+        [TestCase(0)]
+        public void IsPositive_ArgumentIsNotPositive_Throws(long arg)
+        {
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsPositive());
+        }
+
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(20)]
+        public void IsPositive_ArgumentIsPositive_DoesNotThrow(int arg)
+        {
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsPositive());
+        }
+
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(20)]
+        public void IsPositive_ArgumentIsPositive_DoesNotThrow(long arg)
+        {
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsPositive());
+        }
+
+        [TestCase(10)]
+        [TestCase(1)]
+        [TestCase(0)]
+        public void IsPositive_ArgumentIsNotNegative_Throws(int arg)
+        {
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsNegative());
+        }
+
+        [TestCase(10)]
+        [TestCase(1)]
+        [TestCase(0)]
+        public void IsPositive_ArgumentIsNotNegative_Throws(long arg)
+        {
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsNegative());
+        }
+
+        [TestCase(-2)]
+        [TestCase(-3)]
+        [TestCase(-20)]
+        public void IsPositive_ArgumentIsNegative_DoesNotThrow(int arg)
+        {
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsNegative());
+        }
+
+        [TestCase(-2)]
+        [TestCase(-3)]
+        [TestCase(-20)]
+        public void IsPositive_ArgumentIsNegative_DoesNotThrow(long arg)
+        {
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsNegative());
+        }
     }
 }

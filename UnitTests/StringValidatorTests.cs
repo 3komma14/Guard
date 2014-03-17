@@ -60,7 +60,7 @@ namespace Seterlund.CodeGuard.UnitTests
             // Act
             ArgumentNullException exception =
                 GetException<ArgumentNullException>(() => Guard.That(() => arg).IsNotNull());
-                
+
             // Assert
             AssertArgumentNullException(exception, "arg", "Value cannot be null.\r\nParameter name: arg");
         }
@@ -193,7 +193,7 @@ namespace Seterlund.CodeGuard.UnitTests
         {
             // Arrange
             var text = "0123";
-            
+
             // Act/Assert
             Assert.Throws<ArgumentException>(() => Guard.That(() => text).Length(10));
         }
@@ -213,7 +213,7 @@ namespace Seterlund.CodeGuard.UnitTests
         {
             // Arrange
             var text = "Some string";
-            
+
             // Act/Assert
             Assert.Throws<ArgumentException>(() => Guard.That(() => text).StartsWith("Start"));
         }
@@ -233,7 +233,7 @@ namespace Seterlund.CodeGuard.UnitTests
         {
             // Arrange
             var text = "The end is near";
-            
+
             // Act/Assert
             Assert.Throws<ArgumentException>(() => Guard.That(() => text).EndsWith("Start"));
         }
@@ -258,6 +258,39 @@ namespace Seterlund.CodeGuard.UnitTests
 
             // Act/Assert
             Assert.DoesNotThrow(() => Guard.That(() => text).IsMatch(pattern));
+        }
+
+        [Test]
+        public void NotNullOrWhiteSpace_WhenStringArgumentIsNull_Throws()
+        {
+
+            // Arrange
+            string arg = null;
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsNotNullOrWhiteSpace());
+        }
+
+        [Test]
+        public void NotNullOrWhiteSpace_WhenStringArgumentIsWhiteSpace_Throws()
+        {
+
+            // Arrange
+            string arg = " ";
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsNotNullOrWhiteSpace());
+        }
+
+        [Test]
+        public void NotNullOrWhiteSpace_WhenStringArgumentIsNotNullOrWhitespace_DoesNotThrow()
+        {
+
+            // Arrange
+            string arg = "Test";
+
+            // Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg).IsNotNullOrWhiteSpace());
         }
 
     }

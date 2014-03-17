@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CollectionValidatorExtensions.cs" />
     <Compile Include="ArrayValidatorExtensions.cs" />
+    <Compile Include="EnumValidatorExtensions.cs" />
     <Compile Include="ErrorInfo.cs" />
     <Compile Include="Internals\ArgName.cs" />
     <Compile Include="Internals\ArgNameExpression.cs" />

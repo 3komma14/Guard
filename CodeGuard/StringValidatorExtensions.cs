@@ -76,6 +76,14 @@ namespace Seterlund.CodeGuard
             return arg;
         }
 
+        public static IArg<string> IsNotNullOrWhiteSpace(this IArg<string> arg)
+        {
+            if (string.IsNullOrWhiteSpace(arg.Value))
+            {
+                arg.Message.Set("String is null or whitespace");
+            }
 
+            return arg;
+        }
     }
 }
