@@ -47,7 +47,7 @@ namespace $rootnamespace$.CodeGuard
 
         public static IArg<int> IsPrime(this IArg<int> arg)
         {
-            if(!MathUtil.IsPrime(arg.Value))
+            if (!MathUtil.IsPrime(arg.Value))
             {
                 arg.Message.Set("Not a prime number");
             }
@@ -57,9 +57,49 @@ namespace $rootnamespace$.CodeGuard
 
         public static IArg<long> IsPrime(this IArg<long> arg)
         {
-            if(!MathUtil.IsPrime(arg.Value))
+            if (!MathUtil.IsPrime(arg.Value))
             {
                 arg.Message.Set("Not a prime number");
+            }
+
+            return arg;
+        }
+
+        public static IArg<long> IsPositive(this IArg<long> arg)
+        {
+            if (arg.Value <= 0)
+            {
+                arg.Message.Set("Is not positive");
+            }
+
+            return arg;
+        }
+
+        public static IArg<int> IsPositive(this IArg<int> arg)
+        {
+            if (arg.Value <= 0)
+            {
+                arg.Message.Set("Is not positive");
+            }
+
+            return arg;
+        }
+
+        public static IArg<long> IsNegative(this IArg<long> arg)
+        {
+            if (arg.Value >= 0)
+            {
+                arg.Message.Set("Is not negative");
+            }
+
+            return arg;
+        }
+
+        public static IArg<int> IsNegative(this IArg<int> arg)
+        {
+            if (arg.Value >= 0)
+            {
+                arg.Message.Set("Is not negative");
             }
 
             return arg;

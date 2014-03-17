@@ -13,7 +13,7 @@ echo ------------------------------ Build package and upload it ----------------
 
 pushd NuGet
 ..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe pack Seterlund.CodeGuard.nuspec
-..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe push Seterlund.CodeGuard.2.3.2.nupkg
+..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe push Seterlund.CodeGuard.2.3.4.nupkg
 popd
 
 
@@ -21,5 +21,5 @@ echo ------------------------------Source files ------------------------------
 pushd NuGet_Src
 powershell -file replace.ps1
 ..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe pack Seterlund.CodeGuard.Source.nuspec
-..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe push Seterlund.CodeGuard.Source.2.3.2.nupkg
+..\packages\NuGet.CommandLine.2.2.1\tools\NuGet.exe push Seterlund.CodeGuard.Source.2.3.4.nupkg
 popd

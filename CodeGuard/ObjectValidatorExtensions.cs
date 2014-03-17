@@ -55,7 +55,7 @@ namespace Seterlund.CodeGuard
         {
             if (!collection.Contains(arg.Value))
             {
-                arg.Message.Set(string.Format("The value of the parameter is not one of {0}", string.Join(", ", collection)));
+                arg.Message.Set(string.Format("The value of the parameter is not one of {0}", string.Join(", ", collection.Select(x => x.ToString()).ToArray())));
             }
 
             return arg;

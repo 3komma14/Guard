@@ -76,6 +76,14 @@ namespace $rootnamespace$.CodeGuard
             return arg;
         }
 
+        public static IArg<string> IsNotNullOrWhiteSpace(this IArg<string> arg)
+        {
+            if (arg.Value.IsNullOrWhiteSpace())
+            {
+                arg.Message.Set("String is null or whitespace");
+            }
 
+            return arg;
+        }
     }
 }

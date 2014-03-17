@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Seterlund.CodeGuard.Internals;
+using $rootnamespace$.CodeGuard.Internals;
 
-namespace Seterlund.CodeGuard
+namespace $rootnamespace$.CodeGuard
 {
     public static class EnumValidatorExtensions
     {

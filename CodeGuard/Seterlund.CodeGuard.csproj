@@ -50,6 +50,8 @@
     <Compile Include="Internals\ArgNameExpression.cs" />
     <Compile Include="Internals\ArgNameFunc.cs" />
     <Compile Include="Internals\ArgBaseExpression.cs" />
+    <Compile Include="Internals\StringExtensions.cs" />
+    <Compile Include="Internals\EnumExtensions.cs" />
     <Compile Include="Internals\MemberInfoReader.cs" />
     <Compile Include="NullableValidatorExtensions.cs" />
     <Compile Include="Internals\ArgBase.cs" />
