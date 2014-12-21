@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace Seterlund.CodeGuard
 {
@@ -6,6 +7,10 @@ namespace Seterlund.CodeGuard
     {
         public static IArg<Guid> IsNotEmpty(this IArg<Guid> arg)
         {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Ensures(Contract.Result<IArg<Guid>>() != null);
+#endif
             if (Guid.Empty.Equals(arg.Value))
             {
                 arg.Message.Set("Guid is empty");

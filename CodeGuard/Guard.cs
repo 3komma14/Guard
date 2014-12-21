@@ -1,6 +1,7 @@
 using System;
 using System.Linq.Expressions;
 using Seterlund.CodeGuard.Internals;
+using System.Diagnostics.Contracts;
 
 namespace Seterlund.CodeGuard
 {
@@ -20,6 +21,9 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static IArg<T> That<T>(Expression<Func<T>> argument)
         {
+#if !NET35
+            Contract.Requires(argument != null);
+#endif
             return new ThrowOnFirstErrorArg<T>(argument);
         }
 
@@ -36,6 +40,10 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static IArg<T> That<T>(T argument, string argumentName = "")
         {
+#if !NET35
+            Contract.Requires(argument != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
             if (string.IsNullOrEmpty(argumentName))
             {
                 return new ThrowOnFirstErrorArg<T>(argument);

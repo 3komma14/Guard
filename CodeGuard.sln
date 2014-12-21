@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard", "CodeGuard\Seterlund.CodeGuard.csproj", "{534D625B-C310-4A98-8E05-1806E7AE389F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard.UnitTests", "UnitTests\Seterlund.CodeGuard.UnitTests.csproj", "{B7F516F7-E137-4922-B119-C87FFCDA8BBB}"
@@ -21,8 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FF11F4
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = CodeGuard.vsmdi
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = 9f50192f-59e9-4b4e-b3eb-19272024fdac
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,5 +42,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CodeGuard.vsmdi
 	EndGlobalSection
 EndGlobal

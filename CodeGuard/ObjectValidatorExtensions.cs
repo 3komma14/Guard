@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Seterlund.CodeGuard.Internals;
 using System.Linq;
+using System.Diagnostics.Contracts;
 
 namespace Seterlund.CodeGuard
 {
@@ -13,6 +14,11 @@ namespace Seterlund.CodeGuard
         /// <returns></returns>
         public static IArg<T> Is<T>(this IArg<T> arg, Type type)
         {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Requires(type != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
             var isType = type.IsInstanceOfType(arg.Value);
             if (!isType)
             {
@@ -28,6 +34,10 @@ namespace Seterlund.CodeGuard
         /// <returns></returns>
         public static IArg<T> IsNotDefault<T>(this IArg<T> arg)
         {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
             if (default(T).Equals(arg.Value))
             {
                 arg.Message.Set("Value cannot be the default value.");
@@ -43,6 +53,11 @@ namespace Seterlund.CodeGuard
         /// <returns></returns>
         public static IArg<T> IsTrue<T>(this IArg<T> arg, Func<T, bool> booleanFunction, string exceptionMessage)
         {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Requires(booleanFunction != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
             if (!booleanFunction(arg.Value))
             {
                 arg.Message.Set(exceptionMessage);
@@ -53,6 +68,11 @@ namespace Seterlund.CodeGuard
 
         public static IArg<T> IsOneOf<T>(this IArg<T> arg, IEnumerable<T> collection)
         {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Requires(collection != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
             if (!collection.Contains(arg.Value))
             {
                 arg.Message.Set(string.Format("The value of the parameter is not one of {0}", string.Join(", ", collection.Select(x => x.ToString()).ToArray())));

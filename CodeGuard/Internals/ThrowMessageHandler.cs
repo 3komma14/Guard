@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -8,6 +9,9 @@ namespace Seterlund.CodeGuard.Internals
 
         public ThrowMessageHandler(IArg<T> arg)
         {
+#if !NET35    
+            Contract.Requires(arg != null);
+#endif
             _arg = arg;
         }
 
