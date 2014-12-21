@@ -1,16 +1,16 @@
 echo ------------------------------ .Net 4.5 ------------------------------
 msbuild CodeGuard\Seterlund.CodeGuard.csproj /t:Clean;ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.5
-copy CodeGuard\bin\Release\Seterlund.CodeGuard.dll NuGet\lib\net45\
-copy CodeGuard\bin\Release\CodeContracts\Seterlund.CodeGuard.CodeContracts.dll NuGet\lib\net45\
+xcopy CodeGuard\bin\Release\Seterlund.CodeGuard.dll NuGet\lib\net45\ /y
+xcopy CodeGuard\bin\Release\CodeContracts\Seterlund.CodeGuard.Contracts.dll NuGet\lib\net45\ /y
 
 echo ------------------------------ .Net 4.0 ------------------------------
 msbuild CodeGuard\Seterlund.CodeGuard.csproj /t:Clean;ReBuild /p:Configuration=Release;TargetFrameworkVersion=v4.0
-copy CodeGuard\bin\Release\Seterlund.CodeGuard.dll NuGet\lib\net40\
-copy CodeGuard\bin\Release\CodeContracts\Seterlund.CodeGuard.CodeContracts.dll NuGet\lib\net40\
+xcopy CodeGuard\bin\Release\Seterlund.CodeGuard.dll NuGet\lib\net40\ /y
+xcopy CodeGuard\bin\Release\CodeContracts\Seterlund.CodeGuard.Contracts.dll NuGet\lib\net40\ /y
 
 echo ------------------------------ .Net 3.5 ------------------------------
 msbuild CodeGuard\Seterlund.CodeGuard.csproj /t:Clean;ReBuild /p:Configuration=Release;TargetFrameworkVersion=v3.5 /p:DefineConstants=NET35
-copy CodeGuard\bin\Release\Seterlund.CodeGuard.dll NuGet\lib\net35\
+xcopy CodeGuard\bin\Release\Seterlund.CodeGuard.dll NuGet\lib\net35\ /y
 
 
 echo ------------------------------ Build package and upload it ------------------------------
