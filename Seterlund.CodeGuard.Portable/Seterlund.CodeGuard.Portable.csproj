@@ -8,8 +8,8 @@
     <ProjectGuid>{E274FC37-9EDF-43AE-A657-F817C5E0182C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Seterlund.CodeGuard.Portable</RootNamespace>
-    <AssemblyName>Seterlund.CodeGuard.Portable</AssemblyName>
+    <RootNamespace>Seterlund.CodeGuard</RootNamespace>
+    <AssemblyName>Seterlund.CodeGuard</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
