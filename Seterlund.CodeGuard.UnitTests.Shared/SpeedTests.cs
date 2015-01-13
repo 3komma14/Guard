@@ -16,9 +16,9 @@ namespace Seterlund.CodeGuard.UnitTests
             watch.Start();
 
             var start = DateTime.Now;
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 20000; i+=2)
             {
-                //arg = i;
+                arg = i;
                 Guard.That(() => arg).IsEven();
             }
             var end = DateTime.Now;
@@ -40,8 +40,9 @@ namespace Seterlund.CodeGuard.UnitTests
             watch.Start();
 
             var start = DateTime.Now;
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 20000; i+=2)
             {
+                arg = 0;
                 Guard.That(arg).IsEven();
             }
             var end = DateTime.Now;

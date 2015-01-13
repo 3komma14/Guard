@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d51add7b-4b7d-4898-803f-67a8a9cd373c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Seterlund.CodeGuard.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ArrayValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BooleanValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClassValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CollectionValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ComparableValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumerableValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ErrorInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Guard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GuidValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IArg.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IntegerValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\AccumulateErrorsArg.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\ArgBaseExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\ArgName.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\ArgNameExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\EnumExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\ErrorHandlerBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\IMessageHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\MathUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\SaveMessageHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\ThrowMessageHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internals\ThrowOnFirstErrorArg.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NullableValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\GlobalAssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringValidatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validate.cs" />
+  </ItemGroup>
+</Project>

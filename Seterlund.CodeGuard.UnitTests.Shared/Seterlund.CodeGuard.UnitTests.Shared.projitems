@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a27e6e1c-0266-4761-b459-c1ff94df5abb</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Seterlund.CodeGuard.UnitTests.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ArrayValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BaseTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BooleanValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClassValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ComparableValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ComplexExpressionTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumerableValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnumValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GuardTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GuidValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IntegerValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NullableValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReflectionTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpeedTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringValidatorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValidateTests.cs" />
+  </ItemGroup>
+</Project>

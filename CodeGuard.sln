@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard", "CodeGuard\Seterlund.CodeGuard.csproj", "{534D625B-C310-4A98-8E05-1806E7AE389F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard.UnitTests", "UnitTests\Seterlund.CodeGuard.UnitTests.csproj", "{B7F516F7-E137-4922-B119-C87FFCDA8BBB}"
@@ -20,9 +22,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FF11F4
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Seterlund.CodeGuard.Shared", "Seterlund.CodeGuard.Shared\Seterlund.CodeGuard.Shared.shproj", "{D51ADD7B-4B7D-4898-803F-67A8A9CD373C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard.Portable", "Seterlund.CodeGuard.Portable\Seterlund.CodeGuard.Portable.csproj", "{E274FC37-9EDF-43AE-A657-F817C5E0182C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Seterlund.CodeGuard.UnitTests.Shared", "Seterlund.CodeGuard.UnitTests.Shared\Seterlund.CodeGuard.UnitTests.Shared.shproj", "{A27E6E1C-0266-4761-B459-C1FF94DF5ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard.UnitTests.Portable", "Seterlund.CodeGuard.UnitTests.Portable\Seterlund.CodeGuard.UnitTests.Portable.csproj", "{D324F1DF-C516-435E-9673-AB1F5E3B8171}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{7E9E9E0A-D6F4-437D-94A0-CE139421C4BD}"
+EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = CodeGuard.vsmdi
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Seterlund.CodeGuard.Shared\Seterlund.CodeGuard.Shared.projitems*{e274fc37-9edf-43ae-a657-f817c5e0182c}*SharedItemsImports = 4
+		Seterlund.CodeGuard.Shared\Seterlund.CodeGuard.Shared.projitems*{534d625b-c310-4a98-8e05-1806e7ae389f}*SharedItemsImports = 4
+		Seterlund.CodeGuard.UnitTests.Shared\Seterlund.CodeGuard.UnitTests.Shared.projitems*{b7f516f7-e137-4922-b119-c87ffcda8bbb}*SharedItemsImports = 4
+		Seterlund.CodeGuard.UnitTests.Shared\Seterlund.CodeGuard.UnitTests.Shared.projitems*{d324f1df-c516-435e-9673-ab1f5e3b8171}*SharedItemsImports = 4
+		Seterlund.CodeGuard.Shared\Seterlund.CodeGuard.Shared.projitems*{d51add7b-4b7d-4898-803f-67a8a9cd373c}*SharedItemsImports = 13
+		Seterlund.CodeGuard.UnitTests.Shared\Seterlund.CodeGuard.UnitTests.Shared.projitems*{a27e6e1c-0266-4761-b459-c1ff94df5abb}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,8 +54,24 @@ Global
 		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E274FC37-9EDF-43AE-A657-F817C5E0182C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E274FC37-9EDF-43AE-A657-F817C5E0182C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E274FC37-9EDF-43AE-A657-F817C5E0182C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E274FC37-9EDF-43AE-A657-F817C5E0182C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D324F1DF-C516-435E-9673-AB1F5E3B8171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D324F1DF-C516-435E-9673-AB1F5E3B8171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D324F1DF-C516-435E-9673-AB1F5E3B8171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D324F1DF-C516-435E-9673-AB1F5E3B8171}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7F516F7-E137-4922-B119-C87FFCDA8BBB} = {7E9E9E0A-D6F4-437D-94A0-CE139421C4BD}
+		{A27E6E1C-0266-4761-B459-C1FF94DF5ABB} = {7E9E9E0A-D6F4-437D-94A0-CE139421C4BD}
+		{D324F1DF-C516-435E-9673-AB1F5E3B8171} = {7E9E9E0A-D6F4-437D-94A0-CE139421C4BD}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CodeGuard.vsmdi
 	EndGlobalSection
 EndGlobal

@@ -6,14 +6,15 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B7F516F7-E137-4922-B119-C87FFCDA8BBB}</ProjectGuid>
+    <ProjectGuid>{D324F1DF-C516-435E-9673-AB1F5E3B8171}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Seterlund.CodeGuard.UnitTests</RootNamespace>
-    <AssemblyName>Seterlund.CodeGuard.UnitTests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Seterlund.CodeGuard.UnitTests.Portable</RootNamespace>
+    <AssemblyName>Seterlund.CodeGuard.UnitTests.Portable</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.core">
@@ -66,13 +69,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeGuard\Seterlund.CodeGuard.csproj">
-      <Project>{534D625B-C310-4A98-8E05-1806E7AE389F}</Project>
-      <Name>Seterlund.CodeGuard</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Seterlund.CodeGuard.Portable\Seterlund.CodeGuard.Portable.csproj">
+      <Project>{e274fc37-9edf-43ae-a657-f817c5e0182c}</Project>
+      <Name>Seterlund.CodeGuard.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Seterlund.CodeGuard.UnitTests.Shared\Seterlund.CodeGuard.UnitTests.Shared.projitems" Label="Shared" Condition="Exists('..\Seterlund.CodeGuard.UnitTests.Shared\Seterlund.CodeGuard.UnitTests.Shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

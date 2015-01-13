@@ -64,10 +64,15 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsOdd_ArgumentIsEven_Throws()
         {
             // Arrange
-            int arg = 2;
+            int hallo = 2;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsOdd());
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => hallo).IsOdd());
+
+            string expected = @"Specified argument was out of the range of valid values.
+Parameter name: hallo";
+
+            Assert.AreEqual(expected, exception.Message);
         }
 
         [Test]
