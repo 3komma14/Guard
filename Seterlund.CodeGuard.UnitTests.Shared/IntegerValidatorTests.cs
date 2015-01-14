@@ -64,10 +64,10 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsOdd_ArgumentIsEven_Throws()
         {
             // Arrange
-            int arg = 2;
+            int hallo = 2;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsOdd());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => hallo).IsOdd());
         }
 
         [Test]

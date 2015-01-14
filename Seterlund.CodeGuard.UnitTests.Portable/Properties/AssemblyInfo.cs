@@ -1,16 +1,16 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CodeGuard")]
-[assembly: AssemblyDescription("Guard and Validator library.\nExample: Guard.That(arg1).IsNotNull().GreaterThan(100);\nThrows an exception if conditions are not met.\nSupports the ability to get a list of the failed conditions.")]
+[assembly: AssemblyTitle("UnitTests")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Per Ivar $rootnamespace$.)]
-[assembly: AssemblyProduct("CodeGuard")]
-[assembly: AssemblyCopyright("Copyright Per Ivar $rootnamespace$.�  2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("UnitTests")]
+[assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fff91309-52b0-4bd4-8099-56d798b14116")]
+[assembly: Guid("444775cc-f665-47a8-8779-b0ccb3aae338")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,6 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.3.4.*")]
-[assembly: AssemblyFileVersion("2.3.4.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
