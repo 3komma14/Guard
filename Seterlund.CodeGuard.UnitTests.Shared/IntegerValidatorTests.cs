@@ -67,12 +67,7 @@ namespace Seterlund.CodeGuard.UnitTests
             int hallo = 2;
 
             // Act/Assert
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => hallo).IsOdd());
-
-            string expected = @"Specified argument was out of the range of valid values.
-Parameter name: hallo";
-
-            Assert.AreEqual(expected, exception.Message);
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => hallo).IsOdd());
         }
 
         [Test]
