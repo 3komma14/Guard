@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -9,7 +10,7 @@ namespace Seterlund.CodeGuard.Internals
     {
         private readonly Func<T> _argument;
         public IMessageHandler<T> Message { get; protected set; }
-
+        
         public abstract IEnumerable<ErrorInfo> Errors { get; }
 
         public T Value { get; protected set; }
@@ -51,6 +52,10 @@ namespace Seterlund.CodeGuard.Internals
         /// <returns></returns>
         public IArg<T> Is<TType>()
         {
+
+#if !NET35            
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
             var isType = this.Value is TType;
             if (!isType)
             {

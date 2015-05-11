@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics.Contracts;
 
 namespace Seterlund.CodeGuard
 {
@@ -6,7 +7,12 @@ namespace Seterlund.CodeGuard
     {
         public static IArg<ICollection> IsNotEmpty(this IArg<ICollection> arg)
         {
-            if (arg.Value.Count > 0)
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Ensures(Contract.Result<IArg<ICollection>>() != null);
+#endif
+            var value = arg.Value;
+            if (value == null || value.Count > 0)
             {
                 arg.Message.Set("Collection is empty");
             }

@@ -140,22 +140,7 @@ namespace Seterlund.CodeGuard.Internals
 
         private byte[] GetMethodBodyIlByteArray()
         {
-            //AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += new ResolveEventHandler(CurrentDomain_ReflectionOnlyAssemblyResolve);
-
-            //foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-            //{
-            //    Debug.WriteLine(assembly.FullName);
-            //    Console.WriteLine(assembly.FullName);
-            //    //Assembly.ReflectionOnlyLoad(assembly.FullName);
-            //}
-            
             var methodBody = _arg.Method.GetMethodBody();
-
-            if (methodBody == null)
-            {
-                throw new InvalidOperationException("Unable to get method body for expression");
-            }
-
             return methodBody.GetILAsByteArray();
         }
 

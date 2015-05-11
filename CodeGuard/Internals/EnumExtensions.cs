@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -16,6 +17,11 @@ namespace Seterlund.CodeGuard.Internals
         /// <returns>True if the flag is set. Otherwise false.</returns>
         public static bool HasFlag(this Enum variable, Enum value)
         {
+#if !NET35    
+            Contract.Requires(variable != null);
+            Contract.Requires(value != null);
+#endif
+
             // check if from the same type.
             if (variable.GetType() != value.GetType())
             {

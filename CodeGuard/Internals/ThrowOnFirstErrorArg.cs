@@ -28,7 +28,7 @@ namespace Seterlund.CodeGuard.Internals
 
         public override IEnumerable<ErrorInfo> Errors
         {
-            get { return null; }
+            get { return new ErrorInfo[0]; }
         }
     }
 }
