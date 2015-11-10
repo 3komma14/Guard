@@ -81,7 +81,7 @@ namespace Seterlund.CodeGuard.UnitTests
         }
 
         [Test]
-        public void IsNotDefault_WhenArgumentIsDefault_Throws()
+        public void IsNotDefault_WhenArgumentIsValueTypeAndValueIsDefault_Throws()
         {
             // Arrange
             int arg1 = default(int);
@@ -95,10 +95,37 @@ namespace Seterlund.CodeGuard.UnitTests
         }
 
         [Test]
-        public void IsNotDefault_WhenArgumentIsNotDefault_DoesNotThrow()
+        public void IsNotDefault_WhenArgumentIsValueTypeAndValueIsNotDefault_DoesNotThrow()
         {
             // Arrange
             int arg1 = default(int) + 1;
+
+            // Act/Assert
+            Assert.DoesNotThrow(() =>
+            {
+                Guard.That(() => arg1).IsNotDefault();
+            });
+        }
+
+        [Test]
+        public void IsNotDefault_WhenArgumentIsReferenceTypeAndValueIsDefault_Throws()
+        {
+            // Arrange
+            object arg1 = null;
+
+            // Act
+            ArgumentException exception =
+                GetException<ArgumentException>(() => Guard.That(() => arg1).IsNotDefault());
+
+            // Assert
+            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
+        }
+
+        [Test]
+        public void IsNotDefault_WhenArgumentIsReferenceTypeAndValueIsNotDefault_DoesNotThrow()
+        {
+            // Arrange
+            object arg1 = new object();
 
             // Act/Assert
             Assert.DoesNotThrow(() =>

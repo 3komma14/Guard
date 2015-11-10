@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Seterlund.CodeGuard.Internals;
 using System.Linq;
 using System.Diagnostics.Contracts;
 
@@ -38,10 +37,20 @@ namespace Seterlund.CodeGuard
             Contract.Requires(arg != null);
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
 #endif
-            if (default(T).Equals(arg.Value))
+            T defautlValue = default(T);
+            if (defautlValue == null)
             {
-                arg.Message.Set("Value cannot be the default value.");
-
+                if (arg.Value == null)
+                {
+                    arg.Message.Set("Value cannot be the default value.");
+                }
+            }
+            else
+            {
+                if (default(T).Equals(arg.Value))
+                {
+                    arg.Message.Set("Value cannot be the default value.");
+                }
             }
 
             return arg;
