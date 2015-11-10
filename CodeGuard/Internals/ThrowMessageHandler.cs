@@ -18,7 +18,7 @@ namespace Seterlund.CodeGuard.Internals
 
         public void Set(string message)
         {
-            if (string.IsNullOrEmpty(_arg.Name))
+            if (!_arg.HasName)
             {
                 throw new ArgumentException(message);
             }
@@ -28,7 +28,7 @@ namespace Seterlund.CodeGuard.Internals
 
         public void SetArgumentNull()
         {
-            if (string.IsNullOrEmpty(_arg.Name))
+            if (!_arg.HasName)
             {
                 throw new ArgumentNullException();
             }
@@ -38,7 +38,7 @@ namespace Seterlund.CodeGuard.Internals
 
         public void SetArgumentOutRange()
         {
-            if (string.IsNullOrEmpty(_arg.Name))
+            if (!_arg.HasName)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -48,7 +48,7 @@ namespace Seterlund.CodeGuard.Internals
 
         public void SetArgumentOutRange(string message)
         {
-            if (string.IsNullOrEmpty(_arg.Name))
+            if (!_arg.HasName)
             {
                 throw new ArgumentOutOfRangeException(message, (Exception)null);
             }

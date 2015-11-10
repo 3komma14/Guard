@@ -17,7 +17,7 @@ namespace Seterlund.CodeGuard.Exceptions
 
         private static ArgumentOutOfRangeException CreateException<T>(IArg<T> arg, string message)
         {
-            if (string.IsNullOrEmpty(arg.Name))
+            if (!arg.HasName)
             {
                 return new ArgumentOutOfRangeException(message, (Exception) null);
             }

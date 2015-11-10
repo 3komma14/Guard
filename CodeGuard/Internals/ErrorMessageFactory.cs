@@ -6,8 +6,8 @@ namespace Seterlund.CodeGuard.Internals
     {
 
         public static string OutOfRange<T>(IArg<T> arg, T min, T max)
-        {            
-            if (string.IsNullOrEmpty(arg.Name))
+        {
+            if (!arg.HasName)
             {
                 return string.Format("The value '{0}' is not in its allowed range of '{1}' to '{2}'", arg.Value, min, max);                
             }
@@ -15,8 +15,8 @@ namespace Seterlund.CodeGuard.Internals
         }
 
         public static string LargerThan<T>(IArg<T> arg, T max)
-        {            
-            if (string.IsNullOrEmpty(arg.Name))
+        {
+            if (!arg.HasName)
             {
                 return string.Format("The value '{0}' is larger than '{1}'", arg.Value, max);                
             }
@@ -24,8 +24,8 @@ namespace Seterlund.CodeGuard.Internals
         }
 
         public static string LessThan<T>(IArg<T> arg, T min)
-        {            
-            if (string.IsNullOrEmpty(arg.Name))
+        {
+            if (!arg.HasName)
             {
                 return string.Format("The value '{0}' is less than '{1}'", arg.Value, min);                
             }

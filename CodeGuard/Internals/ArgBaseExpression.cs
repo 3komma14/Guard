@@ -17,6 +17,11 @@ namespace Seterlund.CodeGuard.Internals
 
         public ArgName Name { get; private set; }
 
+        public bool HasName
+        {
+            get { return !string.IsNullOrEmpty(Name); }
+        }
+
         #region Constructors
 
         protected ArgBaseExpression(Expression<Func<T>> argument)

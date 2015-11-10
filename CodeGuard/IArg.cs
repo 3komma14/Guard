@@ -13,6 +13,7 @@ namespace Seterlund.CodeGuard
     {
         T Value { get; }
         ArgName Name { get; }
+        bool HasName { get; }
         IMessageHandler<T> Message { get; }
         IEnumerable<ErrorInfo> Errors { get; }
     }
@@ -41,6 +42,15 @@ namespace Seterlund.CodeGuard
                 throw new NotImplementedException();
             }
         }
+
+        public bool HasName
+        {
+            get
+            {
+                throw new NotImplementedException();                
+            }
+        }
+
         public IMessageHandler<T> Message
         {
             get
