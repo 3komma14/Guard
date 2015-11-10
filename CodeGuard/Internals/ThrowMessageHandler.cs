@@ -46,37 +46,32 @@ namespace Seterlund.CodeGuard.Internals
             throw new ArgumentOutOfRangeException(_arg.Name);
         }
 
-        public void SetArgumentOutRange(T min, T max)
+        public void SetArgumentOutRange(string message)
         {
-            var message = ErrorMessageFactory.OutOfRange(_arg, min, max);
             if (string.IsNullOrEmpty(_arg.Name))
-            {                   
+            {
                 throw new ArgumentOutOfRangeException(message, (Exception)null);
             }
 
             throw new ArgumentOutOfRangeException(_arg.Name, _arg.Value, message);
+        }
+
+        public void SetArgumentOutRange(T min, T max)
+        {
+            var message = ErrorMessageFactory.OutOfRange(_arg, min, max);
+            SetArgumentOutRange(message);        
         }
 
         public void SetArgumentLessThan(T min)
         {
             var message = ErrorMessageFactory.LessThan(_arg, min);
-            if (string.IsNullOrEmpty(_arg.Name))
-            {
-                throw new ArgumentOutOfRangeException(message, (Exception)null);
-            }
-
-            throw new ArgumentOutOfRangeException(_arg.Name, _arg.Value, message);
+            SetArgumentOutRange(message);
         }
 
         public void SetArgumentLargerThan(T max)
         {
             var message = ErrorMessageFactory.LessThan(_arg, max);
-            if (string.IsNullOrEmpty(_arg.Name))
-            {
-                throw new ArgumentOutOfRangeException(message, (Exception)null);
-            }
-
-            throw new ArgumentOutOfRangeException(_arg.Name, _arg.Value, message);
+            SetArgumentOutRange(message);
         }
 
         public void SetArgumentNotEqual(T expected)

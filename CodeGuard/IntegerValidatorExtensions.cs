@@ -15,7 +15,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (!MathUtil.IsOdd(arg.Value))
             {
-                arg.Message.SetArgumentOutRange();
+                var message = ErrorMessageFactory.NotOddNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -29,7 +30,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (!MathUtil.IsOdd(arg.Value))
             {
-                arg.Message.SetArgumentOutRange();
+                var message = ErrorMessageFactory.NotOddNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -43,7 +45,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (!MathUtil.IsEven(arg.Value))
             {
-                arg.Message.SetArgumentOutRange();
+                var message = ErrorMessageFactory.NotEvenNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -57,7 +60,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (!MathUtil.IsEven(arg.Value))
             {
-                arg.Message.SetArgumentOutRange();
+                var message = ErrorMessageFactory.NotEvenNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -71,7 +75,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (!MathUtil.IsPrime(arg.Value))
             {
-                arg.Message.Set("Not a prime number");
+                var message = ErrorMessageFactory.NotPrimeNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -85,7 +90,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (!MathUtil.IsPrime(arg.Value))
             {
-                arg.Message.Set("Not a prime number");
+                var message = ErrorMessageFactory.NotPrimeNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -99,7 +105,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (arg.Value <= 0)
             {
-                arg.Message.Set("Is not positive");
+                var message = ErrorMessageFactory.NotPositiveNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -113,7 +120,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (arg.Value <= 0)
             {
-                arg.Message.Set("Is not positive");
+                var message = ErrorMessageFactory.NotPositiveNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -127,7 +135,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (arg.Value >= 0)
             {
-                arg.Message.Set("Is not negative");
+                var message = ErrorMessageFactory.NotNegativeNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;
@@ -141,7 +150,8 @@ namespace Seterlund.CodeGuard
 #endif
             if (arg.Value >= 0)
             {
-                arg.Message.Set("Is not negative");
+                var message = ErrorMessageFactory.NotNegativeNumber(arg);
+                arg.Message.SetArgumentOutRange(message);
             }
 
             return arg;

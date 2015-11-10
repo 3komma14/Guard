@@ -105,7 +105,7 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsPrime_ArgumentIsNotPrime_Throws(int arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsPrime());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsPrime());
         }
 
         [TestCase(-10)]
@@ -114,7 +114,7 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsPositive_ArgumentIsNotPositive_Throws(int arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsPositive());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsPositive());
         }
 
         [TestCase(-10)]
@@ -123,7 +123,7 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsPositive_ArgumentIsNotPositive_Throws(long arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsPositive());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsPositive());
         }
 
         [TestCase(2)]
@@ -150,7 +150,7 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsPositive_ArgumentIsNotNegative_Throws(int arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsNegative());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsNegative());
         }
 
         [TestCase(10)]
@@ -159,7 +159,7 @@ namespace Seterlund.CodeGuard.UnitTests
         public void IsPositive_ArgumentIsNotNegative_Throws(long arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsNegative());
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsNegative());
         }
 
         [TestCase(-2)]

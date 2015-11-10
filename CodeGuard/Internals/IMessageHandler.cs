@@ -7,6 +7,7 @@ namespace Seterlund.CodeGuard.Internals
         void Set(string message);
         void SetArgumentNull();
         void SetArgumentOutRange();
+        void SetArgumentOutRange(string message);
         void SetArgumentOutRange(T min, T max);
         void SetArgumentLessThan(T min);
         void SetArgumentLargerThan(T max);
