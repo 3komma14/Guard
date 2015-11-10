@@ -77,6 +77,31 @@ namespace Seterlund.CodeGuard
             return arg;
         }
 
+        public static IArg<T> IsGreaterThanOrEqualTo<T>(this IArg<T> arg, T param) where T : IComparable
+        {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Requires(param != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
+            return IsGreaterThanOrEqualTo(arg, () => param);
+        }
+
+        public static IArg<T> IsGreaterThanOrEqualTo<T>(this IArg<T> arg, Func<T> param) where T : IComparable
+        {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Requires(param != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
+            if (arg.Value.CompareTo(param()) < 0)
+            {
+                arg.Message.SetArgumentOutRange();
+            }
+
+            return arg;
+        }
+
         public static IArg<T> IsLessThan<T>(this IArg<T> arg, T param) where T : IComparable
         {
 #if !NET35
@@ -95,6 +120,31 @@ namespace Seterlund.CodeGuard
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
 #endif
             if (arg.Value.CompareTo(param()) >= 0)
+            {
+                arg.Message.SetArgumentOutRange();
+            }
+
+            return arg;
+        }
+
+        public static IArg<T> IsLessThanOrEqualTo<T>(this IArg<T> arg, T param) where T : IComparable
+        {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Requires(param != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
+            return IsLessThanOrEqualTo(arg, () => param);
+        }
+
+        public static IArg<T> IsLessThanOrEqualTo<T>(this IArg<T> arg, Func<T> param) where T : IComparable
+        {
+#if !NET35
+            Contract.Requires(arg != null);
+            Contract.Requires(param != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+#endif
+            if (arg.Value.CompareTo(param()) > 0)
             {
                 arg.Message.SetArgumentOutRange();
             }

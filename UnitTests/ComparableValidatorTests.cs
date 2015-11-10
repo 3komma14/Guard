@@ -50,6 +50,8 @@ namespace Seterlund.CodeGuard.UnitTests
 
         #endregion
 
+        #region IsGreaterThan
+
         [Test]
         public void IsGreaterThan_WhenArgumentIsLessThan_Throws()
         {
@@ -94,6 +96,55 @@ namespace Seterlund.CodeGuard.UnitTests
             });
         }
 
+        #endregion
+
+        #region IsGreaterThanOrEqual
+
+        [Test]
+        public void IsGreaterThanOrEqual_WhenArgumentIsLessThan_Throws()
+        {
+            // Arrange
+            int arg1 = 0;
+            int arg2 = 1;
+
+            // Act
+            ArgumentOutOfRangeException exception =
+                GetException<ArgumentOutOfRangeException>(() => Guard.That(() => arg1).IsGreaterThanOrEqualTo(arg2));
+
+            // Assert
+            AssertArgumentOfRangeException(exception, "arg1");
+        }
+
+        [Test]
+        public void IsGreaterThanOrEqual_WhenArgumentIsEqual_DoesNotThrow()
+        {
+            // Arrange
+            int arg1 = 0;
+            int arg2 = 0;
+
+            // Act
+            // Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg1).IsGreaterThanOrEqualTo(arg2));
+        }
+
+        [Test]
+        public void IsGreaterThanOrEqual_WhenArgumentIsGreather_DoesNotThrow()
+        {
+            // Arrange
+            double arg1 = 1;
+            double arg2 = 0;
+
+            // Act/Assert
+            Assert.DoesNotThrow(() =>
+            {
+                Guard.That(() => arg1).IsGreaterThanOrEqualTo(arg2);
+            });
+        }
+
+        #endregion
+
+        #region IsLessThan
+
         [Test]
         public void IsLessThan_WhenArgumentIsGreaterThan_Throws()
         {
@@ -137,6 +188,55 @@ namespace Seterlund.CodeGuard.UnitTests
                 Guard.That(() => arg1).IsLessThan(arg2);
             });
         }
+
+        #endregion
+
+        #region IsLessThanOrEqualTo
+
+        [Test]
+        public void IsLessThanOrEqual_WhenArgumentIsGreaterThan_Throws()
+        {
+            // Arrange
+            int arg1 = 1;
+            int arg2 = 0;
+
+            // Act
+            ArgumentOutOfRangeException exception =
+                GetException<ArgumentOutOfRangeException>(() => Guard.That(() => arg1).IsLessThanOrEqualTo(arg2));
+
+            // Assert
+            AssertArgumentOfRangeException(exception, "arg1");
+        }
+
+        [Test]
+        public void IsLessThanOrEqual_WhenArgumentIsEqual_DoesNotThrow()
+        {
+            // Arrange
+            int arg1 = 0;
+            int arg2 = 0;
+
+            // Act
+            // Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg1).IsLessThanOrEqualTo(arg2));
+        }
+
+        [Test]
+        public void IsLessThanOrEqual_WhenArgumentIsLess_DoesNotThrow()
+        {
+            // Arrange
+            int arg1 = 0;
+            int arg2 = 1;
+
+            // Act/Assert
+            Assert.DoesNotThrow(() =>
+            {
+                Guard.That(() => arg1).IsLessThanOrEqualTo(arg2);
+            });
+        }
+
+        #endregion
+
+        #region IsEqual
 
         [Test]
         public void IsEqual_WhenArgumentIsNotEqual_Throws()
@@ -197,6 +297,10 @@ namespace Seterlund.CodeGuard.UnitTests
             });
         }
 
+        #endregion
+
+        #region IsNotEqual
+
         [Test]
         public void IsNotEqual_WhenFuncArgumentIsEqual_Throws()
         {
@@ -224,6 +328,8 @@ namespace Seterlund.CodeGuard.UnitTests
                 Guard.That(() => arg1).IsNotEqual(arg2);
             });
         }
+
+        #endregion
 
         [Test]
         public void IsInRange_WhenArgumentBetweenStartAndStop_DoesNotThrow()
