@@ -150,8 +150,9 @@ namespace Seterlund.CodeGuard.UnitTests
                 GetException<ArgumentOutOfRangeException>(() => Guard.That(() => arg1).IsEqual(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertArgumentNotEqualException(exception, "arg1", arg1, arg2);
         }
+
 
         [Test]
         public void IsEqual_WhenArgumentIsEqual_DoesNotThrow()
@@ -179,7 +180,7 @@ namespace Seterlund.CodeGuard.UnitTests
                 GetException<ArgumentOutOfRangeException>(() => Guard.That(() => arg1).IsEqual(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertArgumentNotEqualException(exception, "arg1", arg1, arg2);
         }
 
         [Test]
@@ -262,11 +263,20 @@ namespace Seterlund.CodeGuard.UnitTests
             DateTime start = DateTime.Now;
             DateTime stop = DateTime.Now.AddDays(1);
 
-            // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                Guard.That(() => arg).IsInRange(start, stop);
-            });
+            //// Act/Assert
+            //Assert.Throws<ArgumentOutOfRangeException>(() =>
+            //{
+            //    Guard.That(() => arg).IsInRange(start, stop);
+            //});
+
+
+            // Act
+            ArgumentOutOfRangeException exception =
+                GetException<ArgumentOutOfRangeException>(() => Guard.That(() => arg).IsInRange(start, stop));
+
+            // Assert
+            AssertArgumentOfRangeException(exception, "arg", arg, start, stop);
+
         }
     }
 }

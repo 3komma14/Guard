@@ -166,11 +166,11 @@ namespace Seterlund.CodeGuard.UnitTests
             var obj = new PropertyTest();
 
             // Act/Assert
-            ArgumentException exception =
-                GetException<ArgumentException>(() => obj.RunGuard());
+            ArgumentOutOfRangeException exception =
+                GetException<ArgumentOutOfRangeException>(() => obj.RunGuard());
 
             // Assert
-            AssertArgumentException(exception, "Prop", "Specified argument was out of the range of valid values.\r\nParameter name: Prop");
+            AssertArgumentNotEqualException(exception, "Prop", obj.Prop, 1);
         }
 
 

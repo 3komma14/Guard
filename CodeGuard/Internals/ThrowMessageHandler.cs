@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
+using Seterlund.CodeGuard.Exceptions;
 
 namespace Seterlund.CodeGuard.Internals
 {
@@ -43,6 +44,44 @@ namespace Seterlund.CodeGuard.Internals
             }
 
             throw new ArgumentOutOfRangeException(_arg.Name);
+        }
+
+        public void SetArgumentOutRange(T min, T max)
+        {
+            var message = ErrorMessageFactory.OutOfRange(_arg, min, max);
+            if (string.IsNullOrEmpty(_arg.Name))
+            {                   
+                throw new ArgumentOutOfRangeException(message, (Exception)null);
+            }
+
+            throw new ArgumentOutOfRangeException(_arg.Name, _arg.Value, message);
+        }
+
+        public void SetArgumentLessThan(T min)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, min);
+            if (string.IsNullOrEmpty(_arg.Name))
+            {
+                throw new ArgumentOutOfRangeException(message, (Exception)null);
+            }
+
+            throw new ArgumentOutOfRangeException(_arg.Name, _arg.Value, message);
+        }
+
+        public void SetArgumentLargerThan(T max)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, max);
+            if (string.IsNullOrEmpty(_arg.Name))
+            {
+                throw new ArgumentOutOfRangeException(message, (Exception)null);
+            }
+
+            throw new ArgumentOutOfRangeException(_arg.Name, _arg.Value, message);
+        }
+
+        public void SetArgumentNotEqual(T expected)
+        {
+            throw ArgumentOutOfRangeExceptionFactory.NotEqual(_arg, expected);
         }
     }
 }

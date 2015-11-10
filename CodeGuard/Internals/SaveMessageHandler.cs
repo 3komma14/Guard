@@ -38,6 +38,30 @@ namespace Seterlund.CodeGuard.Internals
             AddResultItem("Argument is out of range.");
         }
 
+        public void SetArgumentOutRange(T min, T max)
+        {
+            var message = ErrorMessageFactory.OutOfRange(_arg, min, max);
+            AddResultItem(message);
+        }
+
+        public void SetArgumentLessThan(T min)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, min);
+            AddResultItem(message);
+        }
+
+        public void SetArgumentLargerThan(T max)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, max);
+            AddResultItem(message);
+        }
+
+        public void SetArgumentNotEqual(T expected)
+        {
+            var message = ErrorMessageFactory.NotEqual(_arg, expected);
+            AddResultItem(message);            
+        }
+
         private void AddResultItem(string message)
         {
             Result.Add(new ErrorInfo() {Message = message, Name = _arg.Name});

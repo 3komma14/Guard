@@ -25,12 +25,16 @@ namespace Seterlund.CodeGuard.UnitTests
             return actualException;
         }
 
-        protected static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string message, string paramName, object actualValue)
+        protected static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string paramName, object actualValue, object to, object from)
         {
             Assert.IsNotNull(exception);
             Assert.AreEqual(paramName, exception.ParamName);
             Assert.AreEqual(actualValue, exception.ActualValue);
-            Assert.AreEqual(string.Format("{0}\r\nParameter name: {1}\r\nActual value was {2}.", message, paramName, actualValue), exception.Message);
+            var expectedMessage =
+                string.Format(
+                    "The value '{0}' of '{1}' is not in its allowed range of '{2}' to '{3}'\r\nParameter name: {1}\r\nActual value was {0}.",
+                    actualValue, paramName, to, from);
+            Assert.AreEqual(expectedMessage, exception.Message);
         }
 
         protected static void AssertArgumentOfRangeException(ArgumentOutOfRangeException exception, string paramName)
@@ -39,6 +43,19 @@ namespace Seterlund.CodeGuard.UnitTests
             Assert.AreEqual(paramName, exception.ParamName);
             Assert.AreEqual(string.Format("Specified argument was out of the range of valid values.\r\nParameter name: {0}", paramName), exception.Message);
         }
+
+        protected void AssertArgumentNotEqualException(ArgumentOutOfRangeException exception, string paramName, object actualValue, object expectedValue)
+        {
+            Assert.IsNotNull(exception);
+            //Assert.AreEqual(paramName, exception.ParamName);
+            //Assert.AreEqual(actualValue, exception.ActualValue);
+            var expectedMessage =
+                string.Format(
+                    "The value '{0}' is not equal to '{1}'\r\nParameter name: {2}\r\nActual value was {0}.",
+                    actualValue, expectedValue, paramName);
+            Assert.AreEqual(expectedMessage, exception.Message);
+        }
+
 
         protected static void AssertArgumentException(ArgumentException exception, string paramName, string message)
         {
