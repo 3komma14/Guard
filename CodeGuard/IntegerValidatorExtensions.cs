@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 
 namespace Seterlund.CodeGuard
 {
+
     public static class IntegerValidatorExtensions
     {
         public static IArg<int> IsOdd(this IArg<int> arg)

@@ -82,13 +82,43 @@ namespace Seterlund.CodeGuard.UnitTests
         }
 
         [Test]
-        public void Conatins_ArgumentIsEmptyList_Throws()
+        public void Contains_ArgumentIsEmptyList_Throws()
         {
             // Arrange
             IEnumerable<string> arg = new List<string>();
 
             // Act/Assert
             Assert.Throws<ArgumentException>(() => Guard.That(() => arg).Contains(x => x == "SomeItem"));
+        }
+
+        [Test]
+        public void Length_ArgumenIsNull_Throws()
+        {
+            // Arrange
+            IEnumerable<string> arg = null;
+
+            // Act/Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).Length(1));
+        }
+
+        [Test]
+        public void Length_ArgumentLengthIsUnequal_Throws()
+        {
+            // Arrange
+            IEnumerable<string> arg = new List<string>();
+
+            // Act/Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(() => arg).Length(1));
+        }
+
+        [Test]
+        public void Length_ArgumentLengthIsEqual_DoesNotThrow()
+        {
+            // Arrange
+            IEnumerable<string> arg = new List<string>(){"First"};
+
+            // Act/Assert
+            Assert.DoesNotThrow(() => Guard.That(() => arg).Length(1));
         }
 
     }
