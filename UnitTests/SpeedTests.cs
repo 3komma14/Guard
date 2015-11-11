@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using NUnit.Framework;
+using Seterlund.CodeGuard.Validators;
 
 namespace Seterlund.CodeGuard.UnitTests
 {

@@ -80,8 +80,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -94,22 +95,22 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrayValidatorTests.cs" />
+    <Compile Include="Validators\ArrayValidatorTests.cs" />
     <Compile Include="BaseTests.cs" />
-    <Compile Include="BooleanValidatorTests.cs" />
-    <Compile Include="ComparableValidatorTests.cs" />
-    <Compile Include="ClassValidatorTests.cs" />
-    <Compile Include="ComplexExpressionTests.cs" />
-    <Compile Include="EnumValidatorTests.cs" />
-    <Compile Include="NullableValidatorTests.cs" />
-    <Compile Include="EnumerableValidatorTests.cs" />
-    <Compile Include="GuidValidatorTests.cs" />
+    <Compile Include="Validators\BooleanValidatorTests.cs" />
+    <Compile Include="Validators\ComparableValidatorTests.cs" />
+    <Compile Include="Validators\ClassValidatorTests.cs" />
+    <Compile Include="Validators\ComplexExpressionTests.cs" />
+    <Compile Include="Validators\EnumValidatorTests.cs" />
+    <Compile Include="Validators\NullableValidatorTests.cs" />
+    <Compile Include="Validators\EnumerableValidatorTests.cs" />
+    <Compile Include="Validators\GuidValidatorTests.cs" />
     <Compile Include="ReflectionTests.cs" />
     <Compile Include="SpeedTests.cs" />
     <Compile Include="ValidateTests.cs" />
-    <Compile Include="ObjectValidatorTests.cs" />
-    <Compile Include="IntegerValidatorTests.cs" />
-    <Compile Include="StringValidatorTests.cs" />
+    <Compile Include="Validators\ObjectValidatorTests.cs" />
+    <Compile Include="Validators\IntegerValidatorTests.cs" />
+    <Compile Include="Validators\StringValidatorTests.cs" />
     <Compile Include="GuardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

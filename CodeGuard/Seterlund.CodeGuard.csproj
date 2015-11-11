@@ -130,9 +130,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionValidatorExtensions.cs" />
-    <Compile Include="ArrayValidatorExtensions.cs" />
-    <Compile Include="EnumValidatorExtensions.cs" />
+    <Compile Include="Validators\CollectionValidatorExtensions.cs" />
+    <Compile Include="Validators\ArrayValidatorExtensions.cs" />
+    <Compile Include="Validators\EnumValidatorExtensions.cs" />
     <Compile Include="ErrorInfo.cs" />
     <Compile Include="Exceptions\ArgumentOutOfRangeExceptionFactory.cs" />
     <Compile Include="Internals\ArgName.cs" />
@@ -144,27 +144,27 @@
     <Compile Include="Internals\StringExtensions.cs" />
     <Compile Include="Internals\EnumExtensions.cs" />
     <Compile Include="Internals\MemberInfoReader.cs" />
-    <Compile Include="NullableValidatorExtensions.cs" />
+    <Compile Include="Validators\NullableValidatorExtensions.cs" />
     <Compile Include="Internals\ArgBase.cs" />
     <Compile Include="Internals\AccumulateErrorsArg.cs" />
     <Compile Include="Internals\ThrowOnFirstErrorArg.cs" />
-    <Compile Include="EnumerableValidatorExtensions.cs" />
-    <Compile Include="GuidValidatorExtensions.cs" />
+    <Compile Include="Validators\EnumerableValidatorExtensions.cs" />
+    <Compile Include="Validators\GuidValidatorExtensions.cs" />
     <Compile Include="IArg.cs" />
     <Compile Include="Internals\ErrorHandlerBase.cs" />
     <Compile Include="Internals\SaveMessageHandler.cs" />
     <Compile Include="Internals\IMessageHandler.cs" />
     <Compile Include="Internals\ThrowMessageHandler.cs" />
     <Compile Include="Validate.cs" />
-    <Compile Include="ObjectValidatorExtensions.cs" />
-    <Compile Include="IntegerValidatorExtensions.cs" />
+    <Compile Include="Validators\ObjectValidatorExtensions.cs" />
+    <Compile Include="Validators\IntegerValidatorExtensions.cs" />
     <Compile Include="Internals\MathUtil.cs" />
-    <Compile Include="BooleanValidatorExtensions.cs" />
-    <Compile Include="ClassValidatorExtensions.cs" />
+    <Compile Include="Validators\BooleanValidatorExtensions.cs" />
+    <Compile Include="Validators\ClassValidatorExtensions.cs" />
     <Compile Include="Guard.cs" />
-    <Compile Include="ComparableValidatorExtensions.cs" />
+    <Compile Include="Validators\ComparableValidatorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringValidatorExtensions.cs" />
+    <Compile Include="Validators\StringValidatorExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
