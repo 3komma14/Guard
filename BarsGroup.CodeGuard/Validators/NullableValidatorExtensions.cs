@@ -1,4 +1,6 @@
-﻿namespace BarsGroup.CodeGuard.Validators
+﻿using BarsGroup.CodeGuard.Internals;
+
+namespace BarsGroup.CodeGuard.Validators
 {
     public static class NullableValidatorExtensions
     {
@@ -12,7 +14,7 @@
 
             var value = arg.Value;
             if (!value.HasValue)
-                arg.Message.SetArgumentNull();
+                arg.ThrowArgumentNull();
 
             return arg;
         }

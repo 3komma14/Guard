@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -18,7 +19,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var isType = type.GetTypeInfo().IsInstanceOfType(arg.Value);
             if (!isType)
-                arg.Message.Set(string.Format("Value is not <{0}>", type.Name));
+                arg.ThrowArgument(string.Format("Value is not <{0}>", type.Name));
 
             return arg;
         }
@@ -32,16 +33,16 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
 
-            var defautlValue = default(T);
-            if (defautlValue == null)
+            var defaultValue = default(T);
+            if (defaultValue == null)
             {
                 if (arg.Value == null)
-                    arg.Message.Set("Value cannot be the default value.");
+                    arg.ThrowArgument("Value cannot be the default value.");
             }
             else
             {
                 if (default(T).Equals(arg.Value))
-                    arg.Message.Set("Value cannot be the default value.");
+                    arg.ThrowArgument("Value cannot be the default value.");
             }
 
             return arg;
@@ -57,7 +58,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!booleanFunction(arg.Value))
-                arg.Message.Set(exceptionMessage);
+                arg.ThrowArgument(exceptionMessage);
 
             return arg;
         }
@@ -68,7 +69,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!collection.Contains(arg.Value))
-                arg.Message.Set(string.Format("The value of the parameter is not one of {0}",
+                arg.ThrowArgument(string.Format("The value of the parameter is not one of {0}",
                     string.Join(", ", collection.Select(x => x.ToString()).ToArray())));
 
             return arg;

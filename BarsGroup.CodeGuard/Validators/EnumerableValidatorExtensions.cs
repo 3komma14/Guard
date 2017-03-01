@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -13,7 +14,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var value = arg.Value;
             if (value == null || !value.Any())
-                arg.Message.Set("Collection is empty");
+                arg.ThrowArgument("Collection is empty");
 
             return arg;
         }
@@ -25,7 +26,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var value = arg.Value;
             if (value == null || value.Count() != length)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
         }
@@ -37,7 +38,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var value = arg.Value;
             if (value == null || !value.Any(predicate))
-                arg.Message.Set("Collection does not contain required object");
+                arg.ThrowArgument("Collection does not contain required object");
 
             return arg;
         }

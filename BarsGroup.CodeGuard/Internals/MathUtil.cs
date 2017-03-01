@@ -2,7 +2,7 @@
 
 namespace BarsGroup.CodeGuard.Internals
 {
-    public class MathUtil
+    public static class MathUtil
     {
         public static bool IsOdd(int value)
         {

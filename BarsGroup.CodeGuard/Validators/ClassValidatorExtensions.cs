@@ -1,4 +1,5 @@
 using System;
+using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -10,7 +11,15 @@ namespace BarsGroup.CodeGuard.Validators
                 throw new ArgumentNullException(nameof(arg));
 
             if (arg.Value == null)
-                arg.Message.SetArgumentNull();
+                arg.ThrowArgumentNull();
+
+            return arg;
+        }
+
+        public static IArg<T> Is<T, TType>(this IArg<T> arg)
+        {
+            if (!(arg.Value is TType))
+                arg.ThrowArgument(string.Format("Value is not <{0}>", typeof(TType).Name));
 
             return arg;
         }

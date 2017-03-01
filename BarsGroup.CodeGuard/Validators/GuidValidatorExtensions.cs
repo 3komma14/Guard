@@ -1,4 +1,5 @@
 ﻿using System;
+using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -9,7 +10,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.Equals(Guid.Empty))
-                arg.Message.Set("Guid is empty");
+                arg.ThrowArgument("Guid is empty");
 
             return arg;
         }

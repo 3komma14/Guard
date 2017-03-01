@@ -1,6 +1,4 @@
-using System;
 using BarsGroup.CodeGuard.Internals;
-using BarsGroup.CodeGuard.Validators;
 
 namespace BarsGroup.CodeGuard
 {
@@ -19,9 +17,7 @@ namespace BarsGroup.CodeGuard
         /// </returns>
         public static IArg<T> That<T>(T argument, string argumentName = "")
         {
-            return string.IsNullOrEmpty(argumentName)
-                ? new ThrowOnFirstErrorArg<T>(argument)
-                : new ThrowOnFirstErrorArg<T>(argument, argumentName);
+            return new ArgBase<T>(argument, argumentName);
         }
     }
 }

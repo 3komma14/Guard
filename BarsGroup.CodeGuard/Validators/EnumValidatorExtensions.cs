@@ -1,4 +1,5 @@
 ﻿using System;
+using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -10,7 +11,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!Enum.IsDefined(arg.Value.GetType(), arg.Value))
-                arg.Message.Set("Value is not valid");
+                arg.ThrowArgument("Value is not valid");
 
             return arg;
         }
@@ -23,7 +24,7 @@ namespace BarsGroup.CodeGuard.Validators
             var value = arg.Value as Enum;
             var flagEnumValue = flagValue as Enum;
             if (value != null && !value.HasFlag(flagEnumValue))
-                arg.Message.Set("Value does not have flag set");
+                arg.ThrowArgument("Value does not have flag set");
 
             return arg;
         }

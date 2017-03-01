@@ -67,6 +67,28 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsOdd());
         }
 
+
+        [Fact]
+        public void IsOdd_Long_ArgumentIsOdd_DoesNotThrow()
+        {
+            // Arrange
+            var arg = 3L;
+
+            // Act/Assert
+            Guard.That(arg).IsOdd();
+        }
+
+        [Fact]
+        public void IsOdd_Long_ArgumentIsEven_Throws()
+        {
+            // Arrange
+            var arg = 2L;
+
+            // Act/Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsOdd());
+        }
+
+
         [Fact]
         public void IsEven_ArgumentIsEven_DoesNotThrow()
         {
@@ -79,6 +101,26 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
         [Fact]
         public void IsEven_ArgumentIsOdd_Throws()
+        {
+            // Arrange
+            var arg = 5L;
+
+            // Act/Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsEven());
+        }
+
+        [Fact]
+        public void IsEven_Long_ArgumentIsEven_DoesNotThrow()
+        {
+            // Arrange
+            var arg = 4L;
+
+            // Act/Assert
+            Guard.That(arg).IsEven();
+        }
+
+        [Fact]
+        public void IsEven_Long_ArgumentIsOdd_Throws()
         {
             // Arrange
             var arg = 5;
@@ -102,6 +144,26 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         [InlineData(0)]
         [InlineData(4)]
         public void IsPrime_ArgumentIsNotPrime_Throws(int arg)
+        {
+            // Act/Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsPrime());
+        }
+
+        [Theory]
+        [InlineData(3)]
+        [InlineData(5)]
+        [InlineData(7)]
+        public void IsPrime_Long_ArgumentIsPrime_DoesNotThrow(long arg)
+        {
+            // Act/Assert
+            Guard.That(arg).IsPrime();
+        }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(0)]
+        [InlineData(4)]
+        public void IsPrime_Long_ArgumentIsNotPrime_Throws(long arg)
         {
             // Act/Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsPrime());

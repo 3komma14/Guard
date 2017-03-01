@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -9,8 +10,8 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             var value = arg.Value;
-            if (value == null || value.Count > 0)
-                arg.Message.Set("Collection is empty");
+            if (value == null || value.Count == 0)
+                arg.ThrowArgument("Collection is empty");
 
             return arg;
         }

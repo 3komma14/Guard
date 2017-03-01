@@ -11,7 +11,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg.Value).IsNotNull();
 
             if (arg.Value == string.Empty)
-                arg.Message.Set("String is empty");
+                arg.ThrowArgument("String is empty");
 
             return arg;
         }
@@ -22,7 +22,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg.Value).IsNotNull();
 
             if (string.IsNullOrEmpty(arg.Value))
-                arg.Message.Set("String is null or empty");
+                arg.ThrowArgument("String is null or empty");
 
             return arg;
         }
@@ -35,7 +35,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!arg.Value.StartsWith(value))
-                arg.Message.Set(string.Format("String must start with <{0}>", value));
+                arg.ThrowArgument(string.Format("String must start with <{0}>", value));
 
             return arg;
         }
@@ -48,7 +48,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!arg.Value.EndsWith(value))
-                arg.Message.Set(string.Format("String must end with <{0}>", value));
+                arg.ThrowArgument(string.Format("String must end with <{0}>", value));
 
             return arg;
         }
@@ -60,7 +60,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (arg.Value.Length != length)
-                arg.Message.Set("String have wrong length");
+                arg.ThrowArgument("String have wrong length");
 
             return arg;
         }
@@ -73,7 +73,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!arg.Value.Contains(value))
-                arg.Message.Set(string.Format("String must contain <{0}>", value));
+                arg.ThrowArgument(string.Format("String must contain <{0}>", value));
 
             return arg;
         }
@@ -87,7 +87,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var r = new Regex(pattern);
             if (!r.IsMatch(arg.Value))
-                arg.Message.Set(string.Format("String must match <{0}>", pattern));
+                arg.ThrowArgument(string.Format("String must match <{0}>", pattern));
 
             return arg;
         }
@@ -99,7 +99,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (arg.Value.IsNullOrWhiteSpace())
-                arg.Message.Set("String is null or whitespace");
+                arg.ThrowArgument("String is null or whitespace");
 
             return arg;
         }

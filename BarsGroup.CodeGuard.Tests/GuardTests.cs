@@ -47,33 +47,6 @@ namespace BarsGroup.CodeGuard.Tests
         #endregion
 
         [Fact]
-        public void That_CalledWithValue_MessageHandlerISet()
-        {
-            // Arrange
-            var arg1 = 0;
-
-            // Act
-            var actual = Guard.That(arg1);
-
-            // Assert
-            Assert.NotNull(actual.Message);
-        }
-
-        [Fact]
-        public void That_CalledWithValueAndName_MessageHandlerISet()
-        {
-            // Arrange
-            var arg1 = 0;
-
-            // Act
-            var actual = Guard.That(arg1, "MyName");
-
-            // Assert
-            Assert.NotNull(actual.Message);
-        }
-
-
-        [Fact]
         public void Is_WhenArgumentIsSameType_DoesNotThrow()
         {
             // Arrange

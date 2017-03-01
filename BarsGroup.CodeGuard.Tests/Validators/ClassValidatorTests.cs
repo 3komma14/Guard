@@ -57,6 +57,18 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             Guard.That(arg);
         }
 
+
+        [Fact]
+        public void NotNull_IArgIsNull_Throws()
+        {
+            // Arrange
+            TestClass arg = null;
+
+            // Act/Assert
+            Assert.Throws<ArgumentNullException>(() => ClassValidatorExtensions.IsNotNull((IArg<object>)null));
+        }
+
+
         [Fact]
         public void NotNull_ArgumentIsNull_Throws()
         {

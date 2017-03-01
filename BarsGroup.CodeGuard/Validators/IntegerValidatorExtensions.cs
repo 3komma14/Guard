@@ -12,7 +12,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (!MathUtil.IsOdd(arg.Value))
             {
                 var message = ErrorMessageFactory.NotOddNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -26,7 +26,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (!MathUtil.IsOdd(arg.Value))
             {
                 var message = ErrorMessageFactory.NotOddNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -40,7 +40,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (!MathUtil.IsEven(arg.Value))
             {
                 var message = ErrorMessageFactory.NotEvenNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -54,7 +54,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (!MathUtil.IsEven(arg.Value))
             {
                 var message = ErrorMessageFactory.NotEvenNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -68,7 +68,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (!MathUtil.IsPrime(arg.Value))
             {
                 var message = ErrorMessageFactory.NotPrimeNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -82,7 +82,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (!MathUtil.IsPrime(arg.Value))
             {
                 var message = ErrorMessageFactory.NotPrimeNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -96,7 +96,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (arg.Value <= 0)
             {
                 var message = ErrorMessageFactory.NotPositiveNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -110,7 +110,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (arg.Value <= 0)
             {
                 var message = ErrorMessageFactory.NotPositiveNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -123,7 +123,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (arg.Value >= 0)
             {
                 var message = ErrorMessageFactory.NotNegativeNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;
@@ -137,7 +137,7 @@ namespace BarsGroup.CodeGuard.Validators
             if (arg.Value >= 0)
             {
                 var message = ErrorMessageFactory.NotNegativeNumber(arg);
-                arg.Message.SetArgumentOutRange(message);
+                arg.ThrowArgumentOutRange(message);
             }
 
             return arg;

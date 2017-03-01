@@ -92,6 +92,21 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         }
 
         [Fact]
+        public void IsNotDefault_WhenArgumentIsClassAndIsNull_Throws()
+        {
+            // Arrange
+            var arg1 = default(object);
+
+            // Act
+            var exception =
+                GetException<ArgumentException>(() => Guard.That(arg1, nameof(arg1)).IsNotDefault());
+
+            // Assert
+            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
+        }
+
+
+        [Fact]
         public void IsNotDefault_WhenArgumentIsValueTypeAndValueIsNotDefault_DoesNotThrow()
         {
             // Arrange
@@ -123,6 +138,16 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             {
                 Guard.That(arg1).IsTrue(x => x > 50, "Must be over 50");
             });
+        }
+
+        [Fact]
+        public void IsTrue_WhenArgumentIsTrue_NotThrows()
+        {
+            // Arrange
+            var arg1 = 1;
+
+            // Act/Assert
+                Guard.That(arg1).IsTrue(x => x == arg1, "Must be over 50");
         }
 
         [Fact]

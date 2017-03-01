@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using BarsGroup.CodeGuard.Validators;
-using Xunit;
 using Xunit.Abstractions;
 
 namespace BarsGroup.CodeGuard.Tests

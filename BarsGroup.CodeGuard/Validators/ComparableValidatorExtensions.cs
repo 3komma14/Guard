@@ -1,4 +1,5 @@
 using System;
+using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -9,7 +10,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) != 0)
-                arg.Message.SetArgumentNotEqual(param);
+                arg.ThrowArgumentNotEqual(param);
 
             return arg;
         }
@@ -28,7 +29,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) == 0)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
         }
@@ -46,7 +47,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) <= 0)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
 
@@ -66,7 +67,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) < 0)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
 
@@ -87,7 +88,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (arg.Value.CompareTo(param) >= 0)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
         }
@@ -105,7 +106,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) > 0)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
             
@@ -126,7 +127,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (arg.Value.CompareTo(start) < 0 || arg.Value.CompareTo(end) > 0)
-                arg.Message.SetArgumentOutRange(start, end);
+                arg.ThrowArgumentOutRange(start, end);
 
             return arg;
         }

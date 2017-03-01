@@ -80,6 +80,17 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         }
 
         [Fact]
+        public void IsGreaterThan_WhenArgumentIsGreather_Func_DoesNotThrow()
+        {
+            // Arrange
+            double arg1 = 1;
+            double arg2 = 0;
+
+            // Act/Assert
+            Guard.That(arg1).IsGreaterThan(() => arg2);
+        }
+
+        [Fact]
         public void IsGreaterThan_WhenArgumentIsGreather_DoesNotThrow()
         {
             // Arrange
@@ -107,6 +118,18 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Assert
             AssertArgumentOfRangeException(exception, "arg1");
+        }
+
+        [Fact]
+        public void IsGreaterThanOrEqual_WhenArgumentIsEqual_Func_DoesNotThrow()
+        {
+            // Arrange
+            var arg1 = 0;
+            var arg2 = 0;
+
+            // Act
+            // Assert
+            Guard.That(arg1).IsGreaterThanOrEqualTo(() => arg2);
         }
 
         [Fact]
@@ -166,6 +189,16 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         }
 
         [Fact]
+        public void IsLessThan_WhenArgumentIsLess_Func_DoesNotThrow()
+        {
+            // Arrange
+            var arg1 = 0;
+            var arg2 = 1;
+
+            Guard.That(arg1).IsLessThan(() => arg2);
+        }
+
+        [Fact]
         public void IsLessThan_WhenArgumentIsLess_DoesNotThrow()
         {
             // Arrange
@@ -207,6 +240,18 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         }
 
         [Fact]
+        public void IsLessThanOrEqual_WhenArgumentIsEqual_Func_DoesNotThrow()
+        {
+            // Arrange
+            var arg1 = 0;
+            var arg2 = 0;
+
+            // Act
+            // Assert
+            Guard.That(arg1).IsLessThanOrEqualTo(() => arg2);
+        }
+
+        [Fact]
         public void IsLessThanOrEqual_WhenArgumentIsLess_DoesNotThrow()
         {
             // Arrange
@@ -235,6 +280,16 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             AssertArgumentNotEqualException(exception, "arg1", arg1, arg2);
         }
 
+        [Fact]
+        public void IsEqual_WhenArgumentIsEqual_Func_DoesNotThrow()
+        {
+            // Arrange
+            var arg1 = 0;
+            var arg2 = 0;
+
+            // Act/Assert
+            Guard.That(arg1).IsEqual(() => arg2);
+        }
 
         [Fact]
         public void IsEqual_WhenArgumentIsEqual_DoesNotThrow()
@@ -285,7 +340,29 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg2 = 0;
 
             // Act/Assert
-           Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsNotEqual(() => arg2));
+           Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsNotEqual(arg2));
+        }
+
+        [Fact]
+        public void IsNotEqual_WhenFuncArgumentIsNotEqual_NotThrows()
+        {
+            // Arrange
+            var arg1 = 0;
+            var arg2 = 1;
+
+            // Act/Assert
+           Guard.That(arg1, nameof(arg1)).IsNotEqual(arg2);
+        }
+
+        [Fact]
+        public void IsNotEqual_WhenFuncArgumentIsNotEqual_Func_NotThrows()
+        {
+            // Arrange
+            var arg1 = 0;
+            var arg2 = 1;
+
+            // Act/Assert
+            Guard.That(arg1, nameof(arg1)).IsNotEqual(() => arg2);
         }
 
         [Fact]

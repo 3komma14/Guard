@@ -1,3 +1,5 @@
+using BarsGroup.CodeGuard.Internals;
+
 namespace BarsGroup.CodeGuard.Validators
 {
     public static class BooleanValidatorExtensions
@@ -19,7 +21,7 @@ namespace BarsGroup.CodeGuard.Validators
         private static IArg<bool> IsValid(IArg<bool> arg, bool expected)
         {
             if (arg.Value != expected)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
         }

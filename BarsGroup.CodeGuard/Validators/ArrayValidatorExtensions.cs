@@ -1,3 +1,5 @@
+using BarsGroup.CodeGuard.Internals;
+
 namespace BarsGroup.CodeGuard.Validators
 {
     public static class ArrayValidatorExtensions
@@ -7,7 +9,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value == null || arg.Value.Length == 0)
-                arg.Message.Set("Array is empty");
+                arg.ThrowArgument("Array is empty");
 
             return arg;
         }
@@ -17,7 +19,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value == null || arg.Value.Length != count)
-                arg.Message.SetArgumentOutRange();
+                arg.ThrowArgumentOutRange();
 
             return arg;
         }

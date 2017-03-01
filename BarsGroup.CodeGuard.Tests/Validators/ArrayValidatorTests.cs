@@ -5,7 +5,7 @@ using Xunit;
 namespace BarsGroup.CodeGuard.Tests.Validators
 {
     
-    class ArrayValidatorTests
+    public class ArrayValidatorTests
     {
         [Fact]
         public void IsEmpty_ArgumentIsNotEmptyArray_DoesNotThrow()
