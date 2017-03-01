@@ -1,5 +1,6 @@
 CodeGuard
 =========
+![Build status](https://ci.appveyor.com/api/projects/status/ryogp49hiwp37hfr?svg=true) ![Test status](http://teststatusbadge.azurewebsites.net/api/status/vik_borisov/guard)
 
 A simple Guard and validator library made in c#.
 Library also available at NuGet.

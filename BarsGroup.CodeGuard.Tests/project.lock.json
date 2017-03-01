@@ -7793,7 +7793,7 @@
       "BarsGroup.CodeGuard >= 1.0.0-*",
       "NETStandard.Library >= 1.6.1",
       "dotnet-test-xunit >= 2.2.0-*",
-      "xunit >= 2.2.0"
+      "xunit >= 2.2.0-*"
     ],
     ".NETCoreApp,Version=v1.1": [
       "Microsoft.NETCore.App >= 1.1.0"
