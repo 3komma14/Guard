@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -34,7 +34,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg = new[] { "item1", "item2" };
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).CountIs(1));
+            Assert.Throws<NotExpectedException<int>>(() => Guard.That(arg).CountIs(1));
         }
 
         [Fact]

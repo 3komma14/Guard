@@ -1,4 +1,4 @@
-using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 

@@ -2,9 +2,9 @@ using System;
 
 namespace BarsGroup.CodeGuard.Exceptions
 {
-    public class ArgumentOutOfRangeException<TValue> : GuardException
+    public class OutOfRangeException<TValue> : GuardException
     {
-        public ArgumentOutOfRangeException(TValue value, TValue min, TValue max, string paramName)
+        public OutOfRangeException(TValue value, TValue min, TValue max, string paramName)
             : base(GenerateMessage(paramName, value, min, max))
         {
 

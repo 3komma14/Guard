@@ -1,4 +1,4 @@
-using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -79,7 +79,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
                 GetException<ArgumentException>(() => Guard.That(obj.BarProp.Prop, nameof(obj.BarProp.Prop)).IsNotEmpty());
 
             // Assert
-            AssertArgumentException(exception, "Prop", "String is empty\r\nParameter name: Prop");
+            AssertArgumentException(exception, "String is empty", "Prop");
 
         }
 

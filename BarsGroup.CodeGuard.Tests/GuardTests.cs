@@ -1,4 +1,4 @@
-using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -67,7 +67,7 @@ namespace BarsGroup.CodeGuard.Tests
                 GetException<ArgumentException>(() => Guard.That(arg1, "MyName").Is(typeof(string)));
 
             // Assert
-            AssertArgumentException(exception, "MyName", "Value is not <String>\r\nParameter name: MyName");
+            AssertArgumentException(exception, "Value is not <String>", "MyName");
         }
 
 
@@ -91,7 +91,7 @@ namespace BarsGroup.CodeGuard.Tests
             var exception = GetException<ArgumentException>(() => Guard.That(someArg, nameof(someArg)).Is(typeof(ITest)));
         
             // Assert
-            AssertArgumentException(exception, "someArg", "Value is not <ITest>\r\nParameter name: someArg");
+            AssertArgumentException(exception, "Value is not <ITest>", "someArg");
         }
 
         [Fact]
@@ -101,10 +101,10 @@ namespace BarsGroup.CodeGuard.Tests
             var obj = new PropertyTest();
 
             // Act/Assert
-            var exception = GetException<ArgumentOutOfRangeException>(() => obj.RunGuard());
+            var exception = GetException<NotExpectedException<int>>(() => obj.RunGuard());
 
             // Assert
-            AssertArgumentNotEqualException(exception, "Prop", obj.Prop, 1);
+            AssertNotExpectedException(exception, "Prop", obj.Prop, 1);
         }
 
 
@@ -120,26 +120,14 @@ namespace BarsGroup.CodeGuard.Tests
 
         public interface ITest 
         {
-            int Prop { get; set; }
-            void Ping();
         }
 
         public class ImplementationOfITest : ITest
         {
-            public int Prop { get; set; }
-
-            public void Ping()
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public class NotImplementationOfITest
         {
-            public void Echo()
-            {
-                throw new NotImplementedException();
-            }
         }
 
 

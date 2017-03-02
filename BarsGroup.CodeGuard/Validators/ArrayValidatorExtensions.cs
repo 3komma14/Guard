@@ -18,8 +18,7 @@ namespace BarsGroup.CodeGuard.Validators
         {
             Guard.That(arg).IsNotNull();
 
-            if (arg.Value == null || arg.Value.Length != count)
-                arg.ThrowArgumentOutRange();
+            Guard.That(arg.Value.Length, arg.Name).IsEqual(count);
 
             return arg;
         }

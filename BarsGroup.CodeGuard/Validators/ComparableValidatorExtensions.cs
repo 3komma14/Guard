@@ -10,7 +10,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) != 0)
-                arg.ThrowArgumentNotEqual(param);
+                arg.ThrowNotEqual(param);
 
             return arg;
         }
@@ -29,7 +29,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) == 0)
-                arg.ThrowArgumentOutRange();
+                arg.ThrowNotEqual(param);
 
             return arg;
         }
@@ -47,7 +47,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) <= 0)
-                arg.ThrowArgumentOutRange();
+                arg.ThrowGreaterThenExpected(param);
 
             return arg;
 
@@ -67,7 +67,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) < 0)
-                arg.ThrowArgumentOutRange();
+                arg.ThrowGreaterThenExpected(param);
 
             return arg;
 
@@ -85,10 +85,8 @@ namespace BarsGroup.CodeGuard.Validators
         {
             Guard.That(arg).IsNotNull();
 
-
-
             if (arg.Value.CompareTo(param) >= 0)
-                arg.ThrowArgumentOutRange();
+                arg.ThrowLessThenExpected(param);
 
             return arg;
         }
@@ -106,7 +104,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg).IsNotNull();
 
             if (arg.Value.CompareTo(param) > 0)
-                arg.ThrowArgumentOutRange();
+                arg.ThrowLessThenExpected(param);
 
             return arg;
             

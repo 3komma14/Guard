@@ -1,6 +1,7 @@
 using System;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
+using ArgumentException = BarsGroup.CodeGuard.Exceptions.ArgumentException;
 
 namespace BarsGroup.CodeGuard.Tests.Validators
 {

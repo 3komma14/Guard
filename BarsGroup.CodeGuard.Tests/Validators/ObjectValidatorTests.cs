@@ -1,4 +1,4 @@
-using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -88,7 +88,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
                 GetException<ArgumentException>(() => Guard.That(arg1, nameof(arg1)).IsNotDefault());
 
             // Assert
-            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
+            AssertArgumentException(exception, "Value cannot be the default value.", "arg1");
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
                 GetException<ArgumentException>(() => Guard.That(arg1, nameof(arg1)).IsNotDefault());
 
             // Assert
-            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
+            AssertArgumentException(exception,"Value cannot be the default value.", "arg1");
         }
 
 

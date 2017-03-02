@@ -1,6 +1,8 @@
 using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
+using Xunit.Sdk;
 
 namespace BarsGroup.CodeGuard.Tests.Validators
 {
@@ -58,10 +60,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsGreaterThan(arg2));
+                GetException<GreaterThenExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsGreaterThan(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertGreaterThenExpectedException(exception, arg1, arg2, "arg1");
         }
 
         [Fact]
@@ -73,10 +75,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsGreaterThan(arg2));
+                GetException<GreaterThenExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsGreaterThan(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertGreaterThenExpectedException(exception, arg1, arg2, "arg1");
         }
 
         [Fact]
@@ -113,11 +115,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg2 = 1;
 
             // Act
-            var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsGreaterThanOrEqualTo(arg2));
+            var exception = GetException<GreaterThenExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsGreaterThanOrEqualTo(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertGreaterThenExpectedException(exception, arg1, arg2, "arg1");
         }
 
         [Fact]
@@ -167,10 +168,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsLessThan(arg2));
+                GetException<LessThenExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsLessThan(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertLessThenExpectedException(exception, "arg1", arg1, arg2);
         }
 
         [Fact]
@@ -182,10 +183,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsLessThan(arg2));
+                GetException<LessThenExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsLessThan(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertLessThenExpectedException(exception, "arg1", arg1, arg2);
         }
 
         [Fact]
@@ -221,10 +222,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsLessThanOrEqualTo(arg2));
+                GetException<LessThenExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsLessThanOrEqualTo(arg2));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg1");
+            AssertLessThenExpectedException(exception, "arg1", arg1, arg2);
         }
 
         [Fact]
@@ -274,10 +275,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsEqual(arg2));
+                GetException<NotExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsEqual(arg2));
 
             // Assert
-            AssertArgumentNotEqualException(exception, "arg1", arg1, arg2);
+            AssertNotExpectedException(exception, "arg1", arg1, arg2);
         }
 
         [Fact]
@@ -311,10 +312,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsEqual(arg2));
+                GetException<NotExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsEqual(arg2));
 
             // Assert
-            AssertArgumentNotEqualException(exception, "arg1", arg1, arg2);
+            AssertNotExpectedException(exception, "arg1", arg1, arg2);
         }
 
         [Fact]
@@ -340,7 +341,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg2 = 0;
 
             // Act/Assert
-           Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg1, nameof(arg1)).IsNotEqual(arg2));
+           Assert.Throws<NotExpectedException<int>>(() => Guard.That(arg1, nameof(arg1)).IsNotEqual(arg2));
         }
 
         [Fact]
@@ -373,7 +374,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg2 = 0;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            Assert.Throws<NotExpectedException<int>>(() =>
             {
                 Guard.That(arg1).IsNotEqual(arg2);
             });
@@ -414,7 +415,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var stop = DateTime.Now.AddDays(1);
 
             //// Act/Assert
-            //Assert.Throws<ArgumentOutOfRangeException>(() =>
+            //Assert.Throws<OutOfRangeException>(() =>
             //{
             //    Guard.That(arg).IsInRange(start, stop);
             //});
@@ -422,10 +423,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg, nameof(arg)).IsInRange(start, stop));
+                GetException<OutOfRangeException<DateTime>>(() => Guard.That(arg, nameof(arg)).IsInRange(start, stop));
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg", arg, start, stop);
+            AssertOutOfRangeException(exception, "arg", arg, start, stop);
 
         }
     }

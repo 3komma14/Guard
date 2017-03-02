@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -95,7 +95,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             IEnumerable<string> arg = null;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg, nameof(arg)).Length(1));
+            Assert.Throws<ArgumentNullException>(() => Guard.That(arg, nameof(arg)).Length(1));
         }
 
         [Fact]
@@ -105,7 +105,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             IEnumerable<string> arg = new List<string>();
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).Length(1));
+            Assert.Throws<NotExpectedException<int>>(() => Guard.That(arg).Length(1));
         }
 
         [Fact]

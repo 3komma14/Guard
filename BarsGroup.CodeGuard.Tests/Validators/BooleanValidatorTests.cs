@@ -1,4 +1,5 @@
 using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -55,10 +56,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg, nameof(arg)).IsTrue());
+                GetException<NotExpectedException<bool>>(() => Guard.That(arg, nameof(arg)).IsTrue());
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg");
+            AssertNotExpectedException(exception, "arg", arg, true);
         }
 
         [Fact]
@@ -79,10 +80,10 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act
             var exception =
-                GetException<ArgumentOutOfRangeException>(() => Guard.That(arg, nameof(arg)).IsFalse());
+                GetException<NotExpectedException<bool>>(() => Guard.That(arg, nameof(arg)).IsFalse());
 
             // Assert
-            AssertArgumentOfRangeException(exception, "arg");
+            AssertNotExpectedException(exception, "arg", arg, false);
         }
 
         [Fact]

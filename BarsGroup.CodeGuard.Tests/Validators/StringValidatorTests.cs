@@ -1,4 +1,4 @@
-using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -59,7 +59,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
                 GetException<ArgumentNullException>(() => Guard.That(arg, nameof(arg)).IsNotNull());
 
             // Assert
-            AssertArgumentNullException(exception, "arg", "Value cannot be null.\r\nParameter name: arg");
+            AssertArgumentNullException(exception, "arg", "Argument is null.");
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
                 GetException<ArgumentException>(() => Guard.That(arg, nameof(arg)).IsNotEmpty());
 
             // Assert
-            AssertArgumentException(exception, "arg", "String is empty\r\nParameter name: arg");
+            AssertArgumentException(exception,  "String is empty", "arg");
         }
 
         [Fact]

@@ -1,4 +1,5 @@
 using System;
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -64,7 +65,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg = 2;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsOdd());
+            Assert.Throws<OddValueExpectedException<int>>(() => Guard.That(arg).IsOdd());
         }
 
 
@@ -85,7 +86,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg = 2L;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsOdd());
+            Assert.Throws<OddValueExpectedException<long>>(() => Guard.That(arg).IsOdd());
         }
 
 
@@ -106,7 +107,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg = 5L;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsEven());
+            Assert.Throws<EvenValueExpectedException<long>>(() => Guard.That(arg).IsEven());
         }
 
         [Fact]
@@ -126,7 +127,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             var arg = 5;
 
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsEven());
+            Assert.Throws<EvenValueExpectedException<int>>(() => Guard.That(arg).IsEven());
         }
 
         [Theory]
@@ -146,7 +147,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void IsPrime_ArgumentIsNotPrime_Throws(int arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsPrime());
+            Assert.Throws<PrimeValueExpectedException<int>>(() => Guard.That(arg).IsPrime());
         }
 
         [Theory]
@@ -166,7 +167,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void IsPrime_Long_ArgumentIsNotPrime_Throws(long arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsPrime());
+            Assert.Throws<PrimeValueExpectedException<long>>(() => Guard.That(arg).IsPrime());
         }
 
         [Theory]
@@ -176,7 +177,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void IsPositive_ArgumentIsNotPositive_Throws(int arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsPositive());
+            Assert.Throws<PositiveValueExpectedException<int>>(() => Guard.That(arg).IsPositive());
         }
 
         [Theory]
@@ -186,7 +187,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void IsPositive_ArgumentIsNotPositive_Throws(long arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsPositive());
+            Assert.Throws<PositiveValueExpectedException<long>>(() => Guard.That(arg).IsPositive());
         }
 
         [Theory]
@@ -216,7 +217,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void IsPositive_ArgumentIsNotNegative_Throws(int arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsNegative());
+            Assert.Throws<NegativeValueExpectedException<int>>(() => Guard.That(arg).IsNegative());
         }
 
         [Theory]
@@ -226,7 +227,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void IsPositive_ArgumentIsNotNegative_Throws(long arg)
         {
             // Act/Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => Guard.That(arg).IsNegative());
+            Assert.Throws<NegativeValueExpectedException<long>>(() => Guard.That(arg).IsNegative());
         }
 
         [Theory]
