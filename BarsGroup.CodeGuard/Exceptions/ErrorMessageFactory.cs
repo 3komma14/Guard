@@ -1,15 +1,7 @@
-﻿namespace BarsGroup.CodeGuard.Internals
+﻿namespace BarsGroup.CodeGuard.Exceptions
 {
     public static class ErrorMessageFactory
     {
-        public static string OutOfRange<T>(IArg<T> arg, T min, T max)
-        {
-            if (!arg.HasName)
-                return string.Format("The value '{0}' is not in its allowed range of '{1}' to '{2}'", arg.Value, min,
-                    max);
-            return $"The value '{arg.Value}' of '{arg.Name}' is not in its allowed range of '{min}' to '{max}'";
-        }
-
         public static string LargerThan<T>(IArg<T> arg, T max)
         {
             return !arg.HasName

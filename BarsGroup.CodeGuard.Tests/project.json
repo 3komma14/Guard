@@ -4,6 +4,7 @@
   "dependencies": {
     "NETStandard.Library": "1.6.1",
     "BarsGroup.CodeGuard": "1.0.0-*",
+    "dotnet-test-xunit": "2.2.0-*",
     "xunit": "2.2.0-*"
   },
 
@@ -12,14 +13,13 @@
   "frameworks": {
     "netcoreapp1.1": {
       "dependencies": {
-        "dotnet-test-xunit": "2.2.0-*",
         "Microsoft.NETCore.App": {
           "type": "platform",
           "version": "1.1.0"
         }
       }
     },
-    "net45": {
+    "net451": {
     }
   }
 }

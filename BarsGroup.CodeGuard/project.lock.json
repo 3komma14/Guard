@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5": {
+    ".NETFramework,Version=v4.5.1": {
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -43,6 +43,7 @@
           "System.Text.RegularExpressions": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0",
+          "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
         }
@@ -357,6 +358,15 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "System.Threading.Timer/4.3.0": {
+        "type": "package",
+        "compile": {
+          "ref/net451/_._": {}
+        },
+        "runtime": {
+          "lib/net451/_._": {}
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
@@ -4709,7 +4719,7 @@
     "": [
       "NETStandard.Library >= 1.6.1"
     ],
-    ".NETFramework,Version=v4.5": [],
+    ".NETFramework,Version=v4.5.1": [],
     ".NETStandard,Version=v1.6": []
   },
   "tools": {},

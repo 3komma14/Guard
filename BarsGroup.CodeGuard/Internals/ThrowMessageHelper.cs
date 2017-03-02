@@ -21,26 +21,9 @@ namespace BarsGroup.CodeGuard.Internals
             throw new ArgumentNullException(arg.Name);
         }
 
-        public static  void ThrowArgumentOutRange<T>(this IArg<T> arg)
-        {
-            if (!arg.HasName)
-                throw new ArgumentOutOfRangeException();
-
-            throw new ArgumentOutOfRangeException(arg.Name);
-        }
-
-        public static void ThrowArgumentOutRange<T>(this IArg<T> arg, string message)
-        {
-            if (!arg.HasName)
-                throw new ArgumentOutOfRangeException(message, (Exception) null);
-
-            throw new ArgumentOutOfRangeException(arg.Name, arg.Value, message);
-        }
-
         public static void ThrowArgumentOutRange<T>(this IArg<T> arg, T min, T max)
         {
-            var message = ErrorMessageFactory.OutOfRange(arg, min, max);
-            arg.ThrowArgumentOutRange(message);
+            throw new ArgumentOutOfRangeException<T>(arg.Value, min, max, arg.Name);
         }
 
         public static void ThrowArgumentLessThan<T>(this IArg<T> arg, T min)
@@ -57,7 +40,7 @@ namespace BarsGroup.CodeGuard.Internals
 
         public static void ThrowArgumentNotEqual<T>(this IArg<T> arg, T expected)
         {
-            throw ArgumentOutOfRangeExceptionFactory.NotEqual(arg, expected);
+            throw new NotExpectedException<>().NotEqual(arg, expected);
         }
     }
 }
