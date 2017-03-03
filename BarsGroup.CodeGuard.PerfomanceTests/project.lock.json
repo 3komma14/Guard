@@ -2603,7 +2603,7 @@
           "lib/netstandard1.1/xunit.runner.utility.dotnet.dll": {}
         }
       },
-      "BarsGroup.CodeGuard/3.0.0": {
+      "BarsGroup.CodeGuard/3.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
@@ -7782,7 +7782,7 @@
         "xunit.runner.utility.nuspec"
       ]
     },
-    "BarsGroup.CodeGuard/3.0.0": {
+    "BarsGroup.CodeGuard/3.1.0": {
       "type": "project",
       "path": "../BarsGroup.CodeGuard/project.json",
       "msbuildProject": "../BarsGroup.CodeGuard/BarsGroup.CodeGuard.xproj"
@@ -7790,7 +7790,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "BarsGroup.CodeGuard >= 3.0.0-*",
+      "BarsGroup.CodeGuard >= 3.*",
       "NETStandard.Library >= 1.6.1",
       "dotnet-test-xunit >= 2.2.0-*",
       "xunit >= 2.2.0-*"

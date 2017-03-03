@@ -4,7 +4,7 @@
   "dependencies": {
     "NETStandard.Library": "1.6.1",
     "dotnet-test-xunit": "2.2.0-*",
-    "BarsGroup.CodeGuard": "3.0.0-*",
+    "BarsGroup.CodeGuard": "3.*",
     "xunit": "2.2.0-*"
   },
 
