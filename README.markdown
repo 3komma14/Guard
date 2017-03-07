@@ -15,9 +15,6 @@ Example of usage:
 
 	public void SomeMethod(int arg1, int arg2)
 	{
-		// This line will throw an exception when the arg1 is less or equal to arg2
-		Guard.That(() => arg1).IsGreaterThan(arg2);
-
 		// This will check that arg1 is not null and that is in some range 1..100
 		Guard.That(arg2).IsNotNull().IsInRange(1,100);
 
@@ -27,16 +24,6 @@ Example of usage:
 		// Do stuff
 	}
 
-	// --- using Validate.That(...) ---
-	// Validate.That makes is possible to get a list of all error conditions
-
-	public void OtherMethod(int arg1)
-	{
-		// Get a list of errors
-		List<string> errors = Validate.That(() => arg1).IsNotNull().GetResult();
-	}
-
-
 Incomplete list of checks:
 --------------------------
 
@@ -45,7 +32,7 @@ New checks can easily be made by creating a extension method.
 
 For object:
 
-* Is<Type> 
+* Is<Type>
 * IsNotDefault 
 
 For bool:
@@ -90,4 +77,3 @@ For IEnumerable:
 For Guid:
 
 * IsNotEmpty
-
