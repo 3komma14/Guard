@@ -2,7 +2,6 @@ using System;
 using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
-using Xunit.Sdk;
 
 namespace BarsGroup.CodeGuard.Tests.Validators
 {

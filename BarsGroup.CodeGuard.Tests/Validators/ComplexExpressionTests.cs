@@ -52,7 +52,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void ProperyWithProperty_ValidResult_DoesNotThrow()
         {
             // Arrange
-            var obj = new Foo(){BarProp = new Bar(){Prop = "A"}};
+            var obj = new Foo {BarProp = new Bar {Prop = "A"}};
 
             // Act/Assert
                                         Guard.That(obj.BarProp.Prop).IsNotEmpty();
@@ -62,7 +62,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void ProperyWithField_ValidResult_DoesNotThrow()
         {
             // Arrange
-            var obj = new Foo() {BarProp = new Bar()};
+            var obj = new Foo {BarProp = new Bar()};
 
             // Act/Assert
             Guard.That(obj.BarProp.Field).IsLessThan(1);
@@ -72,7 +72,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void ProperyWithProperty_InvalidResult_Throws()
         {
             // Arrange
-            var obj = new Foo(){BarProp = new Bar(){Prop = ""}};
+            var obj = new Foo {BarProp = new Bar {Prop = ""}};
 
             // Act
             var exception =

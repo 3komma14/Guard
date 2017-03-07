@@ -52,7 +52,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void IsNotEmpty_ArgumentIsListWithItems_DoesNotThrow()
         {
             // Arrange
-            IEnumerable<string> arg = new List<string>() { "Item1" };
+            IEnumerable<string> arg = new List<string> { "Item1" };
 
             // Act/Assert
             Guard.That(arg).IsNotEmpty();
@@ -72,7 +72,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void Contains_ArgumentContainsElement_DoesNotThrow()
         {
             // Arrange
-            IEnumerable<string> arg = new List<string>() {"SomeItem"};
+            IEnumerable<string> arg = new List<string> {"SomeItem"};
 
             // Act/Assert
             Guard.That(arg).Contains(x => x == "SomeItem");
@@ -112,7 +112,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         public void Length_ArgumentLengthIsEqual_DoesNotThrow()
         {
             // Arrange
-            IEnumerable<string> arg = new List<string>(){"First"};
+            IEnumerable<string> arg = new List<string> {"First"};
 
             // Act/Assert
             Guard.That(arg).Length(1);

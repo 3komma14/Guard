@@ -6,9 +6,6 @@ namespace BarsGroup.CodeGuard.Internals
 
         public string Name { get; }
 
-        public bool HasName => !string.IsNullOrEmpty(Name);
-
-        
         public ArgBase(T argument, string argumentName = "")
         {
             Value = argument;

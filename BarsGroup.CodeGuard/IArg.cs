@@ -4,6 +4,5 @@ namespace BarsGroup.CodeGuard
     {
         T Value { get; }
         string Name { get; }
-        bool HasName { get; }
     }
 }

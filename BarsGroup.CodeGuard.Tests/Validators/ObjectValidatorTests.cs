@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
@@ -171,6 +172,69 @@ namespace BarsGroup.CodeGuard.Tests.Validators
             // Act/Assert
             Assert.Throws<ArgumentException>(() => Guard.That(arg).IsOneOf(data));
         }
+
+        [Fact]
+        public void NotNull_ArgumentNotNull_DoesNotThrow()
+        {
+            // Arrange
+            var arg = new TestClass();
+
+            // Act/Assert
+            Guard.That(arg);
+        }
+
+
+        [Fact]
+        public void NotNull_IArgIsNull_Throws()
+        {
+            // Act/Assert
+            Assert.Throws<ArgumentNullException>(() => ((IArg<object>)null).IsNotNull());
+        }
+
+
+        [Fact]
+        public void NotNull_ArgumentIsNull_Throws()
+        {
+            // Arrange
+            TestClass arg = null;
+
+            // Act/Assert
+            Assert.Throws<ArgumentNullException>(() => Guard.That(arg).IsNotNull());
+        }
+
+        [Fact]
+        public void NotNull_NullableTypeIsNull_Throws()
+        {
+            // Arrange
+            int? arg = null;
+
+            // Act/Assert
+            Assert.Throws<ArgumentNullException>(() => Guard.That(arg).IsNotNull());
+        }
+
+        [Fact]
+        public void Is_Interface_NotThrows()
+        {
+            // Arrange
+            var arg = new List<string>();
+
+            // Act/Assert
+            Guard.That(arg).Is<List<string>, IList<string>>();
+        }
+
+        [Fact]
+        public void Is_DiffrentTypes_Throws()
+        {
+            // Arrange
+            var arg = new List<string>();
+
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(arg).Is<List<string>, string>());
+        }
+
+
+        private class TestClass
+        { }
 
         private class MyBase { }
 

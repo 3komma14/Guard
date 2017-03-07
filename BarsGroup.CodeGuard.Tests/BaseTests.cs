@@ -10,7 +10,7 @@ namespace BarsGroup.CodeGuard.Tests
     {
         #region ----- Helper functions -----
 
-        protected T GetException<T>(Action action) where T : Exception
+        protected static T GetException<T>(Action action) where T : Exception
         {
             T actualException = null;
             try
@@ -57,19 +57,6 @@ namespace BarsGroup.CodeGuard.Tests
             var message = new NotExpectedException<T>(actualValue, expectedValue, paramName).Message;
             Assert.Equal(message, exception.Message);
         }
-
-        protected void AssertArgumentNotEqualException(ArgumentOutOfRangeException exception, string paramName, object actualValue, object expectedValue)
-        {
-            Assert.NotNull(exception);
-            //Assert.Equal(paramName, exception.ParamName);
-            //Assert.Equal(actualValue, exception.ActualValue);
-            var expectedMessage =
-                string.Format(
-                    "The value '{0}' is not equal max '{1}'\r\nParameter name: {2}\r\nActual value was {0}.",
-                    actualValue, expectedValue, paramName);
-            Assert.Equal(expectedMessage, exception.Message);
-        }
-
 
         protected static void AssertArgumentException(ArgumentException exception, string message,  string paramName)
         {

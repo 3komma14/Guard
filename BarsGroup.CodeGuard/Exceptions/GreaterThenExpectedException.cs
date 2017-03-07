@@ -1,5 +1,3 @@
-using System;
-
 namespace BarsGroup.CodeGuard.Exceptions
 {
     public class GreaterThenExpectedException<TValue> : GuardException

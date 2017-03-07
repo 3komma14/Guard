@@ -3,11 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using BarsGroup.CodeGuard.Internals;
+using ArgumentNullException = BarsGroup.CodeGuard.Exceptions.ArgumentNullException;
 
 namespace BarsGroup.CodeGuard.Validators
 {
     public static class ObjectValidatorExtensions
     {
+        public static IArg<T> IsNotNull<T>(this IArg<T> arg)
+        {
+            if (arg == null)
+                throw new ArgumentNullException(nameof(arg));
+
+            if (arg.Value == null)
+                arg.ThrowArgumentNull();
+
+            return arg;
+        }
+
+        public static IArg<T> Is<T, TType>(this IArg<T> arg)
+        {
+            if (!(arg.Value is TType))
+                arg.ThrowArgument($"Value is not <{typeof(TType).Name}>");
+
+            return arg;
+        }
+
         /// <summary>
         ///     Is argument instance of type
         /// </summary>
@@ -19,7 +39,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var isType = type.GetTypeInfo().IsInstanceOfType(arg.Value);
             if (!isType)
-                arg.ThrowArgument(string.Format("Value is not <{0}>", type.Name));
+                arg.ThrowArgument($"Value is not <{type.Name}>");
 
             return arg;
         }
@@ -41,7 +61,7 @@ namespace BarsGroup.CodeGuard.Validators
             }
             else
             {
-                if (default(T).Equals(arg.Value))
+                if (defaultValue.Equals(arg.Value))
                     arg.ThrowArgument("Value cannot be the default value.");
             }
 
@@ -69,8 +89,8 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!collection.Contains(arg.Value))
-                arg.ThrowArgument(string.Format("The value of the parameter is not one of {0}",
-                    string.Join(", ", collection.Select(x => x.ToString()).ToArray())));
+                arg.ThrowArgument(
+                    $"The value of the parameter is not one of {string.Join(", ", collection.Select(x => x.ToString()).ToArray())}");
 
             return arg;
         }

@@ -35,7 +35,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!arg.Value.StartsWith(value))
-                arg.ThrowArgument(string.Format("String must start with <{0}>", value));
+                arg.ThrowArgument($"String must start with <{value}>");
 
             return arg;
         }
@@ -48,7 +48,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!arg.Value.EndsWith(value))
-                arg.ThrowArgument(string.Format("String must end with <{0}>", value));
+                arg.ThrowArgument($"String must end with <{value}>");
 
             return arg;
         }
@@ -73,7 +73,7 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             if (!arg.Value.Contains(value))
-                arg.ThrowArgument(string.Format("String must contain <{0}>", value));
+                arg.ThrowArgument($"String must contain <{value}>");
 
             return arg;
         }
@@ -87,7 +87,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var r = new Regex(pattern);
             if (!r.IsMatch(arg.Value))
-                arg.ThrowArgument(string.Format("String must match <{0}>", pattern));
+                arg.ThrowArgument($"String must match <{pattern}>");
 
             return arg;
         }
@@ -98,7 +98,7 @@ namespace BarsGroup.CodeGuard.Validators
             Guard.That(arg.Value).IsNotNull();
 
 
-            if (arg.Value.IsNullOrWhiteSpace())
+            if (string.IsNullOrWhiteSpace(arg.Value))
                 arg.ThrowArgument("String is null or whitespace");
 
             return arg;

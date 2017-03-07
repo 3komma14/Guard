@@ -1,5 +1,4 @@
-﻿using BarsGroup.CodeGuard.Exceptions;
-using BarsGroup.CodeGuard.Internals;
+﻿using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
 {

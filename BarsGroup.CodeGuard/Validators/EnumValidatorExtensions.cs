@@ -23,7 +23,7 @@ namespace BarsGroup.CodeGuard.Validators
 
             var value = arg.Value as Enum;
             var flagEnumValue = flagValue as Enum;
-            if (value != null && !value.HasFlag(flagEnumValue))
+            if (flagEnumValue != null && !value?.HasFlag(flagEnumValue) == true)
                 arg.ThrowArgument("Value does not have flag set");
 
             return arg;

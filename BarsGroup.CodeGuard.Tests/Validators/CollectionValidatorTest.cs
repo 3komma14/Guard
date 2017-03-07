@@ -19,7 +19,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         [Fact]
         public void IsNotEmpty_NotEmptyCollection_NotThrows()
         {
-            var list = new List<string>() {string.Empty};
+            var list = new List<string> {string.Empty};
 
             Guard.That<ICollection>(list).IsNotEmpty();
         }

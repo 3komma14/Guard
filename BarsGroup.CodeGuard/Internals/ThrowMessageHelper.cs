@@ -7,7 +7,7 @@ namespace BarsGroup.CodeGuard.Internals
     {
         public static void ThrowArgument<T>(this IArg<T> arg, string message)
         {
-            if (!arg.HasName)
+            if (string.IsNullOrEmpty(arg.Name))
                 throw new ArgumentException(message);
 
             throw new ArgumentException(message, arg.Name);
@@ -15,7 +15,7 @@ namespace BarsGroup.CodeGuard.Internals
 
         public static void ThrowArgumentNull<T>(this IArg<T> arg)
         {
-            if (!arg.HasName)
+            if (string.IsNullOrEmpty(arg.Name))
                 throw new ArgumentNullException();
 
             throw new ArgumentNullException(arg.Name);
