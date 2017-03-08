@@ -14,7 +14,8 @@ namespace BarsGroup.CodeGuard.Validators
 
 
             var value = arg.Value;
-            if (value == null || !value.Any())
+            // ReSharper disable once UseMethodAny.2
+            if (value == null || value.Count() == 0)
                 arg.ThrowArgument("Collection is empty");
 
             return arg;
