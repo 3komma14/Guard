@@ -5,10 +5,8 @@ namespace BarsGroup.CodeGuard.Validators
 {
     public static class CollectionValidatorExtensions
     {
-        public static IArg<ICollection> IsNotEmpty(this IArg<ICollection> arg)
+        public static ArgBase<ICollection> IsNotEmpty(this ArgBase<ICollection> arg)
         {
-            Guard.That(arg).IsNotNull();
-
             var value = arg.Value;
             if (value == null || value.Count == 0)
                 arg.ThrowArgument("Collection is empty");

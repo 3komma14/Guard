@@ -5,9 +5,8 @@ namespace BarsGroup.CodeGuard.Validators
 {
     public static class StringValidatorExtensions
     {
-        public static IArg<string> IsNotEmpty(this IArg<string> arg)
+        public static ArgBase<string> IsNotEmpty(this ArgBase<string> arg)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
 
             if (arg.Value == string.Empty)
@@ -16,9 +15,8 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static IArg<string> IsNotNullOrEmpty(this IArg<string> arg)
+        public static ArgBase<string> IsNotNullOrEmpty(this ArgBase<string> arg)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
 
             if (string.IsNullOrEmpty(arg.Value))
@@ -27,11 +25,9 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static IArg<string> StartsWith(this IArg<string> arg, string value)
+        public static ArgBase<string> StartsWith(this ArgBase<string> arg, string value)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
-            Guard.That(arg).IsNotNull();
 
 
             if (!arg.Value.StartsWith(value))
@@ -40,11 +36,9 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static IArg<string> EndsWith(this IArg<string> arg, string value)
+        public static ArgBase<string> EndsWith(this ArgBase<string> arg, string value)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
-            Guard.That(arg).IsNotNull();
 
 
             if (!arg.Value.EndsWith(value))
@@ -53,9 +47,8 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static IArg<string> Length(this IArg<string> arg, int length)
+        public static ArgBase<string> Length(this ArgBase<string> arg, int length)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
 
 
@@ -65,11 +58,9 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static IArg<string> Contains(this IArg<string> arg, string value)
+        public static ArgBase<string> Contains(this ArgBase<string> arg, string value)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
-            Guard.That(arg).IsNotNull();
 
 
             if (!arg.Value.Contains(value))
@@ -78,9 +69,8 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static IArg<string> IsMatch(this IArg<string> arg, string pattern)
+        public static ArgBase<string> IsMatch(this ArgBase<string> arg, string pattern)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
             Guard.That(pattern).IsNotNullOrWhiteSpace();
 
@@ -92,9 +82,8 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static IArg<string> IsNotNullOrWhiteSpace(this IArg<string> arg)
+        public static ArgBase<string> IsNotNullOrWhiteSpace(this ArgBase<string> arg)
         {
-            Guard.That(arg).IsNotNull();
             Guard.That(arg.Value).IsNotNull();
 
 

@@ -1,10 +1,10 @@
 namespace BarsGroup.CodeGuard.Internals
 {
-    internal class ArgBase<T> : IArg<T>
+    public struct ArgBase<T> 
     {
-        public T Value { get; }
+        public readonly T Value;
 
-        public string Name { get; }
+        public readonly string Name;
 
         public ArgBase(T argument, string argumentName = "")
         {

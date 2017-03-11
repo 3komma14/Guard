@@ -6,11 +6,11 @@ namespace BarsGroup.CodeGuard.PerfomanceTests
 {
     internal static class PerfTestHelper
     {
-        public static void RunTest(double maxCoef, Action guardValidator, Action nativeValidator )
+        public static void RunTest(double maxCoef, long maxReply, Action guardValidator, Action nativeValidator )
         {
             var watch = new Stopwatch();
             watch.Start();
-            for (var i = 0; i < 10000000; i++)
+            for (var i = 0; i < maxReply; i++)
             {
                 guardValidator();
             }
@@ -20,7 +20,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests
 
             watch.Reset();
             watch.Start();
-            for (var i = 0; i < 10000000; i++)
+            for (var i = 0; i < maxReply; i++)
             {
                 nativeValidator();
             }

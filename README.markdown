@@ -77,3 +77,15 @@ For IEnumerable:
 For Guid:
 
 * IsNotEmpty
+
+
+Benchmarks of checks:
+---------------------
+
+|Check                   | Max. overhead |
+|------------------------|---------------|
+|*Enumerable*            |               |
+| IsNotEmpty             | x2.1          |
+| Length                 | x2            |
+| Contains by value      | x1.1          |
+| Contains by predicate  | x1.1          |

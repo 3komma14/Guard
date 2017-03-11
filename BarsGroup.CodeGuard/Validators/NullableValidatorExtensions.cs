@@ -8,10 +8,8 @@ namespace BarsGroup.CodeGuard.Validators
         ///     Is argument instance of type
         /// </summary>
         /// <returns></returns>
-        public static IArg<T?> IsNotNull<T>(this IArg<T?> arg) where T : struct
+        public static ArgBase<T?> IsNotNull<T>(this ArgBase<T?> arg) where T : struct
         {
-            Guard.That(arg).IsNotNull();
-
             var value = arg.Value;
             if (!value.HasValue)
                 arg.ThrowArgumentNull();

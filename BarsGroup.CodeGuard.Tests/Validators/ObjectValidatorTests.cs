@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BarsGroup.CodeGuard.Exceptions;
+using BarsGroup.CodeGuard.Internals;
 using BarsGroup.CodeGuard.Validators;
 using Xunit;
 
@@ -181,14 +182,6 @@ namespace BarsGroup.CodeGuard.Tests.Validators
 
             // Act/Assert
             Guard.That(arg);
-        }
-
-
-        [Fact]
-        public void NotNull_IArgIsNull_Throws()
-        {
-            // Act/Assert
-            Assert.Throws<ArgumentNullException>(() => ((IArg<object>)null).IsNotNull());
         }
 
 

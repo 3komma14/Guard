@@ -9,24 +9,92 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
 {
     public class EnumerableTests
     {
-        readonly IEnumerable<string> _enumerable = Enumerable.Repeat(string.Empty, 10);
+        private const long DefaultReply = 10000000;
 
-        //[Theory]
-        //[Repeat(10)]
-        [Fact]
+        [Theory]
+        [Repeat(10)]
         public void IsNotEmpty()
         {
-            var guardValidator = new Action(() => Guard.That(_enumerable).IsNotEmpty());
+            var enumerable = Enumerable.Repeat(string.Empty, 10);
+            var guardValidator = new Action(() => Guard.That(enumerable).IsNotEmpty());
             var nativeValidator = new Action(() =>
             {
                 // ReSharper disable once UseMethodAny.2
-                if (_enumerable.Count() == 0)
+                if (enumerable.Count() == 0)
                 { 
                     throw new Exception();
                 }
             });
 
-            PerfTestHelper.RunTest(3.2, guardValidator, nativeValidator);
+            PerfTestHelper.RunTest(2.1, DefaultReply, guardValidator, nativeValidator);
+        }
+
+        [Theory]
+        [Repeat(10)]
+        public void Length()
+        {
+            var enumerable = Enumerable.Repeat(string.Empty, 10);
+            var guardValidator = new Action(() => Guard.That(enumerable).Length(10));
+            var nativeValidator = new Action(() =>
+            {
+                // ReSharper disable once UseMethodAny.2
+                if (enumerable.Count() != 10)
+                {
+                    throw new Exception();
+                }
+            });
+
+            PerfTestHelper.RunTest(2, DefaultReply, guardValidator, nativeValidator);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemsCount"></param>
+        /// <param name="repliesCount"></param>
+        [Theory]
+        [InlineData(10000, 100000)]
+        [InlineData(100000, 10000)]
+        [InlineData(1000000, 1000)]
+        [Repeat(1)]
+        public void Contains_Value(int itemsCount, long repliesCount)
+        {
+            var list = new List<string>(Enumerable.Repeat(string.Empty, itemsCount)) {"test", "test"};
+            var dataSource = list.AsEnumerable();
+
+            var guardValidator = new Action(() => Guard.That(dataSource).Contains("test"));
+            var nativeValidator = new Action(() =>
+            {
+                // ReSharper disable once UseMethodAny.2
+                if (!dataSource.Contains("test"))
+                {
+                    throw new Exception();
+                }
+            });
+
+            PerfTestHelper.RunTest(1.1, repliesCount, guardValidator, nativeValidator);
+
+        }
+
+
+        [Theory]
+        [InlineData(10000, 50000)]
+        [Repeat(1)]
+        public void Contains_Pred(int itemsCount, long repliesCount)
+        {
+            var list = new List<string>(Enumerable.Repeat(string.Empty, itemsCount)) { "test", "test" };
+            var dataSource = list.AsEnumerable();
+            var guardValidator = new Action(() => Guard.That(dataSource).Contains(text => text == "test"));
+            var nativeValidator = new Action(() =>
+            {
+                // ReSharper disable once UseMethodAny.2
+                if (dataSource.All(text => text != "test"))
+                {
+                    throw new Exception();
+                }
+            });
+
+            PerfTestHelper.RunTest(1.1, repliesCount, guardValidator, nativeValidator);
         }
     }
 }

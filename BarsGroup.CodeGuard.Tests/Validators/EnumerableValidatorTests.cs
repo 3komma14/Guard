@@ -69,7 +69,7 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         }
 
         [Fact]
-        public void Contains_ArgumentContainsElement_DoesNotThrow()
+        public void Contains_Pred_ArgumentContainsElement_DoesNotThrow()
         {
             // Arrange
             IEnumerable<string> arg = new List<string> {"SomeItem"};
@@ -79,13 +79,33 @@ namespace BarsGroup.CodeGuard.Tests.Validators
         }
 
         [Fact]
-        public void Contains_ArgumentIsEmptyList_Throws()
+        public void Contains_Pred_ArgumentIsEmptyList_Throws()
         {
             // Arrange
             IEnumerable<string> arg = new List<string>();
 
             // Act/Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(arg).Contains(x => x == "SomeItem"));
+            Assert.Throws<ArgumentException>(() => Guard.That(arg).Contains("SomeItem"));
+        }
+
+        [Fact]
+        public void Contains_Val_ArgumentContainsElement_DoesNotThrow()
+        {
+            // Arrange
+            IEnumerable<string> arg = new List<string> { "SomeItem" };
+
+            // Act/Assert
+            Guard.That(arg).Contains(x => x == "SomeItem");
+        }
+
+        [Fact]
+        public void Contains_Val_ArgumentIsEmptyList_Throws()
+        {
+            // Arrange
+            IEnumerable<string> arg = new List<string>();
+
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(arg).Contains("SomeItem"));
         }
 
         [Fact]
