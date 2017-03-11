@@ -1,5 +1,24 @@
 {
-  "version": "3.1.0-*",
+  "version": "3.1.1",
+  "authors": [ "Bars Group" ],
+  "title": "BarsGroup.CodeGuard",
+  "description": "Deep fork of the Seterlund.CodeGuard library. \n Example: Guard.That(arg1).IsNotNull().GreaterThan(100); \n Throws an exception if conditions are not met.",
+  "projectUrl": "https://github.com/barsgroup/Guard",
+  "packOptions": {
+    "releaseNotes": "Increase performance IEnumerable checks",
+    "\",": null,
+    "tags": [ "Argument", "Guard", "Validation", "Contracts" ],
+    "owners": [ "Viktor Borisov" ],
+
+    "iconUrl": "https://github.com/barsgroup/Guard/blob/master/Images/shield2.png?raw=true",
+    "licenseUrl": "https://github.com/barsgroup/Guard/blob/master/License.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/barsgroup/Guard"
+    }
+
+  },
+
   "dependencies": {
     "NETStandard.Library": "1.6.1"
   },
