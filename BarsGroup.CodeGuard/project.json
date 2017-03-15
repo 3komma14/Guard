@@ -1,5 +1,5 @@
 {
-  "version": "3.1.1",
+  "version": "3.1.2",
   "authors": [ "Bars Group" ],
   "title": "BarsGroup.CodeGuard",
   "description": "Deep fork of the Seterlund.CodeGuard library. \n Example: Guard.That(arg1).IsNotNull().GreaterThan(100); \n Throws an exception if conditions are not met.",
@@ -19,12 +19,12 @@
 
   },
 
-  "dependencies": {
-    "NETStandard.Library": "1.6.1"
-  },
   "frameworks": {
     "netstandard1.6": {
-      "imports": "dnxcore50"
+      "imports": "dnxcore50",
+      "dependencies": {
+        "NETStandard.Library": "1.6.1"
+      }
     },
     "net45": {
     }

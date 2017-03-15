@@ -3349,9 +3349,6 @@
       "BarsGroup.CodeGuard/3.1.1": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
         "compile": {
           "net45/BarsGroup.CodeGuard.dll": {}
         },
