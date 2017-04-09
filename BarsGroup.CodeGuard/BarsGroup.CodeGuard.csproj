@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Deep fork of the Seterlund.CodeGuard library. 
+ Example: Guard.That(arg1).IsNotNull().GreaterThan(100); 
+ Throws an exception if conditions are not met.</Description>
+    <AssemblyTitle>BarsGroup.CodeGuard</AssemblyTitle>
+    <VersionPrefix>3.1.2</VersionPrefix>
+    <Authors>Bars Group</Authors>
+    <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
+    <AssemblyName>BarsGroup.CodeGuard</AssemblyName>
+    <PackageId>BarsGroup.CodeGuard</PackageId>
+    <PackageTags>Argument;Guard;Validation;Contracts</PackageTags>
+    <PackageReleaseNotes>Increase performance IEnumerable checks</PackageReleaseNotes>
+    <PackageIconUrl>https://github.com/barsgroup/Guard/blob/master/Images/shield2.png?raw=true</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/barsgroup/Guard</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/barsgroup/Guard/blob/master/License.txt</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/barsgroup/Guard</RepositoryUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.1' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.1' ">1.1</NetStandardImplicitPackageVersion>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

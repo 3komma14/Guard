@@ -85,7 +85,7 @@ Benchmarks of checks:
 |Check                   | Max. overhead |
 |------------------------|---------------|
 |*Enumerable*            |               |
-| IsNotEmpty             | x2.1          |
-| Length                 | x2            |
+| IsNotEmpty             | x1.65         |
+| Length                 | x1.65         |
 | Contains by value      | x1.1          |
 | Contains by predicate  | x1.1          |

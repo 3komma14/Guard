@@ -1,6 +1,6 @@
 namespace BarsGroup.CodeGuard.Internals
 {
-    public struct ArgBase<T> 
+    public class ArgBase<T> 
     {
         public readonly T Value;
 

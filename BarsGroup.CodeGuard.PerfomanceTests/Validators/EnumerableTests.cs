@@ -26,7 +26,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
                 }
             });
 
-            PerfTestHelper.RunTest(2.1, DefaultReply, guardValidator, nativeValidator);
+            PerfTestHelper.RunTest(1.65, DefaultReply*5, guardValidator, nativeValidator);
         }
 
         [Theory]
@@ -44,7 +44,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
                 }
             });
 
-            PerfTestHelper.RunTest(2, DefaultReply, guardValidator, nativeValidator);
+            PerfTestHelper.RunTest(1.65, DefaultReply, guardValidator, nativeValidator);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
         /// <param name="itemsCount"></param>
         /// <param name="repliesCount"></param>
         [Theory]
-        [InlineData(10000, 100000)]
-        [InlineData(100000, 10000)]
-        [InlineData(1000000, 1000)]
+        [InlineData(5000, 100000)]
+        [InlineData(50000, 10000)]
+        [InlineData(500000, 1000)]
         [Repeat(1)]
         public void Contains_Value(int itemsCount, long repliesCount)
         {
@@ -78,7 +78,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
 
 
         [Theory]
-        [InlineData(10000, 50000)]
+        [InlineData(3000, 50000)]
         [Repeat(1)]
         public void Contains_Pred(int itemsCount, long repliesCount)
         {
