@@ -18,11 +18,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Attibutes
                       "Repeat count must be greater than 0.");
             }
 
-#if !DEBUG
             _count = count;
-#else 
-            _count = 1;
-#endif            
         }
 
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)

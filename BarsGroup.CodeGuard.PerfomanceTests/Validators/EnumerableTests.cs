@@ -94,7 +94,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
                 }
             });
 
-            PerfTestHelper.RunTest(1.1, repliesCount, guardValidator, nativeValidator);
+            PerfTestHelper.RunTest(1.3, repliesCount, guardValidator, nativeValidator);
         }
     }
 }

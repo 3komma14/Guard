@@ -1,3 +1,4 @@
+using BarsGroup.CodeGuard.Exceptions;
 using BarsGroup.CodeGuard.Internals;
 
 namespace BarsGroup.CodeGuard.Validators
@@ -6,7 +7,10 @@ namespace BarsGroup.CodeGuard.Validators
     {
         public static ArgBase<T[]> IsNotEmpty<T>(this ArgBase<T[]> arg)
         {
-            if (arg.Value == null || arg.Value.Length == 0)
+            if (arg.Value == null)
+               arg.ThrowArgumentNull();
+
+            if (arg.Value.Length == 0)
                 arg.ThrowArgument("Array is empty");
 
             return arg;
@@ -14,7 +18,11 @@ namespace BarsGroup.CodeGuard.Validators
 
         public static ArgBase<T[]> CountIs<T>(this ArgBase<T[]> arg, int count)
         {
-            Guard.That(arg.Value.Length, arg.Name).IsEqual(count);
+            if (arg.Value == null)
+                arg.ThrowArgumentNull();
+
+            if (arg.Value.Length != count)
+                throw new NotExpectedException<int>(arg.Value.Length, count, arg.Name);
 
             return arg;
         }
