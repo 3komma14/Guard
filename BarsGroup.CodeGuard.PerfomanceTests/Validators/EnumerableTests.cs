@@ -26,7 +26,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
                 }
             });
 
-            PerfTestHelper.RunTest(1.65, DefaultReply*5, guardValidator, nativeValidator);
+            PerfTestHelper.RunTest(1.75, DefaultReply*5, guardValidator, nativeValidator);
         }
 
         [Theory]
@@ -44,7 +44,7 @@ namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
                 }
             });
 
-            PerfTestHelper.RunTest(1.65, DefaultReply, guardValidator, nativeValidator);
+            PerfTestHelper.RunTest(1.75, DefaultReply, guardValidator, nativeValidator);
         }
 
         /// <summary>
