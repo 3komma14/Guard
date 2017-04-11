@@ -6,7 +6,7 @@ using Xunit;
 
 namespace BarsGroup.CodeGuard.PerfomanceTests.Validators
 {
-    public class ArrrayTests
+    public class ArrayTests
     {
         private const long DefaultReply = 10000000;
 

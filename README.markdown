@@ -92,4 +92,9 @@ Benchmarks of checks:
 |*Array*                 |               |
 | IsNotEmpty             | x8.6          |
 | CountIs                | x8.9          |
+|*Boolean*               |               |
+| IsTrue                 | x5.4          |
+| IsFalse                | x5.4          |
+|*Collection*            |               |
+| IsNotEmpty             | x3.5          |
 

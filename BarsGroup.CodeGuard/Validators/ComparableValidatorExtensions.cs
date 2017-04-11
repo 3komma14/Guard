@@ -1,5 +1,6 @@
 using System;
 using BarsGroup.CodeGuard.Internals;
+using ArgumentNullException = BarsGroup.CodeGuard.Exceptions.ArgumentNullException;
 
 namespace BarsGroup.CodeGuard.Validators
 {
@@ -15,8 +16,8 @@ namespace BarsGroup.CodeGuard.Validators
 
         public static ArgBase<T> IsEqual<T>(this ArgBase<T> arg, Func<T> fun) where T : IComparable
         {
-            Guard.That(fun).IsNotNull();
-
+            if (fun == null)
+                throw new ArgumentNullException(nameof(fun));
 
             return IsEqual(arg, fun());
         }
@@ -29,11 +30,12 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static ArgBase<T> IsNotEqual<T>(this ArgBase<T> arg, Func<T> param) where T : IComparable
+        public static ArgBase<T> IsNotEqual<T>(this ArgBase<T> arg, Func<T> fun) where T : IComparable
         {
-            Guard.That(param).IsNotNull();
+            if (fun == null)
+                throw new ArgumentNullException(nameof(fun));
 
-            return IsNotEqual(arg, param());
+            return IsNotEqual(arg, fun());
         }
 
         public static ArgBase<T> IsGreaterThan<T>(this ArgBase<T> arg, T param) where T : IComparable
@@ -42,15 +44,14 @@ namespace BarsGroup.CodeGuard.Validators
                 arg.ThrowGreaterThenExpected(param);
 
             return arg;
-
         }
 
-        public static ArgBase<T> IsGreaterThan<T>(this ArgBase<T> arg, Func<T> param) where T : IComparable
+        public static ArgBase<T> IsGreaterThan<T>(this ArgBase<T> arg, Func<T> fun) where T : IComparable
         {
-            Guard.That(param).IsNotNull();
+            if (fun == null)
+                throw new ArgumentNullException(nameof(fun));
 
-
-            return IsGreaterThan(arg, param());
+            return IsGreaterThan(arg, fun());
         }
 
         public static ArgBase<T> IsGreaterThanOrEqualTo<T>(this ArgBase<T> arg, T param) where T : IComparable
@@ -59,14 +60,14 @@ namespace BarsGroup.CodeGuard.Validators
                 arg.ThrowGreaterThenExpected(param);
 
             return arg;
-
         }
 
-        public static ArgBase<T> IsGreaterThanOrEqualTo<T>(this ArgBase<T> arg, Func<T> param) where T : IComparable
+        public static ArgBase<T> IsGreaterThanOrEqualTo<T>(this ArgBase<T> arg, Func<T> fun) where T : IComparable
         {
-            Guard.That(param).IsNotNull();
+            if (fun == null)
+                throw new ArgumentNullException(nameof(fun));
 
-            return IsGreaterThanOrEqualTo(arg,  param());
+            return IsGreaterThanOrEqualTo(arg, fun());
         }
 
         public static ArgBase<T> IsLessThan<T>(this ArgBase<T> arg, T param) where T : IComparable
@@ -77,11 +78,12 @@ namespace BarsGroup.CodeGuard.Validators
             return arg;
         }
 
-        public static ArgBase<T> IsLessThan<T>(this ArgBase<T> arg, Func<T> param) where T : IComparable
+        public static ArgBase<T> IsLessThan<T>(this ArgBase<T> arg, Func<T> fun) where T : IComparable
         {
-            Guard.That(param).IsNotNull();
+            if (fun == null)
+                throw new ArgumentNullException(nameof(fun));
 
-            return IsLessThan(arg,  param());
+            return IsLessThan(arg, fun());
         }
 
         public static ArgBase<T> IsLessThanOrEqualTo<T>(this ArgBase<T> arg, T param) where T : IComparable
@@ -90,15 +92,14 @@ namespace BarsGroup.CodeGuard.Validators
                 arg.ThrowLessThenExpected(param);
 
             return arg;
-            
         }
 
         public static ArgBase<T> IsLessThanOrEqualTo<T>(this ArgBase<T> arg, Func<T> param) where T : IComparable
         {
-            Guard.That(param).IsNotNull();
+            if (param == null)
+                throw new ArgumentNullException(nameof(param));
 
             return IsLessThanOrEqualTo(arg,  param());
-
         }
 
         public static ArgBase<T> IsInRange<T>(this ArgBase<T> arg, T start, T end) where T : IComparable

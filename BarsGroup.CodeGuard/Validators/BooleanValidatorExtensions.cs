@@ -6,12 +6,22 @@ namespace BarsGroup.CodeGuard.Validators
     {
         public static ArgBase<bool> IsTrue(this ArgBase<bool> arg)
         {
-            return arg.IsEqual(true);
+            if (!arg.Value)
+            {
+                arg.ThrowNotEqual(true);
+            }
+
+            return arg;
         }
 
         public static ArgBase<bool> IsFalse(this ArgBase<bool> arg)
         {
-            return arg.IsEqual(false);
+            if (arg.Value)
+            {
+                arg.ThrowNotEqual(false);
+            }
+
+            return arg;
         }
     }
 }
