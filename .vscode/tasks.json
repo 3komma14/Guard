@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "command": "dotnet",
+    "isShellCommand": true,
+    "args": [],
+    "tasks": [
+        {
+            "taskName": "build",
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "tests",
+            "suppressTaskName": true,
+            "isTestCommand": true,
+            "args": ["test", "./BarsGroup.CodeGuard.Tests/BarsGroup.CodeGuard.Tests.csproj"],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
