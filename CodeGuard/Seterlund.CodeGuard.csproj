@@ -7,10 +7,17 @@
     <AssemblyVersion>2.4.0.0</AssemblyVersion>
     <Product>CodeGuard</Product>
     <PackageId>Seterlund.CodeGuard</PackageId>
-    <Authors>Seterlund.CodeGuard</Authors>
+    <Authors>Per Ivar Seterlund</Authors>
     <AssemblyName>CodeGuard</AssemblyName>
     <Description>Guard and Validator library.\nExample: Guard.That(arg1).IsNotNull().GreaterThan(100);\nThrows an exception if conditions are not met.\nSupports the ability to get a list of the failed conditions.</Description>
-    <Copyright>Copyright Per Ivar Seterlund © 2018</Copyright>
+    <Copyright>Copyright Per Ivar Seterlund (3komma14@gmail.com) © 2011-2018</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.4.0</Version>
+    <PackageLicenseUrl>https://github.com/3komma14/Guard/blob/master/License.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/3komma14/Guard/wiki</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/3komma14/Guard/raw/master/Images/shield2.png</PackageIconUrl>
+    <PackageTags>Argument Guard Validation</PackageTags>
+    <PackageReleaseNotes>Switched to netcoreapp2.0.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
