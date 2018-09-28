@@ -1,6 +1,6 @@
 using System;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     public class ArgNameFunc<T> : ArgName
     {

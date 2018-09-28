@@ -1,20 +1,27 @@
-﻿using System;
+﻿using CodeGuard.dotNetCore.Exceptions;
+using System;
 using System.Diagnostics.Contracts;
-using Seterlund.CodeGuard.Exceptions;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     internal class ThrowMessageHandler<T> : IMessageHandler<T>
     {
+        #region Private Fields
         private readonly IArg<T> _arg;
+        #endregion Private Fields
+
+        #region Public Constructors
 
         public ThrowMessageHandler(IArg<T> arg)
         {
-#if !NET35    
             Contract.Requires(arg != null);
-#endif
+
             _arg = arg;
         }
+
+        #endregion Public Constructors
+
+        #region Public Methods
 
         public void Set(string message)
         {
@@ -24,6 +31,23 @@ namespace Seterlund.CodeGuard.Internals
             }
 
             throw new ArgumentException(message, _arg.Name);
+        }
+
+        public void SetArgumentLargerThan(T max)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, max);
+            SetArgumentOutRange(message);
+        }
+
+        public void SetArgumentLessThan(T min)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, min);
+            SetArgumentOutRange(message);
+        }
+
+        public void SetArgumentNotEqual(T expected)
+        {
+            throw ArgumentOutOfRangeExceptionFactory.NotEqual(_arg, expected);
         }
 
         public void SetArgumentNull()
@@ -59,24 +83,9 @@ namespace Seterlund.CodeGuard.Internals
         public void SetArgumentOutRange(T min, T max)
         {
             var message = ErrorMessageFactory.OutOfRange(_arg, min, max);
-            SetArgumentOutRange(message);        
-        }
-
-        public void SetArgumentLessThan(T min)
-        {
-            var message = ErrorMessageFactory.LessThan(_arg, min);
             SetArgumentOutRange(message);
         }
 
-        public void SetArgumentLargerThan(T max)
-        {
-            var message = ErrorMessageFactory.LessThan(_arg, max);
-            SetArgumentOutRange(message);
-        }
-
-        public void SetArgumentNotEqual(T expected)
-        {
-            throw ArgumentOutOfRangeExceptionFactory.NotEqual(_arg, expected);
-        }
+        #endregion Public Methods
     }
 }

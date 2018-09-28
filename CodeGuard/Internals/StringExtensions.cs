@@ -1,4 +1,4 @@
-﻿namespace Seterlund.CodeGuard.Internals
+﻿namespace CodeGuard.dotNetCore.Internals
 {
     public static class StringExtensions
     {

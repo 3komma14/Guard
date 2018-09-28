@@ -1,30 +1,56 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     internal class SaveMessageHandler<T> : IMessageHandler<T>
     {
-        private readonly IArg<T> _arg;
+        #region Protected Fields
         protected List<ErrorInfo> Result = new List<ErrorInfo>();
+        #endregion Protected Fields
+
+        #region Private Fields
+        private readonly IArg<T> _arg;
+        #endregion Private Fields
+
+        #region Public Constructors
+
+        public SaveMessageHandler(IArg<T> arg)
+        {
+            Contract.Requires(arg != null);
+
+            _arg = arg;
+        }
+
+        #endregion Public Constructors
+
+        #region Public Methods
 
         public List<ErrorInfo> GetResult()
         {
             return Result;
         }
 
-        public SaveMessageHandler(IArg<T> arg)
-        {
-#if !NET35    
-            Contract.Requires(arg != null);
-#endif
-
-            _arg = arg;
-        }
-
-
         public void Set(string message)
         {
+            AddResultItem(message);
+        }
+
+        public void SetArgumentLargerThan(T max)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, max);
+            AddResultItem(message);
+        }
+
+        public void SetArgumentLessThan(T min)
+        {
+            var message = ErrorMessageFactory.LessThan(_arg, min);
+            AddResultItem(message);
+        }
+
+        public void SetArgumentNotEqual(T expected)
+        {
+            var message = ErrorMessageFactory.NotEqual(_arg, expected);
             AddResultItem(message);
         }
 
@@ -49,27 +75,15 @@ namespace Seterlund.CodeGuard.Internals
             AddResultItem(message);
         }
 
-        public void SetArgumentLessThan(T min)
-        {
-            var message = ErrorMessageFactory.LessThan(_arg, min);
-            AddResultItem(message);
-        }
+        #endregion Public Methods
 
-        public void SetArgumentLargerThan(T max)
-        {
-            var message = ErrorMessageFactory.LessThan(_arg, max);
-            AddResultItem(message);
-        }
-
-        public void SetArgumentNotEqual(T expected)
-        {
-            var message = ErrorMessageFactory.NotEqual(_arg, expected);
-            AddResultItem(message);            
-        }
+        #region Private Methods
 
         private void AddResultItem(string message)
         {
-            Result.Add(new ErrorInfo() {Message = message, Name = _arg.Name});
+            Result.Add(new ErrorInfo() { Message = message, Name = _arg.Name });
         }
+
+        #endregion Private Methods
     }
 }

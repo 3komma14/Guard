@@ -1,26 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard", "CodeGuard\Seterlund.CodeGuard.csproj", "{534D625B-C310-4A98-8E05-1806E7AE389F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGuard.dotNetCore", "CodeGuard\CodeGuard.dotNetCore.csproj", "{C36C84E9-57B6-4019-9906-393BCF138B88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seterlund.CodeGuard.UnitTests", "UnitTests\Seterlund.CodeGuard.UnitTests.csproj", "{B7F516F7-E137-4922-B119-C87FFCDA8BBB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96AC009B-2319-4A8C-B041-5294C8C1FA0F}"
-	ProjectSection(SolutionItems) = preProject
-		CodeGuard.vsmdi = CodeGuard.vsmdi
-		License.txt = License.txt
-		Local.testsettings = Local.testsettings
-		README.markdown = README.markdown
-		Images\shield.png = Images\shield.png
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FF11F4C5-F6B5-4602-8BAB-3D3E003A8926}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGuard.dotNetCore.UnitTest", "CodeGuard.UnitTest\CodeGuard.dotNetCore.UnitTest.csproj", "{CDEAF6A7-D229-4AAB-A1DD-A69993DC96FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,22 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{534D625B-C310-4A98-8E05-1806E7AE389F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{534D625B-C310-4A98-8E05-1806E7AE389F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{534D625B-C310-4A98-8E05-1806E7AE389F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{534D625B-C310-4A98-8E05-1806E7AE389F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7F516F7-E137-4922-B119-C87FFCDA8BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C36C84E9-57B6-4019-9906-393BCF138B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C36C84E9-57B6-4019-9906-393BCF138B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C36C84E9-57B6-4019-9906-393BCF138B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C36C84E9-57B6-4019-9906-393BCF138B88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDEAF6A7-D229-4AAB-A1DD-A69993DC96FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDEAF6A7-D229-4AAB-A1DD-A69993DC96FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDEAF6A7-D229-4AAB-A1DD-A69993DC96FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDEAF6A7-D229-4AAB-A1DD-A69993DC96FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(CodealikeProperties) = postSolution
-		SolutionGuid = 9f50192f-59e9-4b4e-b3eb-19272024fdac
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = CodeGuard.vsmdi
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4C38BD9-0A69-431A-8DE3-842819152596}
 	EndGlobalSection
 EndGlobal

@@ -1,14 +1,16 @@
+using CodeGuard.dotNetCore.Internals;
 using System;
-using System.Linq.Expressions;
-using Seterlund.CodeGuard.Internals;
 using System.Diagnostics.Contracts;
+using System.Linq.Expressions;
 
-namespace Seterlund.CodeGuard
+namespace CodeGuard.dotNetCore
 {
     public static class Guard
     {
+        #region Public Methods
+
         /// <summary>
-        /// Check the argument 
+        /// Check the argument
         /// </summary>
         /// <param name="argument">
         /// The argument.
@@ -21,9 +23,8 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static IArg<T> That<T>(Expression<Func<T>> argument)
         {
-#if !NET35
             Contract.Requires(argument != null);
-#endif
+
             return new ThrowOnFirstErrorArg<T>(argument);
         }
 
@@ -40,15 +41,16 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static IArg<T> That<T>(T argument, string argumentName = "")
         {
-#if !NET35
             Contract.Requires(argument != null);
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
-#endif
+
             if (string.IsNullOrEmpty(argumentName))
             {
                 return new ThrowOnFirstErrorArg<T>(argument);
             }
             return new ThrowOnFirstErrorArg<T>(argument, argumentName);
         }
+
+        #endregion Public Methods
     }
 }

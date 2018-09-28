@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     public abstract class ArgBaseExpression<T> : IArg<T>
     {
@@ -91,9 +91,9 @@ namespace Seterlund.CodeGuard.Internals
         /// <returns></returns>
         public IArg<T> Is<TType>()
         {
-#if !NET35    
+    
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
-#endif
+
             var isType = this.Value is TType;
             if (!isType)
             {

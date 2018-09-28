@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     public interface IMessageHandler<T> 
     {

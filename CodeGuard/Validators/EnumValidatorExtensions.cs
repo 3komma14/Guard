@@ -1,31 +1,17 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using Seterlund.CodeGuard.Internals;
 
-namespace Seterlund.CodeGuard.Validators
+namespace CodeGuard.dotNetCore.Validators
 {
     public static class EnumValidatorExtensions
     {
-        public static IArg<TEnum> IsValidValue<TEnum>(this IArg<TEnum> arg)
-        {
-#if !NET35
-            Contract.Requires(arg != null);
-            Contract.Ensures(Contract.Result<IArg<TEnum>>() != null);
-#endif
-            if (!Enum.IsDefined(arg.Value.GetType(), arg.Value))
-            {
-                arg.Message.Set("Value is not valid");
-            }
-
-            return arg;
-        }
+        #region Public Methods
 
         public static IArg<TEnum> HasFlagSet<TEnum>(this IArg<TEnum> arg, TEnum flagValue)
         {
-#if !NET35
             Contract.Requires(arg != null);
             Contract.Ensures(Contract.Result<IArg<TEnum>>() != null);
-#endif
+
             Enum value = arg.Value as Enum;
             Enum flagEnumValue = flagValue as Enum;
             if (value != null)
@@ -38,5 +24,20 @@ namespace Seterlund.CodeGuard.Validators
 
             return arg;
         }
+
+        public static IArg<TEnum> IsValidValue<TEnum>(this IArg<TEnum> arg)
+        {
+            Contract.Requires(arg != null);
+            Contract.Ensures(Contract.Result<IArg<TEnum>>() != null);
+
+            if (!Enum.IsDefined(arg.Value.GetType(), arg.Value))
+            {
+                arg.Message.Set("Value is not valid");
+            }
+
+            return arg;
+        }
+
+        #endregion Public Methods
     }
 }

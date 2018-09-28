@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     public class ArgNameExpression<T> : ArgName
     {

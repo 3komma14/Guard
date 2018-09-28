@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Seterlund.CodeGuard
+﻿namespace CodeGuard.dotNetCore
 {
     public class ErrorInfo
     {
-        public string Name { get; set; }
+        #region Public Properties
         public string Message { get; set; }
+        public string Name { get; set; }
+        #endregion Public Properties
     }
 }

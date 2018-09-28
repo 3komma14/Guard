@@ -1,28 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.Linq.Expressions;
-using System.Reflection;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     public abstract class ArgBase<T> : IArg<T>
     {
+        #region Private Fields
         private readonly Func<T> _argument;
-        public IMessageHandler<T> Message { get; protected set; }
-        
-        public abstract IEnumerable<ErrorInfo> Errors { get; }
+        #endregion Private Fields
 
-        public T Value { get; protected set; }
-
-        public ArgName Name { get; private set; }
-
-        public bool HasName
-        {
-            get { return !string.IsNullOrEmpty(Name); }
-        }
-
-        #region Constructors
+        #region Protected Constructors
 
         protected ArgBase(Func<T> argument)
         {
@@ -30,11 +18,6 @@ namespace Seterlund.CodeGuard.Internals
 
             this.Value = GetValue(argument);
             this.Name = new ArgNameFunc<T>(argument);
-        }
-
-        private static T GetValue(Func<T> argument)
-        {
-            return argument();
         }
 
         protected ArgBase(T argument)
@@ -48,8 +31,23 @@ namespace Seterlund.CodeGuard.Internals
             this.Name = new ArgName { Value = argumentName };
         }
 
-        #endregion
-                
+        #endregion Protected Constructors
+
+        #region Public Properties
+        public abstract IEnumerable<ErrorInfo> Errors { get; }
+
+        public bool HasName
+        {
+            get { return !string.IsNullOrEmpty(Name); }
+        }
+
+        public IMessageHandler<T> Message { get; protected set; }
+        public ArgName Name { get; private set; }
+        public T Value { get; protected set; }
+        #endregion Public Properties
+
+        #region Public Methods
+
         /// <summary>
         /// Is argument instance of type
         /// </summary>
@@ -57,10 +55,8 @@ namespace Seterlund.CodeGuard.Internals
         /// <returns></returns>
         public IArg<T> Is<TType>()
         {
-
-#if !NET35            
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
-#endif
+
             var isType = this.Value is TType;
             if (!isType)
             {
@@ -69,6 +65,16 @@ namespace Seterlund.CodeGuard.Internals
 
             return this;
         }
-    }
 
+        #endregion Public Methods
+
+        #region Private Methods
+
+        private static T GetValue(Func<T> argument)
+        {
+            return argument();
+        }
+
+        #endregion Private Methods
+    }
 }

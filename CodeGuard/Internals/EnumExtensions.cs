@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
 
-namespace Seterlund.CodeGuard.Internals
+namespace CodeGuard.dotNetCore.Internals
 {
     /// <summary>
     /// Extentions for enums.
@@ -9,6 +9,8 @@ namespace Seterlund.CodeGuard.Internals
     /// </summary>
     public static class EnumExtensions
     {
+        #region Public Methods
+
         /// <summary>
         /// A FX 3.5 way to mimic the FX4 "HasFlag" method.
         /// </summary>
@@ -17,10 +19,8 @@ namespace Seterlund.CodeGuard.Internals
         /// <returns>True if the flag is set. Otherwise false.</returns>
         public static bool HasFlag(this Enum variable, Enum value)
         {
-#if !NET35    
             Contract.Requires(variable != null);
             Contract.Requires(value != null);
-#endif
 
             // check if from the same type.
             if (variable.GetType() != value.GetType())
@@ -34,5 +34,7 @@ namespace Seterlund.CodeGuard.Internals
 
             return (num2 & num) == num;
         }
+
+        #endregion Public Methods
     }
 }

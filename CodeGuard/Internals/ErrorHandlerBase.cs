@@ -1,4 +1,4 @@
-﻿namespace Seterlund.CodeGuard.Internals
+﻿namespace CodeGuard.dotNetCore.Internals
 {
     internal class ErrorHandlerBase<T>
     {

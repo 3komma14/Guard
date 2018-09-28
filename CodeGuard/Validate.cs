@@ -1,14 +1,16 @@
+using CodeGuard.dotNetCore.Internals;
 using System;
-using System.Linq.Expressions;
-using Seterlund.CodeGuard.Internals;
 using System.Diagnostics.Contracts;
+using System.Linq.Expressions;
 
-namespace Seterlund.CodeGuard
+namespace CodeGuard.dotNetCore
 {
     public static class Validate
     {
+        #region Public Methods
+
         /// <summary>
-        /// Validate the argument 
+        /// Validate the argument
         /// </summary>
         /// <param name="argument">
         /// The argument.
@@ -21,11 +23,12 @@ namespace Seterlund.CodeGuard
         /// </returns>
         public static IArg<T> That<T>(Expression<Func<T>> argument)
         {
-#if !NET35
             Contract.Requires(argument != null);
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
-#endif
+
             return new AccumulateErrorsArg<T>(argument);
         }
+
+        #endregion Public Methods
     }
 }
