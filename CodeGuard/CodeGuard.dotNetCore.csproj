@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/Justin-Lessard/Guard/</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Justin-Lessard/Guard/blob/master/License.txt</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/Justin-Lessard/Guard/</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/Justin-Lessard/Guard/master/Images/shield2.png</PackageIconUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
