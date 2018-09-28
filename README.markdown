@@ -1,4 +1,4 @@
-CodeGuard
+.net core fork of CodeGuard
 =========
 
 A simple Guard and validator library made in c#.
