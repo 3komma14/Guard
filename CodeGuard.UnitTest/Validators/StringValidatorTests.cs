@@ -39,6 +39,19 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
         }
 
         [Fact]
+        public void Empty_WhenArgumentIsNotEmpty_Throws()
+        {
+            // Arrange
+            string arg = "AAA";
+
+            // Act
+            ArgumentException exception = GetException<ArgumentException>(() => Guard.That(() => arg).IsEmpty());
+
+            // Assert
+            AssertArgumentException(exception, "arg", "String is not empty\r\nParameter name: arg");
+        }
+
+        [Fact]
         public void EndsWith_ArgumentDoesNotEndWithValue_Throws()
         {
             // Arrange
@@ -56,6 +69,16 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
 
             // Act/Assert
             Guard.That(() => text).EndsWith("near");
+        }
+
+        [Fact]
+        public void IsEmpty_WhenArgumentIsEmpty_DoesNotThrow()
+        {
+            // Arrange
+            string text = string.Empty;
+
+            // Act/Assert
+            Guard.That(() => text).IsEmpty();
         }
 
         [Theory]
@@ -130,7 +153,7 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
         public void NotEmpty_WhenArgumentIsNull_DoesNotThrow()
         {
             // Arrange
-            string text = "hello";
+            string text = null;
 
             // Act/Assert
 
@@ -182,31 +205,10 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
         }
 
         [Fact]
-        public void NotNullOrEmpty_WhenArgumentIsValid_DoesNotThrow()
-        {
-            // Arrange
-            string text = "hello";
-
-            // Act/Assert
-
-            Guard.That(() => text).NotNullOrEmpty();
-        }
-
-        [Fact]
         public void NotNullOrWhiteSpace_WhenStringArgumentIsNull_Throws()
         {
             // Arrange
             string arg = null;
-
-            // Assert
-            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).NotNullOrWhiteSpace());
-        }
-
-        [Fact]
-        public void NotNullOrWhiteSpace_WhenStringArgumentIsWhiteSpace_Throws()
-        {
-            // Arrange
-            string arg = " ";
 
             // Assert
             Assert.Throws<ArgumentException>(() => Guard.That(() => arg).NotNullOrWhiteSpace());
@@ -220,6 +222,81 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
 
             // Assert
             Guard.That(() => arg).NotNullOrWhiteSpace();
+        }
+
+        [Fact]
+        public void Null_WhenArgumentNull_DoesNotThrow()
+        {
+            // Arrange
+            string text = null;
+
+            // Act/Assert
+            Guard.That(() => text).Null();
+        }
+
+        [Fact]
+        public void Null_WhenStringArgumentIsNotNull_Throws()
+        {
+            // Arrange
+            string arg = "hello";
+
+            // Act/Assert
+            Assert.Throws<ArgumentNullException>(() => Guard.That(() => arg).Null());
+        }
+
+        [Fact]
+        public void NullOrEmpty_WhenArgumentIsNotEmpty_Throws()
+        {
+            // Arrange
+            string text = "hello";
+
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).IsNullOrEmpty());
+        }
+
+        [Fact]
+        public void NullOrEmpty_WhenArgumentIsNotNull_Throws()
+        {
+            // Arrange
+            string text = "hello";
+
+            // Act/Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => text).IsNullOrEmpty());
+        }
+
+        [Fact]
+        public void NullOrEmpty_WhenArgumentIsValid_DoesNotThrow()
+        {
+            // Arrange
+            string text = null;
+            string text2 = string.Empty;
+
+            // Act/Assert
+
+            Guard.That(() => text).IsNullOrEmpty();
+            Guard.That(() => text2).IsNullOrEmpty();
+        }
+
+        [Fact]
+        public void NullOrWhiteSpace_WhenStringArgumentHasValue_Throws()
+        {
+            // Arrange
+            string arg = "hello";
+
+            // Assert
+            Assert.Throws<ArgumentException>(() => Guard.That(() => arg).IsNullOrWhiteSpace());
+        }
+
+        [Fact]
+        public void NullOrWhiteSpace_WhenStringArgumentIsValid_DoesNotThrows()
+        {
+            // Arrange
+            string arg1 = " ";
+            string arg2 = string.Empty;
+
+            // Assert
+            Guard.That(() => arg1).IsNullOrWhiteSpace();
+            Guard.That(() => arg2).IsNullOrWhiteSpace();
         }
 
         [Fact]

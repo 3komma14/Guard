@@ -38,6 +38,20 @@ namespace CodeGuard.dotNetCore.Validators
             return arg;
         }
 
+        public static IArg<string> IsEmpty(this IArg<string> arg)
+        {
+            Contract.Requires(arg != null);
+            Contract.Requires(arg.Value != null);
+            Contract.Ensures(Contract.Result<IArg<string>>() != null);
+
+            if (arg.Value != string.Empty)
+            {
+                arg.Message.Set("String is not empty");
+            }
+
+            return arg;
+        }
+
         public static IArg<string> IsMatch(this IArg<string> arg, string pattern)
         {
             Contract.Requires(arg != null);
@@ -63,6 +77,34 @@ namespace CodeGuard.dotNetCore.Validators
             if (arg.Value == string.Empty)
             {
                 arg.Message.Set("String is empty");
+            }
+
+            return arg;
+        }
+
+        public static IArg<string> IsNullOrEmpty(this IArg<string> arg)
+        {
+            Contract.Requires(arg != null);
+            Contract.Requires(arg.Value != null);
+            Contract.Ensures(Contract.Result<IArg<string>>() != null);
+
+            if (!string.IsNullOrEmpty(arg.Value))
+            {
+                arg.Message.Set("String is not null or empty");
+            }
+
+            return arg;
+        }
+
+        public static IArg<string> IsNullOrWhiteSpace(this IArg<string> arg)
+        {
+            Contract.Requires(arg != null);
+            Contract.Requires(arg.Value != null);
+            Contract.Ensures(Contract.Result<IArg<string>>() != null);
+
+            if (!arg.Value.IsNullOrWhiteSpace())
+            {
+                arg.Message.Set("String is not null or whitespace");
             }
 
             return arg;
