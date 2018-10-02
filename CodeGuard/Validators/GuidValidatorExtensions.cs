@@ -5,9 +5,10 @@ namespace CodeGuard.dotNetCore.Validators
 {
     public static class GuidValidatorExtensions
     {
+        #region Public Methods
+
         public static IArg<Guid> IsNotEmpty(this IArg<Guid> arg)
         {
-
             Contract.Requires(arg != null);
             Contract.Ensures(Contract.Result<IArg<Guid>>() != null);
 
@@ -18,5 +19,7 @@ namespace CodeGuard.dotNetCore.Validators
 
             return arg;
         }
+
+        #endregion Public Methods
     }
 }

@@ -7,13 +7,14 @@ namespace CodeGuard.dotNetCore.Validators
 {
     public static class ObjectValidatorExtensions
     {
+        #region Public Methods
+
         /// <summary>
         /// Is argument instance of type
         /// </summary>
         /// <returns></returns>
         public static IArg<T> Is<T>(this IArg<T> arg, Type type)
         {
-
             Contract.Requires(arg != null);
             Contract.Requires(type != null);
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
@@ -33,7 +34,6 @@ namespace CodeGuard.dotNetCore.Validators
         /// <returns></returns>
         public static IArg<T> IsNotDefault<T>(this IArg<T> arg)
         {
-
             Contract.Requires(arg != null);
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
 
@@ -56,28 +56,8 @@ namespace CodeGuard.dotNetCore.Validators
             return arg;
         }
 
-        /// <summary>
-        /// Is the function true for the argument.
-        /// </summary>
-        /// <returns></returns>
-        public static IArg<T> IsTrue<T>(this IArg<T> arg, Func<T, bool> booleanFunction, string exceptionMessage)
-        {
-
-            Contract.Requires(arg != null);
-            Contract.Requires(booleanFunction != null);
-            Contract.Ensures(Contract.Result<IArg<T>>() != null);
-
-            if (!booleanFunction(arg.Value))
-            {
-                arg.Message.Set(exceptionMessage);
-            }
-
-            return arg;
-        }
-
         public static IArg<T> IsOneOf<T>(this IArg<T> arg, IEnumerable<T> collection)
         {
-
             Contract.Requires(arg != null);
             Contract.Requires(collection != null);
             Contract.Ensures(Contract.Result<IArg<T>>() != null);
@@ -90,5 +70,24 @@ namespace CodeGuard.dotNetCore.Validators
             return arg;
         }
 
+        /// <summary>
+        /// Is the function true for the argument.
+        /// </summary>
+        /// <returns></returns>
+        public static IArg<T> IsTrue<T>(this IArg<T> arg, Func<T, bool> booleanFunction, string exceptionMessage)
+        {
+            Contract.Requires(arg != null);
+            Contract.Requires(booleanFunction != null);
+            Contract.Ensures(Contract.Result<IArg<T>>() != null);
+
+            if (!booleanFunction(arg.Value))
+            {
+                arg.Message.Set(exceptionMessage);
+            }
+
+            return arg;
+        }
+
+        #endregion Public Methods
     }
 }

@@ -6,6 +6,7 @@ namespace CodeGuard.dotNetCore.Internals
 {
     public class AccumulateErrorsArg<T> : ArgBaseExpression<T>
     {
+        #region Public Constructors
 
         public AccumulateErrorsArg(Expression<Func<T>> argument)
             : base(argument)
@@ -25,9 +26,15 @@ namespace CodeGuard.dotNetCore.Internals
             this.Message = new SaveMessageHandler<T>(this);
         }
 
+        #endregion Public Constructors
+
+        #region Public Properties
+
         public override IEnumerable<ErrorInfo> Errors
         {
             get { return ((SaveMessageHandler<T>)this.Message).GetResult(); }
         }
+
+        #endregion Public Properties
     }
 }

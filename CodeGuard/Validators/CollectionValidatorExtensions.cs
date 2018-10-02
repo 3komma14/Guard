@@ -5,9 +5,10 @@ namespace CodeGuard.dotNetCore.Validators
 {
     public static class CollectionValidatorExtensions
     {
+        #region Public Methods
+
         public static IArg<ICollection> IsNotEmpty(this IArg<ICollection> arg)
         {
-
             Contract.Requires(arg != null);
             Contract.Ensures(Contract.Result<IArg<ICollection>>() != null);
 
@@ -19,5 +20,7 @@ namespace CodeGuard.dotNetCore.Validators
 
             return arg;
         }
+
+        #endregion Public Methods
     }
 }

@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CodeGuard.dotNetCore.Internals
 {
     public class MathUtil
     {
-        public static bool IsOdd(int value)
-        {
-            return ((value & 1) == 1);
-        }
-
-        public static bool IsOdd(long value)
-        {
-            return ((value & 1) == 1);
-        }
+        #region Public Methods
 
         public static bool IsEven(int value)
         {
@@ -25,6 +14,16 @@ namespace CodeGuard.dotNetCore.Internals
         public static bool IsEven(long value)
         {
             return ((value & 1) == 0);
+        }
+
+        public static bool IsOdd(int value)
+        {
+            return ((value & 1) == 1);
+        }
+
+        public static bool IsOdd(long value)
+        {
+            return ((value & 1) == 1);
         }
 
         public static bool IsPrime(int value)
@@ -56,5 +55,6 @@ namespace CodeGuard.dotNetCore.Internals
             return true;
         }
 
+        #endregion Public Methods
     }
 }

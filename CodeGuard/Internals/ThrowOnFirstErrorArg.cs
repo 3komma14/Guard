@@ -6,16 +6,16 @@ namespace CodeGuard.dotNetCore.Internals
 {
     public class ThrowOnFirstErrorArg<T> : ArgBaseExpression<T>
     {
-        #region Constructors
-        
+        #region Public Constructors
+
         public ThrowOnFirstErrorArg(Expression<Func<T>> argument) : base(argument)
         {
             this.Message = new ThrowMessageHandler<T>(this);
         }
- 
+
         public ThrowOnFirstErrorArg(T argument) : base(argument)
         {
-            this.Message = new ThrowMessageHandler<T>(this);         
+            this.Message = new ThrowMessageHandler<T>(this);
         }
 
         public ThrowOnFirstErrorArg(T argument, string argumentName)
@@ -24,11 +24,15 @@ namespace CodeGuard.dotNetCore.Internals
             this.Message = new ThrowMessageHandler<T>(this);
         }
 
-        #endregion
+        #endregion Public Constructors
+
+        #region Public Properties
 
         public override IEnumerable<ErrorInfo> Errors
         {
             get { return new ErrorInfo[0]; }
         }
+
+        #endregion Public Properties
     }
 }

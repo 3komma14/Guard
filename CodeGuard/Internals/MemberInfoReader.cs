@@ -9,13 +9,21 @@ namespace CodeGuard.dotNetCore.Internals
 {
     internal class MemberInfoReader<T>
     {
+        #region Private Fields
         private static OpCode[] singleByteOpCodes;
         private readonly Func<T> _arg;
+        #endregion Private Fields
+
+        #region Internal Constructors
 
         internal MemberInfoReader(Func<T> arg)
         {
             this._arg = arg;
         }
+
+        #endregion Internal Constructors
+
+        #region Public Properties
 
         public static OpCode[] SingleByteOpCodes
         {
@@ -29,6 +37,10 @@ namespace CodeGuard.dotNetCore.Internals
             }
         }
 
+        #endregion Public Properties
+
+        #region Public Methods
+
         public MemberInfo GetInfo()
         {
             byte[] methodBodyIlByteArray = GetMethodBodyIlByteArray();
@@ -41,37 +53,9 @@ namespace CodeGuard.dotNetCore.Internals
             throw new InvalidExpressionException("Unable to get information about member");
         }
 
-        private MemberInfo GetMemberInfo(ArgumentInfo argumentInfo)
-        {
-            MemberInfo memberInfo = null;
+        #endregion Public Methods
 
-            if (argumentInfo.Token > 0)
-            {
-                var argType = _arg.Target.GetType();
-                var genericTypeArguments = GetSubclassGenericTypes(argType);
-                var genericMethodArguments = _arg.Method.GetGenericArguments();
-
-                switch (argumentInfo.OperandType)
-                {
-                    case OperandType.InlineField:
-                        memberInfo = argType.Module.ResolveField(argumentInfo.Token, genericTypeArguments,
-                                                                 genericMethodArguments);
-                        break;
-                    case OperandType.InlineMethod:
-                        memberInfo = argType.Module.ResolveMethod(argumentInfo.Token, genericTypeArguments,
-                                                                  genericMethodArguments);
-                        break;
-                }
-            }
-
-            return memberInfo;
-        }
-
-        private static OpCode GetOpCode(byte[] methodBodyIlByteArray, ref int currentPosition)
-        {
-            ushort value = methodBodyIlByteArray[currentPosition++];
-            return value != 0xfe ? SingleByteOpCodes[value] : OpCodes.Nop;
-        }
+        #region Private Methods
 
         private static ArgumentInfo GetArgumentInfo(byte[] methodBodyIlByteArray)
         {
@@ -81,20 +65,64 @@ namespace CodeGuard.dotNetCore.Internals
             {
                 var code = GetOpCode(methodBodyIlByteArray, ref position);
 
-
                 if (code.OperandType == OperandType.InlineField || code.OperandType == OperandType.InlineMethod)
                 {
                     return new ArgumentInfo
-                               {
-                                   OperandType = code.OperandType,
-                                   Token = ReadInt32(methodBodyIlByteArray, ref position)
-                               };
+                    {
+                        OperandType = code.OperandType,
+                        Token = ReadInt32(methodBodyIlByteArray, ref position)
+                    };
                 }
 
                 position = MoveToNextPosition(position, code);
             }
 
             return null;
+        }
+
+        private static OpCode GetOpCode(byte[] methodBodyIlByteArray, ref int currentPosition)
+        {
+            ushort value = methodBodyIlByteArray[currentPosition++];
+            return value != 0xfe ? SingleByteOpCodes[value] : OpCodes.Nop;
+        }
+
+        private static Type[] GetSubclassGenericTypes(Type toCheck)
+        {
+            var genericArgumentsTypes = new List<Type>();
+
+            while (toCheck != null)
+            {
+                if (toCheck.IsGenericType)
+                {
+                    genericArgumentsTypes.AddRange(toCheck.GetGenericArguments());
+                }
+
+                toCheck = toCheck.BaseType;
+            }
+
+            return genericArgumentsTypes.ToArray();
+        }
+
+        private static void LoadOpCodes()
+        {
+            singleByteOpCodes = new OpCode[0x100];
+
+            var opcodeFieldInfos = typeof(OpCodes).GetFields();
+
+            foreach (var info1 in opcodeFieldInfos)
+            {
+                if (info1.FieldType == typeof(OpCode))
+                {
+                    var singleByteOpCode = (OpCode)info1.GetValue(null);
+
+                    var singleByteOpcodeIndex = (ushort)singleByteOpCode.Value;
+
+                    if (singleByteOpcodeIndex < 0x100)
+                    {
+                        singleByteOpCodes[singleByteOpcodeIndex] = singleByteOpCode;
+                    }
+                }
+            }
         }
 
         private static int MoveToNextPosition(int position, OpCode code)
@@ -138,71 +166,63 @@ namespace CodeGuard.dotNetCore.Internals
             return position;
         }
 
-        private byte[] GetMethodBodyIlByteArray()
+        private static int ReadInt32(byte[] il, ref int position)
         {
-            var methodBody = _arg.Method.GetMethodBody();
-            return methodBody.GetILAsByteArray();
+            return ((il[position++] | (il[position++] << 8)) | (il[position++] << 0x10)) | (il[position++] << 0x18);
         }
 
-        Assembly CurrentDomain_ReflectionOnlyAssemblyResolve(object sender, ResolveEventArgs args)
+        private Assembly CurrentDomain_ReflectionOnlyAssemblyResolve(object sender, ResolveEventArgs args)
         {
             Debug.WriteLine(args.Name);
             Console.WriteLine("load: {0}", args.Name);
             return Assembly.ReflectionOnlyLoad(args.Name);
         }
 
-        private static int ReadInt32(byte[] il, ref int position)
+        private MemberInfo GetMemberInfo(ArgumentInfo argumentInfo)
         {
-            return ((il[position++] | (il[position++] << 8)) | (il[position++] << 0x10)) | (il[position++] << 0x18);
-        }
+            MemberInfo memberInfo = null;
 
-        private static Type[] GetSubclassGenericTypes(Type toCheck)
-        {
-            var genericArgumentsTypes = new List<Type>();
-
-            while (toCheck != null)
+            if (argumentInfo.Token > 0)
             {
-                if (toCheck.IsGenericType)
+                var argType = _arg.Target.GetType();
+                var genericTypeArguments = GetSubclassGenericTypes(argType);
+                var genericMethodArguments = _arg.Method.GetGenericArguments();
+
+                switch (argumentInfo.OperandType)
                 {
-                    genericArgumentsTypes.AddRange(toCheck.GetGenericArguments());
-                }
+                    case OperandType.InlineField:
+                        memberInfo = argType.Module.ResolveField(argumentInfo.Token, genericTypeArguments,
+                                                                 genericMethodArguments);
+                        break;
 
-                toCheck = toCheck.BaseType;
-            }
-
-            return genericArgumentsTypes.ToArray();
-        }
-
-        private static void LoadOpCodes()
-        {
-            singleByteOpCodes = new OpCode[0x100];
-
-            var opcodeFieldInfos = typeof (OpCodes).GetFields();
-
-            foreach (var info1 in opcodeFieldInfos)
-            {
-                if (info1.FieldType == typeof (OpCode))
-                {
-                    var singleByteOpCode = (OpCode) info1.GetValue(null);
-
-                    var singleByteOpcodeIndex = (ushort) singleByteOpCode.Value;
-
-                    if (singleByteOpcodeIndex < 0x100)
-                    {
-                        singleByteOpCodes[singleByteOpcodeIndex] = singleByteOpCode;
-                    }
+                    case OperandType.InlineMethod:
+                        memberInfo = argType.Module.ResolveMethod(argumentInfo.Token, genericTypeArguments,
+                                                                  genericMethodArguments);
+                        break;
                 }
             }
+
+            return memberInfo;
         }
 
-        #region Nested type: ArgumentInfo
+        private byte[] GetMethodBodyIlByteArray()
+        {
+            var methodBody = _arg.Method.GetMethodBody();
+            return methodBody.GetILAsByteArray();
+        }
+
+        #endregion Private Methods
+
+        #region Private Classes
 
         private class ArgumentInfo
         {
+            #region Public Fields
             public OperandType OperandType;
             public int Token;
+            #endregion Public Fields
         }
 
-        #endregion
+        #endregion Private Classes
     }
 }
