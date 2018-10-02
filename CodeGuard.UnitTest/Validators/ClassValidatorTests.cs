@@ -9,13 +9,23 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
         #region Public Methods
 
         [Fact]
-        public void NotNull_ArgumentIsNull_Throws()
+        public void NotNull_ArgumentIsNotNull_Throws()
         {
             // Arrange
             TestClass arg = null;
 
             // Act/Assert
             Assert.Throws<ArgumentNullException>(() => Guard.That(() => arg).NotNull());
+        }
+
+        [Fact]
+        public void NotNull_ArgumentIsNull_Throws()
+        {
+            // Arrange
+            var arg = new TestClass();
+
+            // Act/Assert
+            Assert.Throws<ArgumentNullException>(() => Guard.That(() => arg).Null());
         }
 
         [Fact]
@@ -29,13 +39,13 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
         }
 
         [Fact]
-        public void NotNull_NullableTypeIsNull_Throws()
+        public void Null_ArgumentNull_DoesNotThrow()
         {
             // Arrange
-            int? arg = null;
+            TestClass arg = null;
 
             // Act/Assert
-            Assert.Throws<ArgumentNullException>(() => Guard.That(() => arg).NotNull());
+            Guard.That(() => arg).Null();
         }
 
         #endregion Public Methods

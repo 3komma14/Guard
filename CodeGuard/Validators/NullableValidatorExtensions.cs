@@ -25,6 +25,20 @@ namespace CodeGuard.dotNetCore.Validators
             return arg;
         }
 
+        public static IArg<T?> Null<T>(this IArg<T?> arg) where T : struct
+        {
+            Contract.Requires(arg != null);
+            Contract.Ensures(Contract.Result<IArg<T?>>() != null);
+
+            var value = (Nullable<T>)arg.Value;
+            if (value.HasValue)
+            {
+                arg.Message.SetArgumentNull();
+            }
+
+            return arg;
+        }
+
         #endregion Public Methods
     }
 }

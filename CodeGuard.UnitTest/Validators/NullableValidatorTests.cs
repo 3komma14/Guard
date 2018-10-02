@@ -28,6 +28,26 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
             Guard.That(() => arg).NotNull();
         }
 
+        [Fact]
+        public void NotNull_NullableTypeNull_Throws()
+        {
+            // Arrange
+            int? arg = 1;
+
+            // Act/Assert
+            Assert.Throws<ArgumentNullException>(() => Guard.That(() => arg).Null());
+        }
+
+        [Fact]
+        public void Null_NullableTypeIsNull_DoesNotThrows()
+        {
+            // Arrange
+            int? arg = null;
+
+            // Act/Assert
+            Guard.That(() => arg).Null();
+        }
+
         #endregion Public Methods
     }
 }
