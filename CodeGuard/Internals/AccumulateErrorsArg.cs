@@ -4,29 +4,29 @@ using System.Linq.Expressions;
 
 namespace CodeGuard.dotNetCore.Internals
 {
-    public class AccumulateErrorsArg<T> : ArgBaseExpression<T>
+    internal class AccumulateErrorsArg<T> : ArgBaseExpression<T>
     {
-        #region Public Constructors
+        #region Internal Constructors
 
-        public AccumulateErrorsArg(Expression<Func<T>> argument)
+        internal AccumulateErrorsArg(Expression<Func<T>> argument)
             : base(argument)
         {
             this.Message = new SaveMessageHandler<T>(this);
         }
 
-        public AccumulateErrorsArg(T argument)
+        internal AccumulateErrorsArg(T argument)
             : base(argument)
         {
             this.Message = new SaveMessageHandler<T>(this);
         }
 
-        public AccumulateErrorsArg(T argument, string argumentName)
+        internal AccumulateErrorsArg(T argument, string argumentName)
             : base(argument, argumentName)
         {
             this.Message = new SaveMessageHandler<T>(this);
         }
 
-        #endregion Public Constructors
+        #endregion Internal Constructors
 
         #region Public Properties
 

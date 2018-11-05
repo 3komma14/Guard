@@ -7,9 +7,9 @@ namespace CodeGuard.dotNetCore.Internals
     /// Extentions for enums.
     /// http://www.sambeauvois.be/blog/2011/08/enum-hasflag-method-extension-for-4-0-framework/
     /// </summary>
-    public static class EnumExtensions
+    internal static class EnumExtensions
     {
-        #region Public Methods
+        #region Internal Methods
 
         /// <summary>
         /// A FX 3.5 way to mimic the FX4 "HasFlag" method.
@@ -17,7 +17,7 @@ namespace CodeGuard.dotNetCore.Internals
         /// <param name="variable">The tested enum.</param>
         /// <param name="value">The value to test.</param>
         /// <returns>True if the flag is set. Otherwise false.</returns>
-        public static bool HasFlag(this Enum variable, Enum value)
+        internal static bool HasFlag(this Enum variable, Enum value)
         {
             Contract.Requires(variable != null);
             Contract.Requires(value != null);
@@ -35,6 +35,6 @@ namespace CodeGuard.dotNetCore.Internals
             return (num2 & num) == num;
         }
 
-        #endregion Public Methods
+        #endregion Internal Methods
     }
 }

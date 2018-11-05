@@ -10,16 +10,16 @@ namespace CodeGuard.dotNetCore.Internals
         private readonly IArg<T> _arg;
         #endregion Private Fields
 
-        #region Public Constructors
+        #region Internal Constructors
 
-        public ThrowMessageHandler(IArg<T> arg)
+        internal ThrowMessageHandler(IArg<T> arg)
         {
             Contract.Requires(arg != null);
 
             _arg = arg;
         }
 
-        #endregion Public Constructors
+        #endregion Internal Constructors
 
         #region Public Methods
 

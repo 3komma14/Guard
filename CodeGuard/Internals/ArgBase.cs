@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 
 namespace CodeGuard.dotNetCore.Internals
 {
-    public abstract class ArgBase<T> : IArg<T>
+    internal abstract class ArgBase<T> : IArg<T>
     {
         #region Private Fields
         private readonly Func<T> _argument;

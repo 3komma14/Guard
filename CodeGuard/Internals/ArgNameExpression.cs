@@ -3,21 +3,21 @@ using System.Linq.Expressions;
 
 namespace CodeGuard.dotNetCore.Internals
 {
-    public class ArgNameExpression<T> : ArgName
+    internal class ArgNameExpression<T> : ArgName
     {
         #region Private Fields
         private readonly Expression<Func<T>> _argument;
         private string _nameValue;
         #endregion Private Fields
 
-        #region Public Constructors
+        #region Internal Constructors
 
-        public ArgNameExpression(Expression<Func<T>> argument)
+        internal ArgNameExpression(Expression<Func<T>> argument)
         {
             _argument = argument;
         }
 
-        #endregion Public Constructors
+        #endregion Internal Constructors
 
         #region Public Properties
 

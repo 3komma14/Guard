@@ -2,14 +2,14 @@
 {
     internal class ErrorHandlerBase<T>
     {
-        #region Public Constructors
+        #region Internal Constructors
 
-        public ErrorHandlerBase(IArg<T> arg)
+        internal ErrorHandlerBase(IArg<T> arg)
         {
             Arg = arg;
         }
 
-        #endregion Public Constructors
+        #endregion Internal Constructors
 
         #region Public Properties
         public IArg<T> Arg { get; set; }

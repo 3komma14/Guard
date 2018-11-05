@@ -2,21 +2,21 @@ using System;
 
 namespace CodeGuard.dotNetCore.Internals
 {
-    public class ArgNameFunc<T> : ArgName
+    internal class ArgNameFunc<T> : ArgName
     {
         #region Private Fields
         private readonly Func<T> _argument;
         private string _nameValue;
         #endregion Private Fields
 
-        #region Public Constructors
+        #region Internal Constructors
 
-        public ArgNameFunc(Func<T> argument)
+        internal ArgNameFunc(Func<T> argument)
         {
             _argument = argument;
         }
 
-        #endregion Public Constructors
+        #endregion Internal Constructors
 
         #region Public Properties
 

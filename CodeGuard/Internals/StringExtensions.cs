@@ -1,15 +1,15 @@
 ﻿namespace CodeGuard.dotNetCore.Internals
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
-        #region Public Methods
+        #region Internal Methods
 
-        public static bool IsNullOrWhiteSpace(this string value)
+        internal static bool IsNullOrWhiteSpace(this string value)
         {
             if (value == null) return true;
             return string.IsNullOrEmpty(value.Trim());
         }
 
-        #endregion Public Methods
+        #endregion Internal Methods
     }
 }

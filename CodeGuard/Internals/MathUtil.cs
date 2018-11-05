@@ -2,36 +2,36 @@
 
 namespace CodeGuard.dotNetCore.Internals
 {
-    public class MathUtil
+    internal class MathUtil
     {
-        #region Public Methods
+        #region Internal Methods
 
-        public static bool IsEven(int value)
+        internal static bool IsEven(int value)
         {
             return ((value & 1) == 0);
         }
 
-        public static bool IsEven(long value)
+        internal static bool IsEven(long value)
         {
             return ((value & 1) == 0);
         }
 
-        public static bool IsOdd(int value)
+        internal static bool IsOdd(int value)
         {
             return ((value & 1) == 1);
         }
 
-        public static bool IsOdd(long value)
+        internal static bool IsOdd(long value)
         {
             return ((value & 1) == 1);
         }
 
-        public static bool IsPrime(int value)
+        internal static bool IsPrime(int value)
         {
             return IsPrime((long)value);
         }
 
-        public static bool IsPrime(long value)
+        internal static bool IsPrime(long value)
         {
             // Throw out impossibles
             if (value < 2)
@@ -55,6 +55,6 @@ namespace CodeGuard.dotNetCore.Internals
             return true;
         }
 
-        #endregion Public Methods
+        #endregion Internal Methods
     }
 }
