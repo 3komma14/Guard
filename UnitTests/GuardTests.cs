@@ -12,7 +12,7 @@ namespace Seterlund.CodeGuard.UnitTests
         /// <summary>
         /// Called once before first test is executed
         /// </summary>
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             // Init tests
@@ -21,7 +21,7 @@ namespace Seterlund.CodeGuard.UnitTests
         /// <summary>
         /// Called once after last test is executed
         /// </summary>
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void Cleanup()
         {
             // Cleanup tests
