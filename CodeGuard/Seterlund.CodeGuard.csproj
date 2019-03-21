@@ -1,23 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Company>Per Ivar Seterlund</Company>
     <FileVersion>2.4.0.0</FileVersion>
     <AssemblyVersion>2.4.0.0</AssemblyVersion>
     <Product>CodeGuard</Product>
-    <PackageId>Seterlund.CodeGuard</PackageId>
+    <PackageId>MetaFight.CodeGuard</PackageId>
     <Authors>Per Ivar Seterlund</Authors>
     <AssemblyName>CodeGuard</AssemblyName>
-    <Description>Guard and Validator library.\nExample: Guard.That(arg1).IsNotNull().GreaterThan(100);\nThrows an exception if conditions are not met.\nSupports the ability to get a list of the failed conditions.</Description>
-    <Copyright>Copyright Per Ivar Seterlund (3komma14@gmail.com) © 2011-2018</Copyright>
+    <Description>Guard and Validator library.
+Example: Guard.That(arg1).IsNotNull().GreaterThan(100);
+Throws an exception if conditions are not met.
+Supports the ability to get a list of the failed conditions.</Description>
+    <Copyright>Copyright Per Ivar Seterlund © 2011-2018</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>2.4.0</Version>
-    <PackageLicenseUrl>https://github.com/3komma14/Guard/blob/master/License.txt</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/3komma14/Guard/wiki</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/3komma14/Guard/raw/master/Images/shield2.png</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/MetaFight/Guard/master/License.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/MetaFight/Guard</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/MetaFight/Guard/master/Images/shield2.png</PackageIconUrl>
     <PackageTags>Argument Guard Validation</PackageTags>
-    <PackageReleaseNotes>Switched to netcoreapp2.0.</PackageReleaseNotes>
+    <PackageReleaseNotes>The original project seemed dead, so I've forked it and converted it to netstandard project.
+</PackageReleaseNotes>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
