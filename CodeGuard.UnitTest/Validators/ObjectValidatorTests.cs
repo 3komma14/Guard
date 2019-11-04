@@ -1,5 +1,5 @@
-using CodeGuard.dotNetCore.Validators;
 using System;
+using CodeGuard.dotNetCore.Validators;
 using Xunit;
 
 namespace CodeGuard.dotNetCore.UnitTests.Validators
@@ -49,7 +49,7 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
                 GetException<ArgumentException>(() => Guard.That(() => arg1).IsNotDefault());
 
             // Assert
-            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
+            AssertArgumentException(exception, "arg1", "Value cannot be the default value. (Parameter 'arg1')");
         }
 
         [Fact]
@@ -66,14 +66,14 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
         public void IsNotDefault_WhenArgumentIsValueTypeAndValueIsDefault_Throws()
         {
             // Arrange
-            int arg1 = default(int);
+            int arg1 = default;
 
             // Act
             ArgumentException exception =
                 GetException<ArgumentException>(() => Guard.That(() => arg1).IsNotDefault());
 
             // Assert
-            AssertArgumentException(exception, "arg1", "Value cannot be the default value.\r\nParameter name: arg1");
+            AssertArgumentException(exception, "arg1", "Value cannot be the default value. (Parameter 'arg1')");
         }
 
         [Fact]

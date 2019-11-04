@@ -28,7 +28,7 @@ namespace CodeGuard.dotNetCore.UnitTests
             Assert.Equal(actualValue, exception.ActualValue);
             var expectedMessage =
                 string.Format(
-                    "The value '{0}' of '{1}' is not in its allowed range of '{2}' to '{3}'\r\nParameter name: {1}\r\nActual value was {0}.",
+                    "The value '{0}' of '{1}' is not in its allowed range of '{2}' to '{3}' (Parameter '{1}')\r\nActual value was {0}.",
                     actualValue, paramName, to, from);
             Assert.Equal(expectedMessage, exception.Message);
         }
@@ -37,7 +37,7 @@ namespace CodeGuard.dotNetCore.UnitTests
         {
             Assert.NotNull(exception);
             Assert.Equal(paramName, exception.ParamName);
-            Assert.Equal(string.Format("Specified argument was out of the range of valid values.\r\nParameter name: {0}", paramName), exception.Message);
+            Assert.Equal(string.Format("Specified argument was out of the range of valid values. (Parameter '{0}')", paramName), exception.Message);
         }
 
         protected void AssertArgumentNotEqualException(ArgumentOutOfRangeException exception, string paramName, object actualValue, object expectedValue)
@@ -47,7 +47,7 @@ namespace CodeGuard.dotNetCore.UnitTests
             //Assert.Equal(actualValue, exception.ActualValue);
             var expectedMessage =
                 string.Format(
-                    "The value '{0}' is not equal to '{1}'\r\nParameter name: {2}\r\nActual value was {0}.",
+                    "The value '{0}' is not equal to '{1}' (Parameter '{2}')\r\nActual value was {0}.",
                     actualValue, expectedValue, paramName);
             Assert.Equal(expectedMessage, exception.Message);
         }

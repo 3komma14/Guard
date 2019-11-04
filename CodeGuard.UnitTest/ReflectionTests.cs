@@ -48,7 +48,7 @@ namespace CodeGuard.dotNetCore.UnitTests
                                                               });
 
             // Assert
-            AssertArgumentNullException(exception, "dbContext", "Value cannot be null.\r\nParameter name: dbContext");
+            AssertArgumentNullException(exception, "dbContext", "Value cannot be null. (Parameter 'dbContext')");
         }
 
         #endregion Public Methods

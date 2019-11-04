@@ -36,7 +36,7 @@ namespace CodeGuard.dotNetCore.UnitTests
                 GetException<ArgumentException>(() => Guard.That(() => someArg).Is(typeof(ITest)));
 
             // Assert
-            AssertArgumentException(exception, "someArg", "Value is not <ITest>\r\nParameter name: someArg");
+            AssertArgumentException(exception, "someArg", "Value is not <ITest> (Parameter 'someArg')");
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace CodeGuard.dotNetCore.UnitTests
                 GetException<ArgumentException>(() => Guard.That(() => myArg).Is(typeof(string)));
 
             // Assert
-            AssertArgumentException(exception, "myArg", "Value is not <String>\r\nParameter name: myArg");
+            AssertArgumentException(exception, "myArg", "Value is not <String> (Parameter 'myArg')");
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace CodeGuard.dotNetCore.UnitTests
                 GetException<ArgumentException>(() => Guard.That(arg1, "MyName").Is(typeof(string)));
 
             // Assert
-            AssertArgumentException(exception, "MyName", "Value is not <String>\r\nParameter name: MyName");
+            AssertArgumentException(exception, "MyName", "Value is not <String> (Parameter 'MyName')");
         }
 
         [Fact]

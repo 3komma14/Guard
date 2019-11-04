@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/Justin-Lessard/Guard/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/Justin-Lessard/Guard/blob/master/License.txt</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Justin-Lessard/Guard/</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/Justin-Lessard/Guard/master/Images/shield2.png</PackageIconUrl>
-    <Version>1.0.3</Version>
+    <Version>1.1.0</Version>
     <Description>.NET Core port of Seterlund.CodeGuard, a Guard and Validator library.
 
 Example: Guard.That(arg1).IsNotNull().GreaterThan(100);

@@ -45,11 +45,10 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
             var obj = new Foo() { BarProp = new Bar() { Prop = "" } };
 
             // Act
-            ArgumentException exception =
-                GetException<ArgumentException>(() => Guard.That(() => obj.BarProp.Prop).IsNotEmpty());
+            ArgumentException exception = GetException<ArgumentException>(() => Guard.That(() => obj.BarProp.Prop).IsNotEmpty());
 
             // Assert
-            AssertArgumentException(exception, "Prop", "String is empty\r\nParameter name: Prop");
+            AssertArgumentException(exception, "Prop", "String is empty (Parameter 'Prop')");
         }
 
         [Fact]

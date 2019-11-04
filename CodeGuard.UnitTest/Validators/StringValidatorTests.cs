@@ -48,7 +48,7 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
             ArgumentException exception = GetException<ArgumentException>(() => Guard.That(() => arg).IsEmpty());
 
             // Assert
-            AssertArgumentException(exception, "arg", "String is not empty\r\nParameter name: arg");
+            AssertArgumentException(exception, "arg", "String is not empty (Parameter 'arg')");
         }
 
         [Fact]
@@ -136,7 +136,7 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
                 GetException<ArgumentException>(() => Guard.That(() => arg).IsNotEmpty());
 
             // Assert
-            AssertArgumentException(exception, "arg", "String is empty\r\nParameter name: arg");
+            AssertArgumentException(exception, "arg", "String is empty (Parameter 'arg')");
         }
 
         [Fact]
@@ -181,7 +181,7 @@ namespace CodeGuard.dotNetCore.UnitTests.Validators
                 GetException<ArgumentNullException>(() => Guard.That(() => arg).NotNull());
 
             // Assert
-            AssertArgumentNullException(exception, "arg", "Value cannot be null.\r\nParameter name: arg");
+            AssertArgumentNullException(exception, "arg", "Value cannot be null. (Parameter 'arg')");
         }
 
         [Fact]
